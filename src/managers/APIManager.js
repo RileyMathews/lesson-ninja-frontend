@@ -21,6 +21,18 @@ const APIManager = Object.create(null, {
         }
     },
 
+    loginUser: {
+        value: function (data) {
+            return fetch(`${url}auth/login/`, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+        }
+    },
+
     // method to create users profile
     createProfile: {
         value: function (data, profileType) {

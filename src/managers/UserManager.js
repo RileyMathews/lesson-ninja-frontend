@@ -34,6 +34,13 @@ const UserManager = Object.create(null, {
     login: {
         value: function (username, password) {
             console.log(username, password)
+            const loginInfo = {username, password}
+            APIManager.loginUser(loginInfo)
+                .then(r => r.json())
+                .then(response => {
+                    const token = response.token
+                    localStorage.setItem("token", token)
+                })
         }
     },
 

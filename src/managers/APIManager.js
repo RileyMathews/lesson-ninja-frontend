@@ -33,6 +33,18 @@ const APIManager = Object.create(null, {
         }
     },
 
+    getAuthCollection: {
+        value: function (collection, query) {
+            return fetch(`${url}${collection}/?${query}`, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Token ${localStorage.getItem("token")}`
+                }
+            })
+        }
+    },
+
     // method to create users profile
     createProfile: {
         value: function (data, profileType) {

@@ -24,6 +24,7 @@ export class Provider extends Component {
             email: "",
             first_name: "",
             last_name: "",
+            url: "",
         },
         authToken: "",
         teacher: {
@@ -33,8 +34,17 @@ export class Provider extends Component {
             region: "",
             country: "",
             zip_code: null,
+            url: ""
         },
-        student: {}
+        student: {
+            url: ""
+        }
+    }
+
+    componentDidMount() {
+        if (localStorage.getItem("token")) {
+            this.getProfileInformation(localStorage.getItem("token"))
+        }
     }
 
     /*  
@@ -46,6 +56,7 @@ export class Provider extends Component {
     register = UserManager.register.bind(this)
     setUserState = UserManager.setUserState.bind(this)
     login = UserManager.login.bind(this)
+    getProfileInformation = UserManager.getProfileInformation.bind(this)
 
 
     /*

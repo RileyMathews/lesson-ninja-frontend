@@ -31,6 +31,7 @@ const UserManager = Object.create(null, {
         }
     },
 
+    // method to get users token and pass it to get profile information method for setting it along with other user information into state
     login: {
         value: function (username, password) {
             console.log(username, password)
@@ -40,6 +41,27 @@ const UserManager = Object.create(null, {
                 .then(response => {
                     const token = response.token
                     localStorage.setItem("token", token)
+                    this.getProfileInformation(token)
+                })
+        }
+    },
+
+    getProfileInformation: {
+        value: function (token) {
+            APIManager.getAuthCollection("user", "get_single_user=true")
+                .then(r => r.json())
+                .then(response => {
+                    const userData = response[0]
+                    console.log(response[0])
+                    const profileType = userData.is_student ? "student" : "teacher"
+                    APIManager.getAuthCollection(profileType, "get_single_user=true")
+                        .then(r => r.json())
+                        .then(response => {
+                            delete response[0].user
+                            const profileData = response[0]
+                            console.log(response[0])
+                            this.setUserState(userData, profileData, profileType, token)
+                        })
                 })
         }
     },

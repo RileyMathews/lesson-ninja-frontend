@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UserManager from './managers/UserManager'
 
 /*
     module: context provider
@@ -18,10 +19,33 @@ export class Provider extends Component {
     // component.
 
     state = {
-    
+        user: {
+            username: "",
+            email: "",
+            first_name: "",
+            last_name: "",
+        },
+        authToken: "",
+        teacher: {
+            bio: "",
+            street: "",
+            city: "",
+            region: "",
+            country: "",
+            zip_code: null,
+        },
+        student: {}
     }
 
+    /*  
+        import methods from manager objects to be called and bound in this component
+    */
 
+    // user manager methods
+
+    register = UserManager.register.bind(this)
+    setUserState = UserManager.setUserState.bind(this)
+    login = UserManager.login.bind(this)
 
 
     /*
@@ -34,6 +58,10 @@ export class Provider extends Component {
             <Context.Provider value={{
                 // pass state
                 state: this.state,
+
+                // manager methods
+                register: this.register,
+                login: this.login,
 
             }}>
                 {this.props.children}

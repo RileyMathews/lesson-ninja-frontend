@@ -50,14 +50,12 @@ const UserManager = Object.create(null, {
                 .then(r => r.json())
                 .then(response => {
                     const userData = response[0]
-                    console.log(response[0])
                     const profileType = userData.is_student ? "student" : "teacher"
                     APIManager.getAuthCollection(profileType, "get_single_user=true")
                         .then(r => r.json())
                         .then(response => {
                             delete response[0].user
                             const profileData = response[0]
-                            console.log(response[0])
                             this.setUserState(userData, profileData, profileType, token)
                         })
                 })

@@ -61,6 +61,11 @@ const UserManager = Object.create(null, {
                             const profileData = response[0]
                             this.setUserAndProfileState(userData, profileData, profileType, token)
                         })
+                    if (profileType === "teacher") {
+                        this.getTeachersLessons()
+                    } else if (profileType === "student") {
+                        // future code for loading student specific information will be here
+                    }
                 })
         }
     },

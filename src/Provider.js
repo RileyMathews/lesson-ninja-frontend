@@ -53,7 +53,6 @@ export class Provider extends Component {
     componentDidMount() {
         if (localStorage.getItem("token")) {
             this.getProfileInformation(localStorage.getItem("token"))
-            this.getTeachersLessons()
         }
     }
 

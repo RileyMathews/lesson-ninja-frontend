@@ -36,7 +36,6 @@ class EditProfile extends Component {
         const thingToChange = this.props.context.state[this.state.editingLocation]
 
         // catch zip code value and change to null if needed
-
         if (evt.target.id === "submit") {
             this.props.context.updateUserProperty(thingToChange, this.state.editingProperty, this.state.editingValue, this.state.editingLocation)
         }

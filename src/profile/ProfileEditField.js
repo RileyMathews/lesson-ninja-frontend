@@ -11,7 +11,7 @@ class ProfileEditField extends Component {
                 <Field>
                     <Label>New {this.props.property}</Label>
                     <Control>
-                        <Input id="profile_edit_field" type="text" name={this.props.property} value={this.props.value} onChange={this.props.updateEditValue} />
+                        <Input id="profile_edit_field" type="" name={this.props.property} value={this.props.value} onChange={this.props.updateEditValue} />
                     </Control>
                 </Field>
 

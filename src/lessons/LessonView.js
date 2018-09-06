@@ -13,6 +13,7 @@ class LessonView extends Component {
                     <Lesson 
                         key={lesson.id}
                         lesson={lesson}
+                        routeTo={this.props.routeTo}
                     />
                 ))}
             </React.Fragment>

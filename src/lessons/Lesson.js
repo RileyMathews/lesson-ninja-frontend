@@ -12,7 +12,7 @@ class Lesson extends Component {
                     <h1>{this.props.lesson.name}</h1>
                     <p>{this.props.lesson.description}</p>
                     <p>{this.props.lesson.content}</p>
-                    <Button disabled={true}>Details</Button>
+                    <Button onClick={() => this.props.routeTo(`lessons/${this.props.lesson.id}`)}>Details</Button>
                 </div>
             </React.Fragment>
         )

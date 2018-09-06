@@ -73,8 +73,8 @@ const UserManager = Object.create(null, {
     },
 
     updateUserProperty: {
-        value: function (property, value) {
-            console.log(`Changing: ${property} to ${value}`)
+        value: function (property, value, location) {
+            console.log(`Changing: ${location} ${property} to ${value}`)
         }
     },
 

@@ -6,7 +6,7 @@ import EditProfile from './EditProfile';
 class ProfileEntry extends Component {
 
     state = {
-        showEdit: false,
+        showEdit: true,
     }
 
     toggleEdit = () => {

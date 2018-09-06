@@ -12,6 +12,7 @@ class EditProfile extends Component {
         editing: false,
         editingProperty: "",
         editingValue: "",
+        editingType: "",
     }
 
     updateEditValue = (evt) => {
@@ -23,14 +24,15 @@ class EditProfile extends Component {
     startEditingValue = (evt) => {
         this.setState({
             editing: true,
-            editingProperty: evt.target.id,
+            editingProperty: evt.target.id.split("__")[1],
+            editingType: evt.target.id.split("__")[0],
             editingValue: "",
         })
     }
 
     submitEdit = (evt) => {
         if (evt.target.id === "submit") {
-            this.props.updateUserProperty(this.state.editingProperty, this.state.editingValue)
+            this.props.updateUserProperty(this.state.editingProperty, this.state.editingValue, this.state.editingType)
         }
         this.setState({
             editing: false,

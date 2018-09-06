@@ -79,7 +79,7 @@ const UserManager = Object.create(null, {
                 })
                 .then(response => {
                     if (!problems) {
-                        this.setProviderState({[stateKey]: response})
+                        this.setProviderState([stateKey], response)
                     } else {
                         APIManager.printErrors(response)
                     }

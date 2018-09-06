@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import UserManager from './managers/UserManager'
 import StateManager from './managers/StateManager'
 import LessonManager from './managers/LessonManager'
+import history from './history'
 
 /*
     module: context provider
@@ -49,6 +50,10 @@ export class Provider extends Component {
         }
     }
 
+    routeTo = (url) => {
+        history.push(url)
+    }
+
     /*  
         import methods from manager objects to be called and bound in this component
     */
@@ -64,6 +69,7 @@ export class Provider extends Component {
     // state manager methods
     setUserAndProfileState = StateManager.setUserAndProfileState.bind(this)
     clearUserInformation = StateManager.clearUserInformation.bind(this)
+    setProviderState = StateManager.setProviderState.bind(this)
 
     /*
         This component will not render any DOM element itself.
@@ -81,6 +87,9 @@ export class Provider extends Component {
                 login: this.login,
                 clearUserInformation: this.clearUserInformation,
                 updateUserProperty: this.updateUserProperty,
+
+                // other methods
+                routeTo: this.routeTo,
 
             }}>
                 {this.props.children}

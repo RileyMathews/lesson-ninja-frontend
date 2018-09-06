@@ -21,7 +21,6 @@ class ApplicationViews extends Component {
                 <Route exact path="/profile" component={ProfileEntry}/>
                 <Route exact path="/students" />
                 <Route exact path="/lessons" component={LessonEntry}/>
-                <Route exact path="/create-lesson" />
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/register" component={Register}/>
             </React.Fragment>

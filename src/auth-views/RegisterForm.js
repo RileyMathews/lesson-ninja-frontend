@@ -38,14 +38,14 @@ class RegisterForm extends Component {
     }
 
     updateForm = (evt) => {
-        const user = {...this.state}
+        const user = { ...this.state }
         user[evt.target.name] = evt.target.value
         this.setState(user)
     }
 
     setAccountType = (evt) => {
         console.log(evt)
-        const user = {...this.state}
+        const user = { ...this.state }
         if (evt.target.value === "teacher") {
             user.is_teacher = true
             user.is_student = false
@@ -82,13 +82,13 @@ class RegisterForm extends Component {
             // build student profile object
             const studentProfile = {}
             // current not applicable
-    
+
             // get value of profile type
             const profileType = this.state.is_student ? "student" : "teacher"
             // register user
             this.props.register(user, this.state.is_student ? studentProfile : teacherProfile, profileType)
         }
-        
+
     }
 
 

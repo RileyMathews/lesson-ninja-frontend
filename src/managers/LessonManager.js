@@ -10,7 +10,11 @@ const LessonManager = Object.create(null, {
 
     getTeachersLessons: {
         value: function() {
-            
+            APIManager.getAuthCollection("lesson", "")
+                .then(r => r.json())
+                .then(response => {
+                    console.log(response)
+                })
         }
     }, 
 
@@ -22,7 +26,7 @@ const LessonManager = Object.create(null, {
                     console.log(response)
                 })
         }
-    }
+    },
 
 })
 

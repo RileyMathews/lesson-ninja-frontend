@@ -22,6 +22,8 @@ export class Provider extends Component {
     // component.
 
     state = {
+        authToken: "",
+
         user: {
             username: "",
             email: "",
@@ -29,7 +31,7 @@ export class Provider extends Component {
             last_name: "",
             url: "",
         },
-        authToken: "",
+
         teacher: {
             bio: "",
             street: "",
@@ -39,14 +41,19 @@ export class Provider extends Component {
             zip_code: null,
             url: ""
         },
+
         student: {
             url: ""
-        }
+        },
+
+        teacherLessons: [],
+
     }
 
     componentDidMount() {
         if (localStorage.getItem("token")) {
             this.getProfileInformation(localStorage.getItem("token"))
+            this.getTeachersLessons()
         }
     }
 
@@ -61,7 +68,7 @@ export class Provider extends Component {
     // user manager methods
 
     register = UserManager.register.bind(this)
-    
+
     login = UserManager.login.bind(this)
     getProfileInformation = UserManager.getProfileInformation.bind(this)
     updateUserProperty = UserManager.updateUserProperty.bind(this)
@@ -73,6 +80,7 @@ export class Provider extends Component {
 
     // lesson manager methods
     createNewLesson = LessonManager.createNewLesson.bind(this)
+    getTeachersLessons = LessonManager.getTeachersLessons.bind(this)
 
     /*
         This component will not render any DOM element itself.

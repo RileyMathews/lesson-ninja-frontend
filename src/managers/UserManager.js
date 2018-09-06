@@ -17,7 +17,7 @@ const UserManager = Object.create(null, {
                 .then(response => {
                     const token = response.token
                     localStorage.setItem("token", token)
-                    APIManager.createProfile(profileData, profileType)
+                    APIManager.createItem(profileData, profileType)
                         .then(r => r.json())
                         .then(response => {
                             const userInformation = response.user

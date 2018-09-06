@@ -1,3 +1,5 @@
+import APIManager from "./APIManager";
+
 /*  
     module: lesson manager
     author: riley mathews
@@ -11,6 +13,16 @@ const LessonManager = Object.create(null, {
             
         }
     }, 
+
+    createNewLesson: {
+        value: function(lesson) {
+            APIManager.createItem(lesson, "lesson")
+                .then(r => r.json())
+                .then(response => {
+                    console.log(response)
+                })
+        }
+    }
 
 })
 

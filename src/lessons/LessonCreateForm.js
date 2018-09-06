@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Context } from '../Provider';
-import {Field, Label, Control, Input, Button} from 'bloomer'
+import { Field, Label, Control, Input, Button } from 'bloomer'
+import { TextArea } from 'bloomer/lib/elements/Form/TextArea';
 
 
 class LessonCreateForm extends Component {
@@ -11,13 +12,8 @@ class LessonCreateForm extends Component {
         content: "",
     }
 
-
-    submitForm = (evt) => {
-        evt.preventDefault()
-    }
-
     updateForm = (evt) => {
-        const lesson = {...this.state}
+        const lesson = { ...this.state }
         lesson[evt.target.name] = evt.target.value
         this.setState(lesson)
     }
@@ -27,7 +23,10 @@ class LessonCreateForm extends Component {
             <Context.Consumer>
                 {context => (
                     <React.Fragment>
-                        <form onSubmit={this.submitForm}>
+                        <form onSubmit={(evt) => {
+                            evt.preventDefault()
+                            context.createNewLesson(this.state)
+                        }}>
                             <Field>
                                 <Label>Title</Label>
                                 <Control>
@@ -45,7 +44,7 @@ class LessonCreateForm extends Component {
                             <Field>
                                 <Label>Content</Label>
                                 <Control>
-                                    <Input type="text" onChange={this.updateForm} name="content" value={this.state.content} />
+                                    <TextArea onChange={this.updateForm} name="content" value={this.state.content} />
                                 </Control>
                             </Field>
 

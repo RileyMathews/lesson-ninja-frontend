@@ -57,9 +57,9 @@ const APIManager = Object.create(null, {
     },
 
     // method to create users profile
-    createProfile: {
-        value: function (data, profileType) {
-            return fetch(`${url}${profileType}/`, {
+    createItem: {
+        value: function (data, collection) {
+            return fetch(`${url}${collection}/`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -81,7 +81,7 @@ const APIManager = Object.create(null, {
                 }
             })
         }
-    }
+    },
 
 })
 

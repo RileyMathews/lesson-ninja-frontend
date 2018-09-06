@@ -71,6 +71,9 @@ export class Provider extends Component {
     clearUserInformation = StateManager.clearUserInformation.bind(this)
     setProviderState = StateManager.setProviderState.bind(this)
 
+    // lesson manager methods
+    createNewLesson = LessonManager.createNewLesson.bind(this)
+
     /*
         This component will not render any DOM element itself.
         Rather it becomes a virtual wrapper around any component
@@ -87,6 +90,9 @@ export class Provider extends Component {
                 login: this.login,
                 clearUserInformation: this.clearUserInformation,
                 updateUserProperty: this.updateUserProperty,
+
+                // lesson manager methods
+                createNewLesson: this.createNewLesson,
 
                 // other methods
                 routeTo: this.routeTo,

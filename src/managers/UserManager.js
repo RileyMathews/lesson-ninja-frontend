@@ -81,7 +81,6 @@ const UserManager = Object.create(null, {
             data[propertyToChange] = newValue
             APIManager.updateAuthItem(data.url, data)
                 .then(r => {
-                    console.log(r.status)
                     if (r.status >= 400 && r.status < 600) {
                         alert("whoops something wen't wrong, try again")
                         return false

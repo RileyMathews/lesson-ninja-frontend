@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import EditUserInfo from './EditUserInfo';
-import { Context } from '../Provider';
 import EditStudentInfo from './EditStudentInfo';
 import EditTeacherInfo from './EditTeacherInfo';
 import ProfileEditField from './ProfileEditField';
@@ -12,7 +11,7 @@ class EditProfile extends Component {
         editing: false,
         editingProperty: "",
         editingValue: "",
-        editingType: "",
+        editingLocation: "",
     }
 
     updateEditValue = (evt) => {
@@ -25,14 +24,19 @@ class EditProfile extends Component {
         this.setState({
             editing: true,
             editingProperty: evt.target.id.split("__")[1],
-            editingType: evt.target.id.split("__")[0],
+            editingLocation: evt.target.id.split("__")[0],
             editingValue: "",
+        }, () => {
+            document.getElementById("profile_edit_field").focus()
         })
+        
     }
 
     submitEdit = (evt) => {
+        const thingToChange = this.props.context.state[this.state.editingLocation]
+
         if (evt.target.id === "submit") {
-            this.props.updateUserProperty(this.state.editingProperty, this.state.editingValue, this.state.editingType)
+            this.props.context.updateUserProperty(thingToChange, this.state.editingProperty, this.state.editingValue, this.state.editingLocation)
         }
         this.setState({
             editing: false,
@@ -43,37 +47,33 @@ class EditProfile extends Component {
 
     render() {
         return (
-            <Context.Consumer>
-                {context => (
-                    <React.Fragment>
-                        <h1>Profile</h1>
-                        <EditUserInfo
-                            user={context.state.user}
-                            startEditingValue={this.startEditingValue}
-                        />
-                        {context.state.user.is_student ?
-                            <EditStudentInfo
-                                student={context.state.student}
-                            />
-                            :
-                            <EditTeacherInfo
-                                teacher={context.state.teacher}
-                                startEditingValue={this.startEditingValue}
-                            />
-                        }
-                        {this.state.editing ?
-                            <ProfileEditField
-                                property={this.state.editingProperty}
-                                value={this.state.editingValue}
-                                updateEditValue={this.updateEditValue}
-                                submitEdit={this.submitEdit}
-                            />
-                            :
-                            null
-                        }
-                    </React.Fragment>
-                )}
-            </Context.Consumer>
+            <React.Fragment>
+                <h1>Profile</h1>
+                <EditUserInfo
+                    user={this.props.context.state.user}
+                    startEditingValue={this.startEditingValue}
+                />
+                {this.props.context.state.user.is_student ?
+                    <EditStudentInfo
+                        student={this.props.context.state.student}
+                    />
+                    :
+                    <EditTeacherInfo
+                        teacher={this.props.context.state.teacher}
+                        startEditingValue={this.startEditingValue}
+                    />
+                }
+                {this.state.editing ?
+                    <ProfileEditField
+                        property={this.state.editingProperty}
+                        value={this.state.editingValue}
+                        updateEditValue={this.updateEditValue}
+                        submitEdit={this.submitEdit}
+                    />
+                    :
+                    null
+                }
+            </React.Fragment>
         )
     }
 }

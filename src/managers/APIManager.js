@@ -57,6 +57,19 @@ const APIManager = Object.create(null, {
                 }
             })
         }
+    }, 
+
+    updateAuthItem: {
+        value: function (itemUrl, data) {
+            return fetch(`${itemUrl}`, {
+                method: "PUT",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Token ${localStorage.getItem("token")}`
+                }
+            })
+        }
     }
 
 })

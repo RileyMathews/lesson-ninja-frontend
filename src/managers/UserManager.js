@@ -22,7 +22,7 @@ const UserManager = Object.create(null, {
                         .then(response => {
                             const userInformation = response.user
                             delete response.user
-                            this.setUserState(userInformation, response, profileType, token)
+                            this.setUserAndProfileState(userInformation, response, profileType, token)
                             history.push('/')
                         })
                 })
@@ -56,13 +56,13 @@ const UserManager = Object.create(null, {
                         .then(response => {
                             delete response[0].user
                             const profileData = response[0]
-                            this.setUserState(userData, profileData, profileType, token)
+                            this.setUserAndProfileState(userData, profileData, profileType, token)
                         })
                 })
         }
     },
 
-    setUserState: {
+    setUserAndProfileState: {
         value: function (userData, profileData, profileType, token) {
             this.setState({
                 user: userData,
@@ -73,8 +73,14 @@ const UserManager = Object.create(null, {
     },
 
     updateUserProperty: {
-        value: function (property, value, location) {
-            console.log(`Changing: ${location} ${property} to ${value}`)
+        value: function (oldData, propertyToChange, newValue, stateKey) {
+            const data = {...oldData}
+            data[propertyToChange] = newValue
+            APIManager.updateAuthItem(data.url, data)
+                .then(r => r.json())
+                .then(response => {
+                    this.setState({[stateKey]: response})
+                })
         }
     },
 

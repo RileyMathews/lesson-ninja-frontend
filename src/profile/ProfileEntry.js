@@ -23,7 +23,7 @@ class ProfileEntry extends Component {
                         {
                             this.state.showEdit ?
                                 <EditProfile
-                                    updateUserProperty={context.updateUserProperty}
+                                    context={context}
                                 />
                                 :
                                 null

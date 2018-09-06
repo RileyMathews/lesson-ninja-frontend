@@ -54,7 +54,7 @@ export class Provider extends Component {
     // user manager methods
 
     register = UserManager.register.bind(this)
-    setUserState = UserManager.setUserState.bind(this)
+    setUserAndProfileState = UserManager.setUserAndProfileState.bind(this)
     login = UserManager.login.bind(this)
     getProfileInformation = UserManager.getProfileInformation.bind(this)
     clearUserInformation = UserManager.clearUserInformation.bind(this)

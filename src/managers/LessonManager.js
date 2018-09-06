@@ -10,10 +10,11 @@ const LessonManager = Object.create(null, {
 
     getTeachersLessons: {
         value: function() {
-            APIManager.getAuthCollection("lesson", "")
+            APIManager.getAuthCollection("lesson", "filter_by_auth=true")
                 .then(r => r.json())
                 .then(response => {
                     console.log(response)
+                    this.setProviderState("teacherLessons", response)
                 })
         }
     }, 

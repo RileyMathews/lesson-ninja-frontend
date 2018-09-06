@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Context } from '../Provider';
 import { Button } from 'bloomer/lib/elements/Button';
 import LessonCreateForm from './LessonCreateForm';
+import LessonView from './LessonView';
 
 
 class LessonEntry extends Component {
@@ -24,11 +25,15 @@ class LessonEntry extends Component {
                         <Button color="primary" onClick={this.toggleCreateForm}>{this.state.showCreateForm ? "Cancel" : "Create New Lesson"}</Button>
                         {this.state.showCreateForm ?
                             <LessonCreateForm 
-                                
+                                toggleCreateForm={this.toggleCreateForm}
+                                createNewLesson={context.createNewLesson}
                             />
                             :
                             null
                         }
+                        <LessonView 
+                            lessons={context.state.teacherLessons}
+                        />
                     </React.Fragment>
                 )}
             </Context.Consumer>

@@ -23,10 +23,18 @@ const LessonManager = Object.create(null, {
             APIManager.createItem(lesson, "lesson")
                 .then(r => r.json())
                 .then(response => {
-                    console.log(response)
+                    this.addNewTeacherLessonToState(response)
                 })
         }
     },
+
+    addNewTeacherLessonToState: {
+        value: function (lesson) {
+            const oldLessons = [...this.state.teacherLessons]
+            oldLessons.push(lesson)
+            this.setProviderState("teacherLessons", oldLessons)
+        }
+    }
 
 })
 

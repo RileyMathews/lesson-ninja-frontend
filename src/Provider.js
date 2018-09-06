@@ -80,6 +80,7 @@ export class Provider extends Component {
     // lesson manager methods
     createNewLesson = LessonManager.createNewLesson.bind(this)
     getTeachersLessons = LessonManager.getTeachersLessons.bind(this)
+    addNewTeacherLessonToState = LessonManager.addNewTeacherLessonToState.bind(this)
 
     /*
         This component will not render any DOM element itself.

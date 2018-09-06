@@ -8,6 +8,17 @@ const url = "http://127.0.0.1:8000/"
 
 const APIManager = Object.create(null, {
 
+    // method to print out error messages from api
+    printErrors: {
+        value: function(err) {
+            let string = ""
+            for (var key in err) {
+                string += `${key}: ${err[key][0]}`
+            }
+            alert(string)
+        }
+    },
+
     // method to register a new user
     registerUser: {
         value: function (data) {

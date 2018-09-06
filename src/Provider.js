@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import UserManager from './managers/UserManager'
+import StateManager from './managers/StateManager'
+import LessonManager from './managers/LessonManager'
 
 /*
     module: context provider
@@ -54,12 +56,14 @@ export class Provider extends Component {
     // user manager methods
 
     register = UserManager.register.bind(this)
-    setUserAndProfileState = UserManager.setUserAndProfileState.bind(this)
+    
     login = UserManager.login.bind(this)
     getProfileInformation = UserManager.getProfileInformation.bind(this)
-    clearUserInformation = UserManager.clearUserInformation.bind(this)
     updateUserProperty = UserManager.updateUserProperty.bind(this)
 
+    // state manager methods
+    setUserAndProfileState = StateManager.setUserAndProfileState.bind(this)
+    clearUserInformation = StateManager.clearUserInformation.bind(this)
 
     /*
         This component will not render any DOM element itself.

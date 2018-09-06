@@ -65,64 +65,29 @@ const UserManager = Object.create(null, {
         }
     },
 
-    setUserAndProfileState: {
-        value: function (userData, profileData, profileType, token) {
-            this.setState({
-                user: userData,
-                [profileType]: profileData,
-                authToken: token
-            })
-        }
-    },
-
     updateUserProperty: {
         value: function (oldData, propertyToChange, newValue, stateKey) {
+            let problems = false
             const data = {...oldData}
             data[propertyToChange] = newValue
             APIManager.updateAuthItem(data.url, data)
                 .then(r => {
                     if (r.status >= 400 && r.status < 600) {
-                        alert("whoops something wen't wrong, try again")
-                        return false
-                    } else {
-                        return r.json()
+                        problems = true
                     }
+                    return r.json()
                 })
                 .then(response => {
-                    if (response) {
-                        this.setState({[stateKey]: response})
+                    if (!problems) {
+                        this.setProviderState({[stateKey]: response})
+                    } else {
+                        APIManager.printErrors(response)
                     }
                 })
         }
     },
 
-    clearUserInformation: {
-        value: function () {
-            localStorage.removeItem("token")
-            this.setState({
-                user: {
-                    username: "",
-                    email: "",
-                    first_name: "",
-                    last_name: "",
-                    url: "",
-                },
-                authToken: "",
-                teacher: {
-                    bio: "",
-                    street: "",
-                    city: "",
-                    region: "",
-                    country: "",
-                    zip_code: null,
-                    url: ""
-                },
-                student: {
-                    url: ""
-                }
-            })
-        }
-    }
+
 
 })
 

@@ -16,7 +16,7 @@ class EditProfile extends Component {
 
     updateEditValue = (evt) => {
         let oldValue = { ...this.state.editingValue }
-        oldValue = evt.target.value
+        oldValue = this.state.editingProperty === "zip_code" ? parseInt(evt.target.value, 10) : evt.target.value
         this.setState({ editingValue: oldValue })
     }
 
@@ -34,6 +34,8 @@ class EditProfile extends Component {
 
     submitEdit = (evt) => {
         const thingToChange = this.props.context.state[this.state.editingLocation]
+
+        // catch zip code value and change to null if needed
 
         if (evt.target.id === "submit") {
             this.props.context.updateUserProperty(thingToChange, this.state.editingProperty, this.state.editingValue, this.state.editingLocation)

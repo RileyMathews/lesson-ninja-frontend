@@ -26,6 +26,9 @@ const UserManager = Object.create(null, {
                             history.push('/')
                         })
                 })
+                .catch((err) => {
+                    console.log(err)
+                })
         }
     },
 
@@ -77,9 +80,19 @@ const UserManager = Object.create(null, {
             const data = {...oldData}
             data[propertyToChange] = newValue
             APIManager.updateAuthItem(data.url, data)
-                .then(r => r.json())
+                .then(r => {
+                    console.log(r.status)
+                    if (r.status >= 400 && r.status < 600) {
+                        alert("whoops something wen't wrong, try again")
+                        return false
+                    } else {
+                        return r.json()
+                    }
+                })
                 .then(response => {
-                    this.setState({[stateKey]: response})
+                    if (response) {
+                        this.setState({[stateKey]: response})
+                    }
                 })
         }
     },

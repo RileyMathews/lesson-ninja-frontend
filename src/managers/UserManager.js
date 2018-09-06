@@ -12,13 +12,11 @@ const UserManager = Object.create(null, {
     // method to register a user
     register: {
         value: function (userData, profileData, profileType) {
-            console.log(userData)
             APIManager.registerUser(userData)
                 .then(r => r.json())
                 .then(response => {
                     const token = response.token
                     localStorage.setItem("token", token)
-                    console.log(profileData)
                     APIManager.createProfile(profileData, profileType)
                         .then(r => r.json())
                         .then(response => {
@@ -34,7 +32,6 @@ const UserManager = Object.create(null, {
     // method to get users token and pass it to get profile information method for setting it along with other user information into state
     login: {
         value: function (username, password) {
-            console.log(username, password)
             const loginInfo = {username, password}
             APIManager.loginUser(loginInfo)
                 .then(r => r.json())
@@ -42,6 +39,7 @@ const UserManager = Object.create(null, {
                     const token = response.token
                     localStorage.setItem("token", token)
                     this.getProfileInformation(token)
+                    history.push('/')
                 })
         }
     },
@@ -72,6 +70,34 @@ const UserManager = Object.create(null, {
                 user: userData,
                 [profileType]: profileData,
                 authToken: token
+            })
+        }
+    },
+
+    clearUserInformation: {
+        value: function () {
+            localStorage.removeItem("token")
+            this.setState({
+                user: {
+                    username: "",
+                    email: "",
+                    first_name: "",
+                    last_name: "",
+                    url: "",
+                },
+                authToken: "",
+                teacher: {
+                    bio: "",
+                    street: "",
+                    city: "",
+                    region: "",
+                    country: "",
+                    zip_code: null,
+                    url: ""
+                },
+                student: {
+                    url: ""
+                }
             })
         }
     }

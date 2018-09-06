@@ -57,6 +57,7 @@ export class Provider extends Component {
     setUserState = UserManager.setUserState.bind(this)
     login = UserManager.login.bind(this)
     getProfileInformation = UserManager.getProfileInformation.bind(this)
+    clearUserInformation = UserManager.clearUserInformation.bind(this)
 
 
     /*
@@ -73,6 +74,7 @@ export class Provider extends Component {
                 // manager methods
                 register: this.register,
                 login: this.login,
+                clearUserInformation: this.clearUserInformation,
 
             }}>
                 {this.props.children}

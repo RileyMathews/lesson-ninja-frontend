@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route } from "react-router-dom"
 import Register from './auth-views/Register';
 import Login from './auth-views/Login';
-import Profile from './profile/Profile';
+import ProfileEntry from './profile/ProfileEntry';
 
 /*
     module: application views
@@ -17,7 +17,7 @@ class ApplicationViews extends Component {
         return (
             <React.Fragment>
                 <Route exact path="/"/>
-                <Route exact path="/profile" component={Profile}/>
+                <Route exact path="/profile" component={ProfileEntry}/>
                 <Route exact path="/students" />
                 <Route exact path="/lessons" />
                 <Route exact path="/login" component={Login}/>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-class StudentInfo extends Component {
+class EditStudentInfo extends Component {
 
 
     render() {
@@ -13,4 +13,4 @@ class StudentInfo extends Component {
     }
 }
 
-export default StudentInfo
+export default EditStudentInfo

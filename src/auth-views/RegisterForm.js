@@ -38,14 +38,14 @@ class RegisterForm extends Component {
     }
 
     updateForm = (evt) => {
-        const user = Object.assign({}, this.state)
+        const user = {...this.state}
         user[evt.target.name] = evt.target.value
         this.setState(user)
     }
 
     setAccountType = (evt) => {
         console.log(evt)
-        const user = Object.assign({}, this.state)
+        const user = {...this.state}
         if (evt.target.value === "teacher") {
             user.is_teacher = true
             user.is_student = false

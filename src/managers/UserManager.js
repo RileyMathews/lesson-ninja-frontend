@@ -72,6 +72,12 @@ const UserManager = Object.create(null, {
         }
     },
 
+    updateUserProperty: {
+        value: function (property, value) {
+            console.log(`Changing: ${property} to ${value}`)
+        }
+    },
+
     clearUserInformation: {
         value: function () {
             localStorage.removeItem("token")

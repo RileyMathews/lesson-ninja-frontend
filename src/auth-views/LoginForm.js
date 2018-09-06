@@ -10,7 +10,7 @@ class LoginForm extends Component {
     }
 
     updateForm = (evt) => {
-        const user = Object.assign({}, this.state)
+        const user = {...this.state}
         user[evt.target.name] = evt.target.value
         this.setState(user)
     }

@@ -58,6 +58,7 @@ export class Provider extends Component {
     login = UserManager.login.bind(this)
     getProfileInformation = UserManager.getProfileInformation.bind(this)
     clearUserInformation = UserManager.clearUserInformation.bind(this)
+    updateUserProperty = UserManager.updateUserProperty.bind(this)
 
 
     /*
@@ -75,6 +76,7 @@ export class Provider extends Component {
                 register: this.register,
                 login: this.login,
                 clearUserInformation: this.clearUserInformation,
+                updateUserProperty: this.updateUserProperty,
 
             }}>
                 {this.props.children}

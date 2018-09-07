@@ -60,7 +60,6 @@ const LessonManager = Object.create(null, {
             APIManager.createItem(dataToPost ,"student_lesson")
                 .then(r => r.json())
                 .then(response => {
-                    console.log(response)
                     this.addItemToState(response, "assignments")
                 })
         }

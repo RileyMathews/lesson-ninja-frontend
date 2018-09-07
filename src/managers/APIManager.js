@@ -83,6 +83,18 @@ const APIManager = Object.create(null, {
         }
     },
 
+    searchStudents: {
+        value: function (query) {
+            return fetch(`${url}student/?username=${query}`, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Token ${localStorage.getItem("token")}`
+                }
+            })
+        }
+    },
+
 })
 
 export default APIManager

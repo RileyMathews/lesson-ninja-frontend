@@ -4,6 +4,7 @@ import Register from './auth-views/Register';
 import Login from './auth-views/Login';
 import ProfileEntry from './profile/ProfileEntry';
 import LessonEntry from './lessons/LessonEntry';
+import StudentManagementEntry from './students/StudentManagementEntry';
 
 /*
     module: application views
@@ -19,7 +20,7 @@ class ApplicationViews extends Component {
             <React.Fragment>
                 <Route exact path="/"/>
                 <Route exact path="/profile" component={ProfileEntry}/>
-                <Route exact path="/students" />
+                <Route exact path="/students" component={StudentManagementEntry}/>
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/lessons/" component={LessonEntry}/>

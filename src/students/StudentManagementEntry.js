@@ -17,7 +17,6 @@ class StudentManagementEntry extends Component {
 
     setDetailView = (id) => {
         this.setState({
-            searching: false,
             detail: true,
             list: false,
             detailStudentId: id,
@@ -26,7 +25,6 @@ class StudentManagementEntry extends Component {
 
     setListView = () => {
         this.setState({
-            searching: false,
             detail: false,
             list: true,
         })

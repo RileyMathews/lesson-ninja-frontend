@@ -49,6 +49,7 @@ export class Provider extends Component {
         },
 
         teacherLessons: [],
+        assignments: [],
 
     }
 
@@ -78,6 +79,7 @@ export class Provider extends Component {
     setUserAndProfileState = StateManager.setUserAndProfileState.bind(this)
     clearUserInformation = StateManager.clearUserInformation.bind(this)
     setProviderState = StateManager.setProviderState.bind(this)
+    addItemToState = StateManager.addItemToState.bind(this)
 
     // lesson manager methods
     createNewLesson = LessonManager.createNewLesson.bind(this)

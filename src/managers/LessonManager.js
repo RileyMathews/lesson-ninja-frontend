@@ -50,8 +50,19 @@ const LessonManager = Object.create(null, {
     },
 
     assignLesson: {
-        value: function (lesson, student) {
-            console.log(lesson, student)
+        value: function (lessonURL, studentURL) {
+            const dataToPost = {
+                lesson: lessonURL,
+                student: studentURL,
+                confirmed: true,
+                has_opened: false,
+            }
+            APIManager.createItem(dataToPost ,"student_lesson")
+                .then(r => r.json())
+                .then(response => {
+                    console.log(response)
+                    this.addItemToState(response, "assignments")
+                })
         }
     }
 

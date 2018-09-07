@@ -22,6 +22,14 @@ const StateManager = Object.create(null, {
         }
     },
 
+    addItemToState: {
+        value: function(item, arrayKey) {
+            const array = [...this.state[arrayKey]]
+            array.push(item)
+            this.setState({[arrayKey]: array})
+        }
+    },
+
     clearUserInformation: {
         value: function () {
             localStorage.removeItem("token")

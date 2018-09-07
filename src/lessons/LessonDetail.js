@@ -9,7 +9,7 @@ class LessonDetail extends Component {
 
     state = {
         editing: false,
-        studentId: 0,
+        studentURL: 0,
     }
 
     toggleEdit = () => {
@@ -19,13 +19,13 @@ class LessonDetail extends Component {
     setStudent = (evt) => {
         console.log(evt.target.value)
         this.setState({
-            studentId: evt.target.value
+            studentURL: evt.target.value
         })
     }
 
     createAssinment = (evt) => {
         evt.preventDefault()
-        this.props.assignLesson(this.props.lesson.id, parseInt(this.state.studentId, 10))
+        this.props.assignLesson(this.props.lesson.url, this.state.studentURL)
     }
 
     render() {
@@ -54,7 +54,7 @@ class LessonDetail extends Component {
                                             <Select defaultValue="default" onChange={this.setStudent}>
                                                     <option value="default" disabled="disabled">select a student</option>
                                                 {context.state.teacher.students.map(student => (
-                                                    <option value={student.id} key={student.id}>{student.user.first_name}</option>
+                                                    <option value={student.url} key={student.id}>{student.user.first_name}</option>
                                                 ))}
                                             </Select>
                                             <Button type="submit">Assign</Button>

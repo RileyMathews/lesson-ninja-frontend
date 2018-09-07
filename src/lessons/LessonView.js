@@ -32,6 +32,7 @@ class LessonView extends Component {
                     <LessonDetail 
                         lesson={this.props.lessons.find(lesson => lesson.id === this.state.detailLessonId)}
                         setListView={this.setListView}
+                        assignLesson={this.props.assignLesson}
                     />
                 :
                     <React.Fragment>

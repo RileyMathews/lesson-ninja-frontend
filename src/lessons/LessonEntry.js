@@ -33,6 +33,7 @@ class LessonEntry extends Component {
                         }
                         <LessonView 
                             lessons={context.state.teacherLessons}
+                            assignLesson={context.assignLesson}
                         />
                     </React.Fragment>
                 )}

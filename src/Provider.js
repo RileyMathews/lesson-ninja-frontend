@@ -84,6 +84,7 @@ export class Provider extends Component {
     getTeachersLessons = LessonManager.getTeachersLessons.bind(this)
     addNewTeacherLessonToState = LessonManager.addNewTeacherLessonToState.bind(this)
     updateLesson = LessonManager.updateLesson.bind(this)
+    assignLesson = LessonManager.assignLesson.bind(this)
 
     // student manager methods
     addStudentToTeacher = StudentManager.addStudentToTeacher.bind(this)
@@ -109,6 +110,7 @@ export class Provider extends Component {
                 // lesson manager methods
                 createNewLesson: this.createNewLesson,
                 updateLesson: this.updateLesson,
+                assignLesson: this.assignLesson,
 
                 // student manager
                 addStudentToTeacher: this.addStudentToTeacher,

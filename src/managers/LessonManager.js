@@ -49,6 +49,12 @@ const LessonManager = Object.create(null, {
         }
     },
 
+    assignLesson: {
+        value: function (lesson, student) {
+            console.log(lesson, student)
+        }
+    }
+
 })
 
 export default LessonManager

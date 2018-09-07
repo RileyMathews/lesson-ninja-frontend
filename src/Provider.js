@@ -56,6 +56,7 @@ export class Provider extends Component {
     componentDidMount() {
         if (localStorage.getItem("token")) {
             this.getProfileInformation(localStorage.getItem("token"))
+            this.getAssignments()
         }
     }
 
@@ -87,6 +88,7 @@ export class Provider extends Component {
     addNewTeacherLessonToState = LessonManager.addNewTeacherLessonToState.bind(this)
     updateLesson = LessonManager.updateLesson.bind(this)
     assignLesson = LessonManager.assignLesson.bind(this)
+    getAssignments = LessonManager.getAssignments.bind(this)
 
     // student manager methods
     addStudentToTeacher = StudentManager.addStudentToTeacher.bind(this)

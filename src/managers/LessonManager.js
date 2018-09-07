@@ -64,7 +64,17 @@ const LessonManager = Object.create(null, {
                     this.addItemToState(response, "assignments")
                 })
         }
-    }
+    }, 
+
+    getAssignments: {
+        value: function () {
+            APIManager.getAuthCollection("student_lesson")
+                .then(r => r.json())
+                .then(response => {
+                    this.setProviderState("assignments", response)
+                })
+        }
+    },
 
 })
 

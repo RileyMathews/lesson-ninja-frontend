@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'bloomer/lib/elements/Button';
 
 
-class Lesson extends Component {
+class LessonSnippet extends Component {
 
 
     render() {
@@ -19,4 +19,4 @@ class Lesson extends Component {
     }
 }
 
-export default Lesson
+export default LessonSnippet

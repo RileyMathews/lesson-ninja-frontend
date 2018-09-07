@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Lesson from './Lesson';
+import LessonSnipper from './LessonSnippet';
 import LessonDetail from './LessonDetail';
 
 
@@ -37,7 +37,7 @@ class LessonView extends Component {
                 :
                     <React.Fragment>
                         {this.props.lessons.map(lesson => (
-                            <Lesson
+                            <LessonSnipper
                                 key={lesson.id}
                                 lesson={lesson}
                                 routeTo={this.props.routeTo}

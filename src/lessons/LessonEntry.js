@@ -33,7 +33,6 @@ class LessonEntry extends Component {
                         }
                         <LessonView 
                             lessons={context.state.teacherLessons}
-                            routeTo={context.routeTo}
                         />
                     </React.Fragment>
                 )}

@@ -11,8 +11,8 @@ class Lesson extends Component {
                 <div className="test">
                     <h1>{this.props.lesson.name}</h1>
                     <p>{this.props.lesson.description}</p>
-                    <p>{this.props.lesson.content}</p>
-                    <Button onClick={() => this.props.routeTo(`lessons/${this.props.lesson.id}`)}>Details</Button>
+                    <p>{`${this.props.lesson.content.slice(0, 40)} ...`}</p>
+                    <Button onClick={() => this.props.setDetailLessonView(this.props.lesson.id)}>Details</Button>
                 </div>
             </React.Fragment>
         )

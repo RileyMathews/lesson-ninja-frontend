@@ -13,7 +13,6 @@ class App extends Component {
           <Provider>
             <NavBar />
             <Container>
-            <h1>This is lesson ninja</h1>
             <ApplicationViews />
             </Container>
           </Provider>

@@ -13,6 +13,7 @@ class StudentList extends Component {
                     <Student
                         key={student.id}
                         student={student}
+                        setDetailView={this.props.setDetailView}
                     />
                 ))}
             </React.Fragment>

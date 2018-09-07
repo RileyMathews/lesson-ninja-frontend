@@ -10,7 +10,7 @@ class StudentLanding extends Component {
                 <h1>Welcome Student</h1>
                 <p>your assignments</p>
                 {this.props.assignments.map(assignment => (
-                    <p key={assignment.id}>{assignment.lesson}</p>
+                    <p key={assignment.id}>{assignment.lesson.name}</p>
                 ))}
             </React.Fragment>
         )

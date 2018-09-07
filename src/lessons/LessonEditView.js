@@ -22,6 +22,8 @@ class LessonEditView extends Component {
 
     submitForm = (evt) => {
         evt.preventDefault()
+        this.props.updateLesson(this.state)
+        this.props.toggleEdit()
     }
 
     render() {
@@ -47,10 +49,10 @@ class LessonEditView extends Component {
                             <TextArea name="content" onChange={this.updateForm} value={this.state.content} />
                         </Control>
                     </Field>
+                <Button type="submit">Submit</Button>
+                <Button onClick={this.props.toggleEdit}>Cancel Edit</Button>
                 </form>
 
-                <Button onClick={this.props.toggleEdit}>Submit</Button>
-                <Button onClick={this.props.toggleEdit}>Cancel Edit</Button>
             </React.Fragment>
         )
     }

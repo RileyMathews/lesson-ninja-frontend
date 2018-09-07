@@ -102,6 +102,7 @@ export class Provider extends Component {
 
                 // lesson manager methods
                 createNewLesson: this.createNewLesson,
+                updateLesson: this.updateLesson,
 
                 // other methods
                 routeTo: this.routeTo,

@@ -41,8 +41,7 @@ const LessonManager = Object.create(null, {
             APIManager.updateAuthItem(newLesson.url, newLesson)
                 .then(r => r.json())
                 .then(response => {
-                    console.log(response)
-                    const oldLessonsState = {...this.state.teacherLessons}
+                    const oldLessonsState = [...this.state.teacherLessons]
                     const index = oldLessonsState.findIndex(l => l.id === newLesson.id)
                     oldLessonsState[index] = response
                     this.setState({teacherLessons: oldLessonsState})

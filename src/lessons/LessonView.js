@@ -7,14 +7,13 @@ class LessonView extends Component {
 
     state = {
         detailView: false,
-        detailLesson: {},
+        detailLessonId: 0,
     }
 
     setDetailLessonView = (id) => {
-        const lesson = this.props.lessons.find(lesson => lesson.id === id)
         this.setState({
             detailView: true,
-            detailLesson: lesson
+            detailLessonId: id
         })
     }
 
@@ -31,7 +30,7 @@ class LessonView extends Component {
                 <h1>your lessons</h1>
                 {this.state.detailView ? 
                     <LessonDetail 
-                        lesson={this.state.detailLesson}
+                        lesson={this.props.lessons.find(lesson => lesson.id === this.state.detailLessonId)}
                         setListView={this.setListView}
                     />
                 :

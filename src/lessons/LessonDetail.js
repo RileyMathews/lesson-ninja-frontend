@@ -24,6 +24,7 @@ class LessonDetail extends Component {
                             <LessonEditView 
                                 lesson={this.props.lesson}
                                 toggleEdit={this.toggleEdit}
+                                updateLesson={context.updateLesson}
                             />
                         :
                             <React.Fragment>

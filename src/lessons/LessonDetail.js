@@ -3,6 +3,7 @@ import { Button } from 'bloomer'
 import { Context } from '../Provider';
 import LessonEditView from './LessonEditView';
 import { Field, Label, Control, Select } from 'bloomer'
+import Lesson from './Lesson';
 
 
 class LessonDetail extends Component {
@@ -43,9 +44,7 @@ class LessonDetail extends Component {
                             :
                             <React.Fragment>
                                 <h1>lesson</h1>
-                                <h1>{this.props.lesson.name}</h1>
-                                <p>{this.props.lesson.description}</p>
-                                <p>{this.props.lesson.content}</p>
+                                <Lesson lesson={this.props.lesson}/>
                                 <Button onClick={this.toggleEdit}>Edit</Button>
                                 <form onSubmit={this.createAssinment}>
                                     <Field>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import {Field, Label, Control, Input, Button} from 'bloomer'
+import { Field, Label, Control, Input, Button } from 'bloomer'
 import APIManager from '../managers/APIManager';
 import StudentSearchResult from './StudentSearchResult';
+import { Context } from '../Provider';
 
 
 
@@ -19,12 +20,12 @@ class SearchStudents extends Component {
             .then(r => r.json())
             .then(response => {
                 console.log(response)
-                this.setState({results: response})
+                this.setState({ results: response })
             })
     }
 
     updateForm = (evt) => {
-        const query = {...this.state}
+        const query = { ...this.state }
         query[evt.target.name] = evt.target.value
         this.setState(query)
     }
@@ -47,12 +48,20 @@ class SearchStudents extends Component {
                     </Field>
                 </form>
 
-                {this.state.results.map(student => (
-                    <StudentSearchResult
-                        key={student.id}
-                        student={student}
-                    />
-                ))}
+                <Context.Consumer>
+                    {context => (
+                        <React.Fragment>
+                            {this.state.results.map(student => (
+                                <StudentSearchResult
+                                    addStudentToTeacher={context.addStudentToTeacher}
+                                    key={student.id}
+                                    student={student}
+                                />
+                            ))}
+                        </React.Fragment>
+                    )}
+
+                </Context.Consumer>
 
             </React.Fragment>
         )

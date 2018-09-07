@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import UserManager from './managers/UserManager'
 import StateManager from './managers/StateManager'
 import LessonManager from './managers/LessonManager'
+import StudentManager from './managers/StudentManager'
 import history from './history'
 
 /*
@@ -47,6 +48,7 @@ export class Provider extends Component {
         },
 
         teacherLessons: [],
+        teacherStudents: [],
 
     }
 
@@ -83,6 +85,10 @@ export class Provider extends Component {
     addNewTeacherLessonToState = LessonManager.addNewTeacherLessonToState.bind(this)
     updateLesson = LessonManager.updateLesson.bind(this)
 
+    // student manager methods
+    addStudentToTeacher = StudentManager.addStudentToTeacher.bind(this)
+    addStudentToTeacherState = StudentManager.addStudentToTeacherState.bind(this)
+
     /*
         This component will not render any DOM element itself.
         Rather it becomes a virtual wrapper around any component
@@ -103,6 +109,9 @@ export class Provider extends Component {
                 // lesson manager methods
                 createNewLesson: this.createNewLesson,
                 updateLesson: this.updateLesson,
+
+                // student manager
+                addStudentToTeacher: this.addStudentToTeacher,
 
                 // other methods
                 routeTo: this.routeTo,

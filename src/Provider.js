@@ -40,7 +40,8 @@ export class Provider extends Component {
             region: "",
             country: "",
             zip_code: null,
-            url: ""
+            url: "",
+            students: []
         },
 
         student: {
@@ -48,7 +49,6 @@ export class Provider extends Component {
         },
 
         teacherLessons: [],
-        teacherStudents: [],
 
     }
 

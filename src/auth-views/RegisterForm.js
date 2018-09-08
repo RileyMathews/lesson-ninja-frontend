@@ -77,7 +77,7 @@ class RegisterForm extends Component {
                 city: this.state.city,
                 region: this.state.region,
                 country: this.state.country,
-                zip_code: this.state.zip_code === "" ? null : parseInt(this.state.zip_code, 10)
+                zip_code: this.state.zip_code,
             }
             // build student profile object
             const studentProfile = {}

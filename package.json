@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-sdk": "^2.311.0",
     "bloomer": "^0.6.3",
     "bulma": "^0.7.1",
     "react": "^16.4.2",

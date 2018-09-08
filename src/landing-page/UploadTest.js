@@ -6,9 +6,10 @@ class UploadTest extends Component {
 
     upload = (evt) => {
         evt.preventDefault()
-        const file = document.getElementById("file").value
+        const file = document.getElementById("file").files[0]
+        console.log(file)
         s3.upload({
-            Key: "test",
+            Key: file.name,
             Body: file,
             ACL: 'public-read'
         }, function(err, data) {

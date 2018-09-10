@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DocumentSnippet from './DocumentSnippet';
 
 
 class DocumentList extends Component {
@@ -9,7 +10,7 @@ class DocumentList extends Component {
             <React.Fragment>
                 <h1>document list</h1>
                 {this.props.documents.map(document => (
-                    <p key={document.id}>{document.name}</p>
+                    <DocumentSnippet document={document}/>
                 ))}
             </React.Fragment>
         )

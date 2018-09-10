@@ -36,64 +36,76 @@ const DocumentManager = Object.create(null, {
             // create key to post based on username and file name
             const fileKey = `${this.state.user.username}/${file.name}`
 
-                s3.upload({
-                    Key: fileKey,
-                    Body: file,
-                    ACL: 'public-read'
-                }, (err, data) => {
-                    if (err) {
-                        console.log("error", err)
-                    } else {
-                        console.log(data)
-                        const itemToPost = {
-                            name: name,
-                            notes: notes,
-                            s3_url: data.Location,
-                        }
-                        console.log(itemToPost)
-                        APIManager.createItem(itemToPost, 'document')
-                            .then(r => r.json())
-                            .then(response => {
-                                console.log(response)
-                                this.addItemToState(response, 'documents')
-                            })
+            // get file extension
+            const extension = file.name.split(".").pop()
+            // default s3 content type
+            let contentType = "application/octet-stream"
+
+            if (extension === 'html') contentType = "text/html";
+            if (extension === 'css') contentType = "text/css";
+            if (extension === 'js') contentType = "application/javascript";
+            if (extension === 'png' || extension === 'jpg' || extension === 'gif') contentType = "image/" + extension;
+            if (extension === 'pdf') contentType = "application/pdf"
+
+            s3.upload({
+                Key: fileKey,
+                Body: file,
+                ACL: 'public-read',
+                ContentType: contentType
+            }, (err, data) => {
+                if (err) {
+                    console.log("error", err)
+                } else {
+                    console.log(data)
+                    const itemToPost = {
+                        name: name,
+                        notes: notes,
+                        s3_url: data.Location,
                     }
-                }) //closes upload call
-            }
-        },
-
-        addDocumentToLesson: {
-            value: function (documentUrl, lessonUrl) {
-                const itemToPost = {
-                    lesson: lessonUrl,
-                    document: documentUrl
+                    console.log(itemToPost)
+                    APIManager.createItem(itemToPost, 'document')
+                        .then(r => r.json())
+                        .then(response => {
+                            console.log(response)
+                            this.addItemToState(response, 'documents')
+                        })
                 }
-                APIManager.createItem(itemToPost, 'lesson_document')
-                    .then(r => r.json())
-                    .then(response => {
-                        console.log(response)
-                        this.updateItemInStateArrayFromAPI(lessonUrl, 'teacherLessons')
-                    })
-            }
-        },
-
-        getTeachersDocuments: {
-            value: function () {
-                APIManager.getAuthCollection('document', '')
-                    .then(r => r.json())
-                    .then(response => {
-                        this.setProviderState('documents', response)
-                    })
-            }
-        },
-
-        isDocInLesson: {
-            value: function (doc, lesson) {
-                const index = lesson.documents.findIndex(document => doc.id === document.id)
-                return index === -1 ? false : true
-            }
+            }) //closes upload call
         }
+    },
 
-    })
+    addDocumentToLesson: {
+        value: function (documentUrl, lessonUrl) {
+            const itemToPost = {
+                lesson: lessonUrl,
+                document: documentUrl
+            }
+            APIManager.createItem(itemToPost, 'lesson_document')
+                .then(r => r.json())
+                .then(response => {
+                    console.log(response)
+                    this.updateItemInStateArrayFromAPI(lessonUrl, 'teacherLessons')
+                })
+        }
+    },
+
+    getTeachersDocuments: {
+        value: function () {
+            APIManager.getAuthCollection('document', '')
+                .then(r => r.json())
+                .then(response => {
+                    this.setProviderState('documents', response)
+                })
+        }
+    },
+
+    isDocInLesson: {
+        value: function (doc, lesson) {
+            const index = lesson.documents.findIndex(document => doc.id === document.id)
+            return index === -1 ? false : true
+        }
+    }
+
+})
 
 export default DocumentManager

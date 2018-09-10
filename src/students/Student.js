@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button} from 'bloomer'
+import { Button, Media, MediaLeft, MediaContent, Content, Level, LevelLeft } from 'bloomer'
 
 
 class Student extends Component {
@@ -7,10 +7,25 @@ class Student extends Component {
 
     render() {
         return (
-            <div className="test">
-                <h1>Student: {this.props.student.user.first_name} {this.props.student.user.last_name}</h1>
-                <Button onClick={() => this.props.setDetailView(this.props.student.id)}>Detail</Button>
-            </div>
+            <Media>
+                <MediaLeft>
+                </MediaLeft>
+                <MediaContent>
+                    <Content>
+                        <p>
+                            <strong>{this.props.student.user.first_name} {this.props.student.user.last_name}</strong>
+                            <br />
+                            Email: {this.props.student.user.email} Username: {this.props.student.user.username}
+                        </p>
+                    </Content>
+                    <Level isMobile>
+                        <LevelLeft>
+                            <Button onClick={() => this.props.setDetailView(this.props.student.id)}>Details</Button>
+                        </LevelLeft>
+                    </Level>
+                </MediaContent>
+                {/* <MediaRight><Delete /></MediaRight> */}
+            </Media>
         )
     }
 }

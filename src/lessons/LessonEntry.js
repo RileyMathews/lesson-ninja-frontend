@@ -3,18 +3,22 @@ import { Context } from '../Provider';
 import { Button } from 'bloomer/lib/elements/Button';
 import LessonCreateForm from './LessonCreateForm';
 import LessonView from './LessonView';
+import LessonNav from './LessonNav';
 
 
 class LessonEntry extends Component {
 
     state = {
-        showCreateForm: false,
+        view: "list",
     }
 
-    toggleCreateForm = () => {
-        this.setState({ showCreateForm: !this.state.showCreateForm })
+    setLocalView = (evt) => {
+        if (typeof evt === "string") {
+            this.setState({ view: evt })
+        } else {
+            this.setState({ view: evt.currentTarget.id.split("__")[1] })
+        }
     }
-
 
     render() {
         return (
@@ -22,19 +26,21 @@ class LessonEntry extends Component {
                 {context => (
                     <React.Fragment>
                         <h1>Lessons</h1>
-                        <Button color="primary" onClick={this.toggleCreateForm}>{this.state.showCreateForm ? "Cancel" : "Create New Lesson"}</Button>
-                        {this.state.showCreateForm ?
-                            <LessonCreateForm 
-                                toggleCreateForm={this.toggleCreateForm}
-                                createNewLesson={context.createNewLesson}
-                            />
-                            :
-                            null
-                        }
-                        <LessonView 
-                            lessons={context.state.teacherLessons}
-                            assignLesson={context.assignLesson}
+                        <LessonNav
+                            setLocalView={this.setLocalView}
                         />
+
+                        {this.state.view === "list" ?
+                            <LessonView
+                                lessons={context.state.teacherLessons}
+                                assignLesson={context.assignLesson}
+                            /> : null}
+
+                        {this.state.view === "add" ?
+                            <LessonCreateForm
+                                createNewLesson={context.createNewLesson}
+                            /> : null}
+
                     </React.Fragment>
                 )}
             </Context.Consumer>

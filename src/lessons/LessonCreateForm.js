@@ -20,7 +20,6 @@ class LessonCreateForm extends Component {
     submitForm = (evt) => {
         evt.preventDefault()
         this.props.createNewLesson(this.state)
-        this.props.toggleCreateForm()
     }
 
     render() {

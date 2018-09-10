@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Context } from '../Provider'
 import StudentLanding from './StudentLanding';
-import UploadTest from './UploadTest';
 
 
 class HomePageEntry extends Component {
@@ -14,7 +13,6 @@ class HomePageEntry extends Component {
                     <React.Fragment>
                         <h1>Welcome to Lesson Ninja!</h1>
                         {context.state.user.is_student ? <StudentLanding assignments={context.state.assignments}/> : null}
-                        <UploadTest />
                     </React.Fragment>
                 )}
             </Context.Consumer>

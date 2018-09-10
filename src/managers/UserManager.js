@@ -34,19 +34,21 @@ const UserManager = Object.create(null, {
             APIManager.registerUser(userData)
                 .then(r => r.json())
                 .then(response => {
-                    const token = response.token
-                    localStorage.setItem("token", token)
-                    APIManager.createItem(profileData, profileType)
-                        .then(r => r.json())
-                        .then(response => {
-                            const userInformation = response.user
-                            delete response.user
-                            this.setUserAndProfileState(userInformation, response, profileType, token)
-                            history.push('/')
-                        })
-                })
-                .catch((err) => {
-                    console.log(err)
+                    if (response.token) {
+                        const token = response.token
+                        localStorage.setItem("token", token)
+                        APIManager.createItem(profileData, profileType)
+                            .then(r => r.json())
+                            .then(response => {
+                                const userInformation = response.user
+                                delete response.user
+                                this.setUserAndProfileState(userInformation, response, profileType, token)
+                                history.push('/')
+                            })
+                    } else {
+                        APIManager.printErrors(response)
+                    }
+
                 })
         }
     },
@@ -58,10 +60,14 @@ const UserManager = Object.create(null, {
             APIManager.loginUser(loginInfo)
                 .then(r => r.json())
                 .then(response => {
-                    const token = response.token
-                    localStorage.setItem("token", token)
-                    this.getProfileInformation(token)
-                    history.push('/')
+                    if (response.token) {
+                        const token = response.token
+                        localStorage.setItem("token", token)
+                        this.getProfileInformation(token)
+                        history.push('/')
+                    } else {
+                        APIManager.printErrors(response)
+                    }
                 })
         }
     },

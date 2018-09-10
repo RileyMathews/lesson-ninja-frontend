@@ -3,6 +3,7 @@ import UserManager from './managers/UserManager'
 import StateManager from './managers/StateManager'
 import LessonManager from './managers/LessonManager'
 import StudentManager from './managers/StudentManager'
+import DocumentManager from './managers/DocumentManager'
 import history from './history'
 
 /*
@@ -50,6 +51,7 @@ export class Provider extends Component {
 
         teacherLessons: [],
         assignments: [],
+        documents: [],
 
     }
 
@@ -94,6 +96,9 @@ export class Provider extends Component {
     addStudentToTeacher = StudentManager.addStudentToTeacher.bind(this)
     addStudentToTeacherState = StudentManager.addStudentToTeacherState.bind(this)
 
+    // document manager methods
+    createDocument = DocumentManager.createDocument.bind(this)
+
     /*
         This component will not render any DOM element itself.
         Rather it becomes a virtual wrapper around any component
@@ -118,6 +123,9 @@ export class Provider extends Component {
 
                 // student manager
                 addStudentToTeacher: this.addStudentToTeacher,
+
+                // document manager
+                createDocument: this.createDocument,
 
                 // other methods
                 routeTo: this.routeTo,

@@ -63,6 +63,7 @@ const UserManager = Object.create(null, {
                         })
                     if (profileType === "teacher") {
                         this.getTeachersLessons()
+                        this.getTeachersDocuments()
                     } else if (profileType === "student") {
                         // future code for loading student specific information will be here
                     }

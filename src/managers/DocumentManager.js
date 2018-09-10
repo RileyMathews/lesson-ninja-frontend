@@ -36,6 +36,16 @@ const DocumentManager = Object.create(null, {
                 }
             })
         }
+    },
+
+    getTeachersDocuments: {
+        value: function () {
+            APIManager.getAuthCollection('document', '')
+                .then(r => r.json())
+                .then(response => {
+                    this.setProviderState('documents', response)
+                })
+        }
     }
 
 })

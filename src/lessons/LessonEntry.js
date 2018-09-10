@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Context } from '../Provider';
-import { Button } from 'bloomer/lib/elements/Button';
 import LessonCreateForm from './LessonCreateForm';
 import LessonView from './LessonView';
 import LessonNav from './LessonNav';

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button, Media, MediaLeft, MediaContent, Content, Level, LevelLeft } from 'bloomer'
 
 
 class LessonSnippet extends Component {
@@ -6,13 +7,25 @@ class LessonSnippet extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <div className="test">
-                    <h1>{this.props.lesson.name}</h1>
-                    <p>{this.props.lesson.description}</p>
-                    <p>{`${this.props.lesson.content.slice(0, 40)} ...`}</p>
-                </div>
-            </React.Fragment>
+            <Media>
+                <MediaLeft>
+                </MediaLeft>
+                <MediaContent>
+                    <Content>
+                        <p>
+                            <strong>{this.props.lesson.name}</strong>
+                            <br />
+                            {this.props.lesson.description}
+                        </p>
+                    </Content>
+                    <Level isMobile>
+                        <LevelLeft>
+                            <Button onClick={() => this.props.setDetailLessonView(this.props.lesson.id)}>Details</Button>
+                        </LevelLeft>
+                    </Level>
+                </MediaContent>
+                {/* <MediaRight><Delete /></MediaRight> */}
+            </Media>
         )
     }
 }

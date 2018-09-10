@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import LessonSnippet from './LessonSnippet';
 import LessonDetail from './LessonDetail';
-import {Button} from 'bloomer'
 
 
 class LessonView extends Component {
@@ -45,7 +44,6 @@ class LessonView extends Component {
                                     routeTo={this.props.routeTo}
                                     setDetailLessonView={this.setDetailLessonView}
                                 />
-                                <Button key={`button__${lesson.id}`} onClick={() => this.setDetailLessonView(lesson.id)}>Details</Button>
                             </React.Fragment>
                         ))}
                     </React.Fragment>

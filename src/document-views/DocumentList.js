@@ -8,6 +8,9 @@ class DocumentList extends Component {
         return (
             <React.Fragment>
                 <h1>document list</h1>
+                {this.props.documents.map(document => (
+                    <p key={document.id}>{document.name}</p>
+                ))}
             </React.Fragment>
         )
     }

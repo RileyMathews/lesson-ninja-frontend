@@ -14,6 +14,7 @@ class DocumentForm extends Component {
         evt.preventDefault()
         const file = document.getElementById("file").files[0]
         this.props.createDocument(file, this.state.name, this.state.notes)
+        this.props.setLocalView("list")
     }
 
     changeForm = (evt) => {

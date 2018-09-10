@@ -101,6 +101,7 @@ export class Provider extends Component {
     getTeachersDocuments = DocumentManager.getTeachersDocuments.bind(this)
     _registerCreateDirectory = DocumentManager._registerCreateDirectory.bind(this)
     addDocumentToLesson = DocumentManager.addDocumentToLesson.bind(this)
+    isDocInLesson = DocumentManager.isDocInLesson.bind(this)
 
     /*
         This component will not render any DOM element itself.
@@ -130,6 +131,7 @@ export class Provider extends Component {
                 // document manager
                 createDocument: this.createDocument,
                 addDocumentToLesson: this.addDocumentToLesson,
+                isDocInLesson: this.isDocInLesson,
 
                 // other methods
                 routeTo: this.routeTo,

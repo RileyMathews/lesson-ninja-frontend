@@ -51,6 +51,7 @@ class LessonDetail extends Component {
                                     documents={context.state.documents}
                                     addDocumentToLesson={context.addDocumentToLesson}
                                     lesson={this.props.lesson}
+                                    isDocInLesson={context.isDocInLesson}
                                 />
                                 <form onSubmit={this.createAssinment}>
                                     <Field>

@@ -85,6 +85,13 @@ const DocumentManager = Object.create(null, {
                         this.setProviderState('documents', response)
                     })
             }
+        },
+
+        isDocInLesson: {
+            value: function (doc, lesson) {
+                const index = lesson.documents.findIndex(document => doc.id === document.id)
+                return index === -1 ? false : true
+            }
         }
 
     })

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Field, Label, Control, Select, Button} from 'bloomer'
+import { Field, Label, Control, Select, Button } from 'bloomer'
 
 
 class LessonDocumentForm extends Component {
@@ -14,7 +14,7 @@ class LessonDocumentForm extends Component {
     }
 
     updateForm = evt => {
-        this.setState({docURL: evt.target.value})
+        this.setState({ docURL: evt.target.value })
     }
 
 
@@ -30,7 +30,9 @@ class LessonDocumentForm extends Component {
                             <Select defaultValue="default" onChange={this.updateForm}>
                                 <option value="default" disabled="disabled">select a document</option>
                                 {this.props.documents.map(document => (
-                                    <option value={document.url} key={document.id}>{document.name}</option>
+                                    <React.Fragment key={`fragment__${document.id}`}>
+                                        {this.props.isDocInLesson(document, this.props.lesson) ? null : <option value={document.url} key={document.id}>{document.name}</option>}
+                                    </React.Fragment>
                                 ))}
                             </Select>
                             <Button type="submit">Assign</Button>

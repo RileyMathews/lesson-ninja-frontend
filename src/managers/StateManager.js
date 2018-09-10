@@ -1,3 +1,5 @@
+import APIManager from "./APIManager";
+
 /*  
     module: state manager
     author: riley mathews
@@ -55,6 +57,19 @@ const StateManager = Object.create(null, {
                     url: ""
                 }
             })
+        }
+    },
+
+    updateItemInStateArrayFromAPI: {
+        value: function (url, stateKey) {
+            APIManager.getAuthItem(url)
+                .then(r => r.json())
+                .then(itemObject => {
+                    const stateArray = [...this.state[stateKey]]
+                    const index = stateArray.findIndex(item => item.id === itemObject.id)
+                    stateArray[index] = itemObject
+                    this.setState({[stateKey]: stateArray})
+                })
         }
     }
 

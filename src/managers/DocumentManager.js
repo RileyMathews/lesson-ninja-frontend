@@ -72,6 +72,7 @@ const DocumentManager = Object.create(null, {
                     .then(r => r.json())
                     .then(response => {
                         console.log(response)
+                        this.updateItemInStateArrayFromAPI(lessonUrl, 'teacherLessons')
                     })
             }
         },

@@ -71,7 +71,6 @@ export class Provider extends Component {
     */
 
     // user manager methods
-
     startRegistration = UserManager.startRegistration.bind(this)
     _registerCreateUserAndProfile = UserManager._registerCreateUserAndProfile.bind(this)
     login = UserManager.login.bind(this)
@@ -83,6 +82,7 @@ export class Provider extends Component {
     clearUserInformation = StateManager.clearUserInformation.bind(this)
     setProviderState = StateManager.setProviderState.bind(this)
     addItemToState = StateManager.addItemToState.bind(this)
+    updateItemInStateArrayFromAPI = StateManager.updateItemInStateArrayFromAPI.bind(this)
 
     // lesson manager methods
     createNewLesson = LessonManager.createNewLesson.bind(this)
@@ -129,6 +129,7 @@ export class Provider extends Component {
 
                 // document manager
                 createDocument: this.createDocument,
+                addDocumentToLesson: this.addDocumentToLesson,
 
                 // other methods
                 routeTo: this.routeTo,

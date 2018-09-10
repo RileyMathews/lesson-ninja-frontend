@@ -4,6 +4,7 @@ import { Context } from '../Provider';
 import LessonEditView from './LessonEditView';
 import { Field, Label, Control, Select } from 'bloomer'
 import Lesson from './Lesson';
+import LessonDocumentForm from './LessonDocumentForm';
 
 
 class LessonDetail extends Component {
@@ -46,6 +47,11 @@ class LessonDetail extends Component {
                                 <h1>lesson</h1>
                                 <Lesson lesson={this.props.lesson}/>
                                 <Button onClick={this.toggleEdit}>Edit</Button>
+                                <LessonDocumentForm 
+                                    documents={context.state.documents}
+                                    addDocumentToLesson={context.addDocumentToLesson}
+                                    lesson={this.props.lesson}
+                                />
                                 <form onSubmit={this.createAssinment}>
                                     <Field>
                                         <Label>Assign to:</Label>

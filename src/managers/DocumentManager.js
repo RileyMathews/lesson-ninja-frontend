@@ -12,29 +12,38 @@ const DocumentManager = Object.create(null, {
     createDocument: {
         value: function (file, name, notes) {
             console.log("got to create document method")
-            s3.upload({
-                Key: file.name,
-                Body: file,
-                ACL: 'public-read'
-            }, (err, data) => {
-                if (err) {
-                    console.log("error", err)
+            s3.headObject({ Key: file.name }, function (err, data) {
+                if (!err) {
+                    alert(`Sorry, a file using file name "${file.name}" already exists, please use a different file name`)
+
                 } else {
-                    console.log(data)
-                    const itemToPost = {
-                        name: name,
-                        notes: notes,
-                        s3_url: data.Location,
-                    }
-                    console.log(itemToPost)
-                    APIManager.createItem(itemToPost, 'document')
-                        .then(r => r.json())
-                        .then(response => {
-                            console.log(response)
-                            this.addItemToState(response, 'documents')
-                        })
+
+                    s3.upload({
+                        Key: file.name,
+                        Body: file,
+                        ACL: 'public-read'
+                    }, (err, data) => {
+                        if (err) {
+                            console.log("error", err)
+                        } else {
+                            console.log(data)
+                            const itemToPost = {
+                                name: name,
+                                notes: notes,
+                                s3_url: data.Location,
+                            }
+                            console.log(itemToPost)
+                            APIManager.createItem(itemToPost, 'document')
+                                .then(r => r.json())
+                                .then(response => {
+                                    console.log(response)
+                                    this.addItemToState(response, 'documents')
+                                })
+                        }
+                    }) //closes upload call
+
                 }
-            })
+            }) // closes head object call
         }
     },
 

@@ -62,6 +62,20 @@ const DocumentManager = Object.create(null, {
             }
         },
 
+        addDocumentToLesson: {
+            value: function (documentUrl, lessonUrl) {
+                const itemToPost = {
+                    lesson: lessonUrl,
+                    document: documentUrl
+                }
+                APIManager.createItem(itemToPost, 'lesson_document')
+                    .then(r => r.json())
+                    .then(response => {
+                        console.log(response)
+                    })
+            }
+        },
+
         getTeachersDocuments: {
             value: function () {
                 APIManager.getAuthCollection('document', '')

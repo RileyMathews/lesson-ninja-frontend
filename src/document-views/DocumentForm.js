@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import s3 from '../s3'
 import { Field, Label, Control, Input, Button } from 'bloomer';
 
 

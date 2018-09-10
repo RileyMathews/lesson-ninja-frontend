@@ -72,8 +72,8 @@ export class Provider extends Component {
 
     // user manager methods
 
-    register = UserManager.register.bind(this)
-
+    startRegistration = UserManager.startRegistration.bind(this)
+    _registerCreateUserAndProfile = UserManager._registerCreateUserAndProfile.bind(this)
     login = UserManager.login.bind(this)
     getProfileInformation = UserManager.getProfileInformation.bind(this)
     updateUserProperty = UserManager.updateUserProperty.bind(this)
@@ -99,6 +99,7 @@ export class Provider extends Component {
     // document manager methods
     createDocument = DocumentManager.createDocument.bind(this)
     getTeachersDocuments = DocumentManager.getTeachersDocuments.bind(this)
+    _registerCreateDirectory = DocumentManager._registerCreateDirectory.bind(this)
 
     /*
         This component will not render any DOM element itself.
@@ -112,7 +113,7 @@ export class Provider extends Component {
                 state: this.state,
 
                 // manager methods
-                register: this.register,
+                startRegistration: this.startRegistration,
                 login: this.login,
                 clearUserInformation: this.clearUserInformation,
                 updateUserProperty: this.updateUserProperty,

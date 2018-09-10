@@ -13,7 +13,7 @@ class Register extends Component {
                         <React.Fragment>
 
                             <RegisterForm 
-                                register={context.register}
+                                startRegistration={context.startRegistration}
                             />
 
                         </React.Fragment>

@@ -86,7 +86,7 @@ class RegisterForm extends Component {
             // get value of profile type
             const profileType = this.state.is_student ? "student" : "teacher"
             // register user
-            this.props.register(user, this.state.is_student ? studentProfile : teacherProfile, profileType)
+            this.props.startRegistration(user, this.state.is_student ? studentProfile : teacherProfile, profileType)
         }
 
     }

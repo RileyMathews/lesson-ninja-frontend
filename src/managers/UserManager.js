@@ -9,8 +9,27 @@ import history from '../history'
 
 const UserManager = Object.create(null, {
 
+    // entry point to creating a user
+    startRegistration: {
+        value: function (userData, profileData, profileType) {
+            if (profileType === "teacher") {
+                this._registerCreateDirectory(userData.username)
+                    .then(response => {
+                        console.log(response)
+                        if (response) {
+                            this._registerCreateUserAndProfile(userData, profileData, profileType)
+                        } else {
+                            alert("Sorry something wen't wrong setting up your account, try using a different username")
+                        }
+                    })
+            } else {
+                this._registerCreateUserAndProfile(userData, profileData, profileType)
+            }
+        }
+    },
+
     // method to register a user
-    register: {
+    _registerCreateUserAndProfile: {
         value: function (userData, profileData, profileType) {
             APIManager.registerUser(userData)
                 .then(r => r.json())
@@ -35,7 +54,7 @@ const UserManager = Object.create(null, {
     // method to get users token and pass it to get profile information method for setting it along with other user information into state
     login: {
         value: function (username, password) {
-            const loginInfo = {username, password}
+            const loginInfo = { username, password }
             APIManager.loginUser(loginInfo)
                 .then(r => r.json())
                 .then(response => {
@@ -74,7 +93,7 @@ const UserManager = Object.create(null, {
     updateUserProperty: {
         value: function (oldData, propertyToChange, newValue, stateKey) {
             let problems = false
-            const data = {...oldData}
+            const data = { ...oldData }
             data[propertyToChange] = newValue
             APIManager.updateAuthItem(data.url, data)
                 .then(r => {

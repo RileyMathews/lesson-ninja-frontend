@@ -3,16 +3,25 @@ import SearchStudents from './SearchStudents';
 import StudentList from './StudentList';
 import { Context } from '../Provider';
 import StudentDetail from './StudentDetail';
-import {Button} from 'bloomer'
+import { Button } from 'bloomer'
+import StudentNav from './StudentNav';
 
 
 class StudentManagementEntry extends Component {
 
     state = {
-        searching: false,
         detail: false,
         list: true,
         detailStudentId: 0,
+        view: "list",
+    }
+
+    setLocalView = (evt) => {
+        if (typeof evt === "string") {
+            this.setState({ view: evt })
+        } else {
+            this.setState({ view: evt.currentTarget.id.split("__")[1] })
+        }
     }
 
     setDetailView = (id) => {
@@ -31,7 +40,7 @@ class StudentManagementEntry extends Component {
     }
 
     toggleSearch = () => {
-        this.setState({searching: !this.state.searching})
+        this.setState({ searching: !this.state.searching })
     }
 
 
@@ -41,22 +50,30 @@ class StudentManagementEntry extends Component {
                 {context => (
                     <React.Fragment>
                         <h1>my students</h1>
-                        <Button onClick={this.toggleSearch}>{this.state.searching ? "Cancel Search" : "Searching"}</Button>
-                        {this.state.searching ?
+                        <StudentNav
+                            setLocalView={this.setLocalView}
+                        />
+                        {this.state.view === "add" ?
                             <SearchStudents />
                             :
                             null
                         }
-                        {this.state.list ?
-                            <StudentList
-                                students={context.state.teacher.students}
-                                setDetailView={this.setDetailView}
-                            />
-                            :
-                            <StudentDetail
-                                setListView={this.setListView}
-                                student={context.state.teacher.students.find(student => student.id === this.state.detailStudentId)}
-                            />
+                        {this.state.view === "list" ?
+
+                            <React.Fragment>
+                                {this.state.list ?
+                                    <StudentList
+                                        students={context.state.teacher.students}
+                                        setDetailView={this.setDetailView}
+                                    />
+                                    :
+                                    <StudentDetail
+                                        setListView={this.setListView}
+                                        student={context.state.teacher.students.find(student => student.id === this.state.detailStudentId)}
+                                    />}
+                            </React.Fragment>
+                            : 
+                            null
                         }
                     </React.Fragment>
                 )}

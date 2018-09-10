@@ -56,6 +56,8 @@ const StateManager = Object.create(null, {
                 student: {
                     url: ""
                 }
+            }, () => {
+                this.routeTo("/")
             })
         }
     },

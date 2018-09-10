@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Navbar, NavbarMenu, NavbarStart, NavbarBurger } from 'bloomer'
+import { Navbar, NavbarMenu, NavbarStart, NavbarBurger, NavbarItem } from 'bloomer'
 import { Link } from 'react-router-dom'
 import { NavbarEnd } from 'bloomer/lib/components/Navbar/NavbarEnd';
 import { Context } from '../Provider';
@@ -22,14 +22,14 @@ class NavBar extends Component {
 
                                     {context.state.authToken !== "" ?
                                         <React.Fragment>
-                                            <Link to="/profile">Profile</Link>
+                                            <Link to="/profile"><NavbarItem>Profile</NavbarItem></Link>
                                             {context.state.user.is_student ?
-                                                <Link to="/assignments">Assignments</Link>
+                                                <Link to="/assignments"><NavbarItem>Assignments</NavbarItem></Link>
                                                 :
                                                 <React.Fragment>
-                                                    <Link to="/students">Students</Link>
-                                                    <Link to="/lessons">Lessons</Link>
-                                                    <Link to="/documents">Documents</Link>
+                                                    <Link to="/students"><NavbarItem>Students</NavbarItem></Link>
+                                                    <Link to="/lessons"><NavbarItem>Lessons</NavbarItem></Link>
+                                                    <Link to="/documents"><NavbarItem>Documents</NavbarItem></Link>
                                                 </React.Fragment>
                                             }
                                         </React.Fragment>
@@ -37,7 +37,7 @@ class NavBar extends Component {
                                         null
                                     }
 
-                                    <Link to="/">Home</Link>
+                                    <Link to="/"><NavbarItem>Home</NavbarItem></Link>
 
 
 
@@ -45,11 +45,11 @@ class NavBar extends Component {
                                 <NavbarEnd>
                                     {context.state.authToken === "" ?
                                         <React.Fragment>
-                                            <Link to="/login">Login</Link>
-                                            <Link to="/register">Register</Link>
+                                            <Link to="/login"><NavbarItem>Login</NavbarItem></Link>
+                                            <Link to="/register"><NavbarItem>Register</NavbarItem></Link>
                                         </React.Fragment>
                                         :
-                                        <a onClick={context.clearUserInformation}>Logout</a>
+                                        <a onClick={context.clearUserInformation}><NavbarItem>Logout</NavbarItem></a>
                                     }
                                 </NavbarEnd>
                             </NavbarMenu>

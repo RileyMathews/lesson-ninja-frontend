@@ -29,6 +29,7 @@ class NavBar extends Component {
                                                 <React.Fragment>
                                                     <Link to="/students">Students</Link>
                                                     <Link to="/lessons">Lessons</Link>
+                                                    <Link to="/documents">Documents</Link>
                                                 </React.Fragment>
                                             }
                                         </React.Fragment>

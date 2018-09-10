@@ -6,6 +6,7 @@ import ProfileEntry from './profile/ProfileEntry';
 import LessonEntry from './lessons/LessonEntry';
 import StudentManagementEntry from './students/StudentManagementEntry';
 import HomePageEntry from './landing-page/HomePageEntry';
+import DocumentEntry from './document-views/DocumentEntry';
 
 /*
     module: application views
@@ -24,7 +25,8 @@ class ApplicationViews extends Component {
                 <Route exact path="/students" component={StudentManagementEntry}/>
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/register" component={Register}/>
-                <Route exact path="/lessons/" component={LessonEntry}/>
+                <Route exact path="/lessons" component={LessonEntry}/>
+                <Route exact path="/documents" component={DocumentEntry}/>
             </React.Fragment>
         )
     }

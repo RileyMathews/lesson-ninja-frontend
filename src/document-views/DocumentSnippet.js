@@ -7,7 +7,7 @@ class DocumentSnippet extends Component {
     render() {
         return (
             <React.Fragment>
-                <div class="test">
+                <div className="test">
                     <h1>document</h1>
                     <p>{this.props.document.name}</p>
                     <a href={this.props.document.s3_url} target="blank">view</a>

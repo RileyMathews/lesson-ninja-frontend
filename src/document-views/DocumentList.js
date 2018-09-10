@@ -10,7 +10,7 @@ class DocumentList extends Component {
             <React.Fragment>
                 <h1>document list</h1>
                 {this.props.documents.map(document => (
-                    <DocumentSnippet document={document}/>
+                    <DocumentSnippet key={document.id} document={document}/>
                 ))}
             </React.Fragment>
         )

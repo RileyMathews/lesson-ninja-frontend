@@ -14,7 +14,7 @@ const APIManager = Object.create(null, {
         value: function(err) {
             let string = ""
             for (var key in err) {
-                string += `${key}: ${err[key][0]}`
+                string += `${key}: ${err[key]}`
             }
             alert(string)
         }

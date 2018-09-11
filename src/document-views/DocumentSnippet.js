@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Media, MediaLeft, MediaContent, Content, Level, LevelLeft, MediaRight, Delete } from 'bloomer'
+import { Media, MediaLeft, MediaContent, Content, MediaRight, Delete } from 'bloomer'
 
 /*  
     module: document snippet component
@@ -27,11 +27,7 @@ class DocumentSnippet extends Component {
                                 <a href={this.props.document.s3_url} download>download</a>
                             </p>
                         </Content>
-                        {/* <Level isMobile>
-                            <LevelLeft>
-                                <Button onClick={() => this.props.setDetailLessonView(this.props.lesson.id)}>Details</Button>
-                            </LevelLeft>
-                        </Level> */}
+                        
                     </MediaContent>
                     <MediaRight><Delete onClick={() => this.props.deleteDocument(this.props.document.s3_key, this.props.document.url)}/></MediaRight>
                 </Media>

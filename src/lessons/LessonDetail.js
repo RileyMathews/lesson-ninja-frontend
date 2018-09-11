@@ -5,6 +5,7 @@ import LessonEditView from './LessonEditView';
 import { Field, Label, Control, Select } from 'bloomer'
 import Lesson from './Lesson';
 import LessonDocumentForm from './LessonDocumentForm';
+import Assignment from './Assignment';
 
 /*  
     module: lesson detail component
@@ -75,6 +76,12 @@ class LessonDetail extends Component {
                                         </Control>
                                     </Field>
                                 </form>
+                                <Assignment 
+                                    students={context.state.teacher.students}
+                                    isStudentOnLesson={context.isStudentOnLesson}
+                                    lesson={this.props.lesson}
+                                    assignLesson={context.assignLesson}
+                                />
                             </React.Fragment>
                         }
 

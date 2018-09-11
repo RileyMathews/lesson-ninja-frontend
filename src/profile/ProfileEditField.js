@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { Field, Label, Control, Button, Input } from 'bloomer'
 
+/*  
+    module: profile edit field component
+    author: riley mathews
+    purpose: to generate a text field allowing the user to edit the selected value
+*/
+
 
 class ProfileEditField extends Component {
 

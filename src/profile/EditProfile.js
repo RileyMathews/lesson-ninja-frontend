@@ -4,6 +4,12 @@ import EditStudentInfo from './EditStudentInfo';
 import EditTeacherInfo from './EditTeacherInfo';
 import ProfileEditField from './ProfileEditField';
 
+/*  
+    module: edit profile component
+    author: riley mathews
+    purpose: to generate fields and functionality allowing the user to edit their profile
+*/
+
 
 class EditProfile extends Component {
 
@@ -35,7 +41,6 @@ class EditProfile extends Component {
     submitEdit = (evt) => {
         const thingToChange = this.props.context.state[this.state.editingLocation]
 
-        // catch zip code value and change to null if needed
         if (evt.target.id === "submit") {
             this.props.context.updateUserProperty(thingToChange, this.state.editingProperty, this.state.editingValue, this.state.editingLocation)
         }

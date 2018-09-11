@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
 
+/*  
+    module: edit student info component
+    author: riley mathews
+    purpose: to allow a student to edit their profile
+    notes: currently not needed as we are currently not storing any extra information about students beyond the user model
+*/
+
 
 class EditStudentInfo extends Component {
 

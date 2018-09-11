@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import {Tabs, TabList, Tab, TabLink} from 'bloomer'
 
+/*  
+    module: student nav
+    author: riley mathews
+    purpose: to allow for navigation within the student views component
+*/
+
 
 class StudentNav extends Component {
 

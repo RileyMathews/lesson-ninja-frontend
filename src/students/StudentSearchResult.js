@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { Button } from 'bloomer/lib/elements/Button';
 
+/*  
+    module: student search result
+    author: riley mathews
+    purpose: to be the component that displays as a list of student search results
+*/
+
 
 class StudentSearchResult extends Component {
 

@@ -3,6 +3,12 @@ import LessonSnippet from '../lessons/LessonSnippet'
 import Lesson from '../lessons/Lesson'
 import { Button } from 'bloomer/lib/elements/Button';
 
+/*  
+    module: student assignment view component
+    author: riley mathews
+    purpose: to generate the view of students assignments
+*/
+
 
 class StudentAssignmentView extends Component {
 

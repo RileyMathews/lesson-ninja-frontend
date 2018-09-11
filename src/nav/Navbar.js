@@ -4,12 +4,20 @@ import { Link } from 'react-router-dom'
 import { NavbarEnd } from 'bloomer/lib/components/Navbar/NavbarEnd';
 import { Context } from '../Provider';
 
+/*  
+    module: navbar component
+    author: riley mathews
+    purpose: to create the main navbar for the application
+*/
+
 class NavBar extends Component {
 
+    // state holds information that the dropdown needs to function
     state = {
         isActive: false,
     }
 
+    // method to set state based on nav clicks in mobile media query
     onClickNav = evt => {
         this.setState({isActive: !this.state.isActive})
     }

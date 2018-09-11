@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 
+/*  
+    module: edit teacher info
+    author: riley mathews
+    purpose: to show current teacher profile information and allow user to edit
+*/
+
 
 class EditTeacherInfo extends Component {
 

@@ -5,6 +5,12 @@ import { Context } from '../Provider';
 import StudentDetail from './StudentDetail';
 import StudentNav from './StudentNav';
 
+/*  
+    module: student management component
+    author: riley mathews
+    purpose: to be the entry point for a teachers view of managing their students
+*/
+
 
 class StudentManagementEntry extends Component {
 

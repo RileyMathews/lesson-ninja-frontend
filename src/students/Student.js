@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { Button, Media, MediaLeft, MediaContent, Content, Level, LevelLeft } from 'bloomer'
 
+/*  
+    module: student component
+    author: riley mathews
+    purpose: to be the component that displays in a list of students
+*/
+
 
 class Student extends Component {
 

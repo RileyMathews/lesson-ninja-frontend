@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { Button } from 'bloomer/lib/elements/Button';
 
+/*  
+    module: student detail component
+    author: riley mathews
+    purpose: to be the component that shows details about a student
+*/
+
 
 class StudentDetail extends Component {
 

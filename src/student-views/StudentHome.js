@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import StudentAssignmentView from './StudentAssignmentView'
 import {Context} from '../Provider'
 
+/*  
+    module: student home component
+    author: riley mathews
+    purpose: to be the entry point for a students home view
+*/
+
 
 class StudentHome extends Component {
 

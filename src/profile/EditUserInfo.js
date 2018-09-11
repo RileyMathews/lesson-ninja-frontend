@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 
+/*  
+    module: edit user info component
+    purpose: to display user information and allow user to edit if nessesary
+    author: riley mathews
+*/
+
 
 class EditUserInfo extends Component {
 

@@ -4,6 +4,12 @@ import APIManager from '../managers/APIManager';
 import StudentSearchResult from './StudentSearchResult';
 import { Context } from '../Provider';
 
+/*  
+    module: search students
+    author: riley mathews
+    purpose: to generate a component that allows teachers to search for student usernames and add them as a student
+*/
+
 
 
 class SearchStudents extends Component {

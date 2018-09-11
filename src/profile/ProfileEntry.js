@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import { Context } from '../Provider';
 import EditProfile from './EditProfile';
 
+/*  
+    module: profile entry component
+    author: riley mathews
+    purpose: to be the entry point for profile view
+*/
 
 class ProfileEntry extends Component {
 

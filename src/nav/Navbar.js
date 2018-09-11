@@ -10,6 +10,10 @@ class NavBar extends Component {
         isActive: false,
     }
 
+    onClickNav = evt => {
+        this.setState({isActive: !this.state.isActive})
+    }
+
 
     render() {
         return (

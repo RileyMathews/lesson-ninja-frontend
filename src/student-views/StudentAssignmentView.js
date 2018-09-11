@@ -40,6 +40,7 @@ class StudentAssignmentView extends Component {
                         <AssignmentDetail
                             assignment={this.props.assignments.find(assignment => assignment.id === this.state.assignmentId)}
                             key={this.state.assignmentId}
+                            openAssignment={this.props.openAssignment}
                         />
                         <Button onClick={this.setListView}>Return</Button>
                     </React.Fragment>

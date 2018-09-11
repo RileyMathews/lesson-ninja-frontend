@@ -93,6 +93,18 @@ const LessonManager = Object.create(null, {
         }
     },
 
+    openAssignment: {
+        value: function (assignment) {
+            const assignmentToUpdate = {
+                lesson: assignment.lesson.url,
+                student: assignment.student.url,
+                finished_on: assignment.finished_on,
+                has_opened: true
+            }
+            APIManager.updateAuthItem(assignment.url, assignmentToUpdate) 
+        }
+    }
+
 })
 
 export default LessonManager

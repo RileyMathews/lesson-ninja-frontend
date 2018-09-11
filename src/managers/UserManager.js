@@ -75,6 +75,13 @@ const UserManager = Object.create(null, {
         }
     },
 
+    logout: {
+        value: function () {
+            this.clearUserInformation()
+            this.routeTo('/')
+        }
+    },
+
     // method to get profile information for the user whos token we got from login or registration
     getProfileInformation: {
         value: function (token) {

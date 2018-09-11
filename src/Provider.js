@@ -76,6 +76,7 @@ export class Provider extends Component {
     login = UserManager.login.bind(this)
     getProfileInformation = UserManager.getProfileInformation.bind(this)
     updateUserProperty = UserManager.updateUserProperty.bind(this)
+    logout = UserManager.logout.bind(this)
 
     // state manager methods
     setUserAndProfileState = StateManager.setUserAndProfileState.bind(this)
@@ -93,6 +94,7 @@ export class Provider extends Component {
     assignLesson = LessonManager.assignLesson.bind(this)
     getAssignments = LessonManager.getAssignments.bind(this)
     deleteLesson = LessonManager.deleteLesson.bind(this)
+    openAssignment = LessonManager.openAssignment.bind(this)
 
     // student manager methods
     addStudentToTeacher = StudentManager.addStudentToTeacher.bind(this)
@@ -121,9 +123,10 @@ export class Provider extends Component {
                 // pass state
                 state: this.state,
 
-                // manager methods
+                // user manager methods
                 startRegistration: this.startRegistration,
                 login: this.login,
+                logout: this.logout,
                 clearUserInformation: this.clearUserInformation,
                 updateUserProperty: this.updateUserProperty,
 
@@ -132,6 +135,7 @@ export class Provider extends Component {
                 updateLesson: this.updateLesson,
                 assignLesson: this.assignLesson,
                 deleteLesson: this.deleteLesson,
+                openAssignment: this.openAssignment,
 
                 // student manager
                 addStudentToTeacher: this.addStudentToTeacher,

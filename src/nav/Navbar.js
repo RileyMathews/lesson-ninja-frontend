@@ -61,7 +61,7 @@ class NavBar extends Component {
                                             <Link to="/register"><NavbarItem>Register</NavbarItem></Link>
                                         </React.Fragment>
                                         :
-                                        <a onClick={context.clearUserInformation}><NavbarItem>Logout</NavbarItem></a>
+                                        <a onClick={context.logout}><NavbarItem>Logout</NavbarItem></a>
                                     }
                                 </NavbarEnd>
                             </NavbarMenu>

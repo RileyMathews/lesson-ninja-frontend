@@ -10,6 +10,12 @@ import AssignmentDocument from './AssignmentDocument';
 
 class AssignmentDetail extends Component {
 
+    componentDidMount() {
+        if (!this.props.assignment.has_opened) {
+            this.props.openAssignment(this.props.assignment)
+        }
+    }
+
 
     render() {
         return (

@@ -9,8 +9,8 @@ html {
   background: 
     /* top, transparent red, faked with gradient */ 
     linear-gradient(
-      rgba(255, 255, 255, 0.45), 
-      rgba(255, 255, 255, 0.45)
+      rgba(255, 255, 255, 0.90), 
+      rgba(255, 255, 255, 0.90)
     ),
     /* bottom, image */
     url('./images/background.jpg') right;

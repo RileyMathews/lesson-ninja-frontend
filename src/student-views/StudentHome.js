@@ -20,6 +20,7 @@ class StudentHome extends Component {
                         <h1>Student Home Page</h1>
                         <StudentAssignmentView 
                             assignments = {context.state.assignments}
+                            openAssignment = {context.openAssignment}
                         />
                     </React.Fragment>
                 )}

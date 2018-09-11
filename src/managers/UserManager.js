@@ -13,16 +13,19 @@ const UserManager = Object.create(null, {
     startRegistration: {
         value: function (userData, profileData, profileType) {
             if (profileType === "teacher") {
+                // first calls a method that attempts to create an s3 folder and returns a promise of true or false that allows us to continue
                 this._registerCreateDirectory(userData.username)
                     .then(response => {
                         console.log(response)
                         if (response) {
+                            // if the folder was created continue with registration
                             this._registerCreateUserAndProfile(userData, profileData, profileType)
                         } else {
                             alert("Sorry something wen't wrong setting up your account, try using a different username")
                         }
                     })
             } else {
+                // if the user is not a teacher, they do not need an s3 folder so we move on to creating a user in our own database
                 this._registerCreateUserAndProfile(userData, profileData, profileType)
             }
         }
@@ -72,6 +75,7 @@ const UserManager = Object.create(null, {
         }
     },
 
+    // method to get profile information for the user whos token we got from login or registration
     getProfileInformation: {
         value: function (token) {
             APIManager.getAuthCollection("user", "get_single_user=true")
@@ -96,6 +100,7 @@ const UserManager = Object.create(null, {
         }
     },
 
+    // method to update a property on a user
     updateUserProperty: {
         value: function (oldData, propertyToChange, newValue, stateKey) {
             let problems = false

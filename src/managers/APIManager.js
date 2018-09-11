@@ -33,6 +33,7 @@ const APIManager = Object.create(null, {
         }
     },
 
+    // method to login a user
     loginUser: {
         value: function (data) {
             return fetch(`${url}auth/login/`, {
@@ -45,6 +46,7 @@ const APIManager = Object.create(null, {
         }
     },
 
+    // method to get all of a collection that requires authentication with optional queries
     getAuthCollection: {
         value: function (collection, query) {
             return fetch(`${url}${collection}/?${query}`, {
@@ -57,6 +59,7 @@ const APIManager = Object.create(null, {
         }
     },
 
+    // method to get a single item that requires authentication
     getAuthItem: {
         value: function (itemUrl) {
             return fetch(`${itemUrl}`, {
@@ -83,6 +86,7 @@ const APIManager = Object.create(null, {
         }
     }, 
 
+    // method to update an item that requires authentication
     updateAuthItem: {
         value: function (itemUrl, data) {
             return fetch(`${itemUrl}`, {
@@ -96,6 +100,7 @@ const APIManager = Object.create(null, {
         }
     },
 
+    // method to search through the students
     searchStudents: {
         value: function (query) {
             return fetch(`${url}student/?username=${query}`, {

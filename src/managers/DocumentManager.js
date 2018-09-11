@@ -9,7 +9,8 @@ import APIManager from './APIManager';
 const DocumentManager = Object.create(null, {
 
     // create teacher subdirectory in bucket, for use on registration
-    // creates a promise
+    // creates a promise that returns false if the folder on s3 could not be created
+    // that will then stop the registration function that called it
     _registerCreateDirectory: {
         value: function (name) {
             return new Promise((resolve, reject) => {
@@ -41,6 +42,7 @@ const DocumentManager = Object.create(null, {
             // default s3 content type
             let contentType = "application/octet-stream"
 
+            // set content type based on the file extension
             if (extension === 'html') contentType = "text/html";
             if (extension === 'css') contentType = "text/css";
             if (extension === 'js') contentType = "application/javascript";
@@ -62,6 +64,7 @@ const DocumentManager = Object.create(null, {
                         notes: notes,
                         s3_url: data.Location,
                     }
+                    // take the information s3 returned about the new file and post it to our database
                     console.log(itemToPost)
                     APIManager.createItem(itemToPost, 'document')
                         .then(r => r.json())
@@ -74,6 +77,7 @@ const DocumentManager = Object.create(null, {
         }
     },
 
+    // method to add a document to a lesson
     addDocumentToLesson: {
         value: function (documentUrl, lessonUrl) {
             const itemToPost = {
@@ -89,6 +93,7 @@ const DocumentManager = Object.create(null, {
         }
     },
 
+    // method to get all documents based on the currently logged in teacher
     getTeachersDocuments: {
         value: function () {
             APIManager.getAuthCollection('document', '')
@@ -99,6 +104,7 @@ const DocumentManager = Object.create(null, {
         }
     },
 
+    // method to search for a document in a lesson and return true or false based on if it is already in there
     isDocInLesson: {
         value: function (doc, lesson) {
             const index = lesson.documents.findIndex(document => doc.id === document.id)

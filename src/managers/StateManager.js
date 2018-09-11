@@ -8,12 +8,14 @@ import APIManager from "./APIManager";
 
 const StateManager = Object.create(null, {
 
+    // method to accept a key and value and add that to providers state
     setProviderState: {
         value: function (key, value){
             this.setState({[key]: value})
         }
     },
 
+    // method that takes in all information about a user and posts it to state
     setUserAndProfileState: {
         value: function (userData, profileData, profileType, token) {
             this.setState({
@@ -24,6 +26,7 @@ const StateManager = Object.create(null, {
         }
     },
 
+    // method that adds an item to an array that is already in state
     addItemToState: {
         value: function(item, arrayKey) {
             const array = [...this.state[arrayKey]]
@@ -32,6 +35,7 @@ const StateManager = Object.create(null, {
         }
     },
 
+    // method to clear all information from state upon logout
     clearUserInformation: {
         value: function () {
             localStorage.removeItem("token")
@@ -62,6 +66,8 @@ const StateManager = Object.create(null, {
         }
     },
 
+    // method that takes a url string of a detail item, as well as key of were that item is in a state array
+    // and updates that item in state with the new detail information from the api
     updateItemInStateArrayFromAPI: {
         value: function (url, stateKey) {
             APIManager.getAuthItem(url)

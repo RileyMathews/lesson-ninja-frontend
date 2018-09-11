@@ -8,6 +8,7 @@ import APIManager from "./APIManager";
 
 const StudentManager = Object.create(null, {
 
+    // method to add a student to the currently logged in teacher
     addStudentToTeacher: {
         value: function (student) {
             console.log(student)
@@ -25,6 +26,7 @@ const StudentManager = Object.create(null, {
         }
     },
 
+    // method to add a student to the teacher object in state
     addStudentToTeacherState: {
         value: function (student) {
             const teacher = {...this.state.teacher}

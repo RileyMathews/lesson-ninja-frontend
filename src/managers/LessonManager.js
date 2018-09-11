@@ -8,6 +8,7 @@ import APIManager from "./APIManager";
 
 const LessonManager = Object.create(null, {
 
+    // method to get all lesson objects based on the current teacher
     getTeachersLessons: {
         value: function() {
             APIManager.getAuthCollection("lesson", "filter_by_auth=true")
@@ -18,6 +19,7 @@ const LessonManager = Object.create(null, {
         }
     }, 
 
+    // method to create a new lesson
     createNewLesson: {
         value: function(lesson) {
             APIManager.createItem(lesson, "lesson")
@@ -28,6 +30,7 @@ const LessonManager = Object.create(null, {
         }
     },
 
+    // method that takes a lesson object, and adds it to the array in providers state
     addNewTeacherLessonToState: {
         value: function (lesson) {
             const oldLessons = [...this.state.teacherLessons]
@@ -36,6 +39,7 @@ const LessonManager = Object.create(null, {
         }
     },
 
+    // method to update a lesson upon being edited by a teacher
     updateLesson: {
         value: function (newLesson) {
             APIManager.updateAuthItem(newLesson.url, newLesson)
@@ -49,6 +53,7 @@ const LessonManager = Object.create(null, {
         }
     },
 
+    // method to assign a lesson to a student
     assignLesson: {
         value: function (lessonURL, studentURL) {
             const dataToPost = {
@@ -65,6 +70,10 @@ const LessonManager = Object.create(null, {
         }
     }, 
 
+    // method to get assignments
+    // works for both teachers and students
+    // for teachers will return all assignments they have created
+    // for students will return all assignments assigned to them
     getAssignments: {
         value: function () {
             APIManager.getAuthCollection("student_lesson")

@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 
+/*  
+    module: generic landing component
+    author: riley mathews
+    purpose: to be the generic landing page users see if they are not logged in
+*/
+
 
 class GenericLanding extends Component {
 

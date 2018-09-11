@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 
+/*  
+    module: teacher landing component
+    author: riley mathews
+    purpose: to be the entry point for teachers home page
+*/
+
 
 class TeacherLanding extends Component {
 

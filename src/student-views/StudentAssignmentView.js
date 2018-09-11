@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import LessonSnippet from '../lessons/LessonSnippet'
-import Lesson from '../lessons/Lesson'
 import { Button } from 'bloomer/lib/elements/Button';
+import AssignmentSnippet from './AssignmentSnippet';
+import AssignmentDetail from './AssignmentDetail';
 
 /*  
     module: student assignment view component
@@ -37,20 +37,20 @@ class StudentAssignmentView extends Component {
                 <h1>Your Assignments</h1>
                 {this.state.detail ?
                     <React.Fragment>
-                        <Lesson
-                            lesson={this.props.assignments.find(assignment => assignment.id === this.state.assignmentId).lesson}
+                        <AssignmentDetail
+                            assignment={this.props.assignments.find(assignment => assignment.id === this.state.assignmentId)}
+                            key={this.state.assignmentId}
                         />
                         <Button onClick={this.setListView}>Return</Button>
                     </React.Fragment>
                     :
                     <React.Fragment>
                         {this.props.assignments.map(assignment => (
-                            <React.Fragment>
-                                <LessonSnippet
-                                    lesson={assignment.lesson}
+                                <AssignmentSnippet
+                                    assignment={assignment}
+                                    setDetailView={this.setDetailView}
+                                    key={assignment.id}
                                 />
-                                <Button onClick={() => this.setDetailView(assignment.id)}>Detail</Button>
-                            </React.Fragment>
                         ))}
                     </React.Fragment>
                 }

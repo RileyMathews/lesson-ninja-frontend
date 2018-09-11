@@ -83,6 +83,7 @@ export class Provider extends Component {
     setProviderState = StateManager.setProviderState.bind(this)
     addItemToState = StateManager.addItemToState.bind(this)
     updateItemInStateArrayFromAPI = StateManager.updateItemInStateArrayFromAPI.bind(this)
+    removeItemFromStateByUrl = StateManager.removeItemFromStateByUrl.bind(this)
 
     // lesson manager methods
     createNewLesson = LessonManager.createNewLesson.bind(this)
@@ -91,6 +92,7 @@ export class Provider extends Component {
     updateLesson = LessonManager.updateLesson.bind(this)
     assignLesson = LessonManager.assignLesson.bind(this)
     getAssignments = LessonManager.getAssignments.bind(this)
+    deleteLesson = LessonManager.deleteLesson.bind(this)
 
     // student manager methods
     addStudentToTeacher = StudentManager.addStudentToTeacher.bind(this)
@@ -124,6 +126,7 @@ export class Provider extends Component {
                 createNewLesson: this.createNewLesson,
                 updateLesson: this.updateLesson,
                 assignLesson: this.assignLesson,
+                deleteLesson: this.deleteLesson,
 
                 // student manager
                 addStudentToTeacher: this.addStudentToTeacher,

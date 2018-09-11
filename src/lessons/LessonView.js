@@ -46,14 +46,13 @@ class LessonView extends Component {
                     :
                     <React.Fragment>
                         {this.props.lessons.map(lesson => (
-                            <React.Fragment key={`fragment__${lesson.id}`}>
-                                <LessonSnippet
-                                    key={lesson.id}
-                                    lesson={lesson}
-                                    routeTo={this.props.routeTo}
-                                    setDetailLessonView={this.setDetailLessonView}
-                                />
-                            </React.Fragment>
+                            <LessonSnippet
+                                key={lesson.id}
+                                lesson={lesson}
+                                routeTo={this.props.routeTo}
+                                setDetailLessonView={this.setDetailLessonView}
+                                deleteLesson={this.props.deleteLesson}
+                            />
                         ))}
                     </React.Fragment>
                 }

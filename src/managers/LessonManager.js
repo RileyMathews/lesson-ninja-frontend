@@ -84,6 +84,15 @@ const LessonManager = Object.create(null, {
         }
     },
 
+    // method that takes an argument of the url for a lesson, and calls 
+    // api method to delete it
+    deleteLesson: {
+        value: function (url) {
+            APIManager.deleteAuthItem(url)
+            this.removeItemFromStateByUrl(url, 'teacherLessons')
+        }
+    },
+
 })
 
 export default LessonManager

@@ -100,6 +100,18 @@ const APIManager = Object.create(null, {
         }
     },
 
+    deleteAuthItem: {
+        value: function (itemUrl) {
+            return fetch(`${itemUrl}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Token ${localStorage.getItem("token")}`
+                }
+            })
+        }
+    },
+
     // method to search through the students
     searchStudents: {
         value: function (query) {

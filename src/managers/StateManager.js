@@ -79,7 +79,17 @@ const StateManager = Object.create(null, {
                     this.setState({[stateKey]: stateArray})
                 })
         }
-    }
+    },
+
+    // method that takes the url of an item in an array in state, and the key of that array, and removes the
+    removeItemFromStateByUrl: {
+        value: function (url, stateKey) {
+            const stateArray = [...this.state[stateKey]]
+            const index = stateArray.findIndex(item => item.url === url)
+            stateArray.splice(index, 1)
+            this.setState({[stateKey]: stateArray})
+        }
+    },
 
 })
 

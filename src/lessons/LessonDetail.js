@@ -51,9 +51,9 @@ class LessonDetail extends Component {
                             :
                             <React.Fragment>
                                 <h1>lesson</h1>
-                                <Lesson lesson={this.props.lesson} removeDocumentFromLesson={context.removeDocumentFromLesson}/>
+                                <Lesson lesson={this.props.lesson} removeDocumentFromLesson={context.removeDocumentFromLesson} />
                                 <Button onClick={this.toggleEdit}>Edit</Button>
-                                <LessonDocumentForm 
+                                <LessonDocumentForm
                                     documents={context.state.documents}
                                     addDocumentToLesson={context.addDocumentToLesson}
                                     lesson={this.props.lesson}
@@ -64,9 +64,11 @@ class LessonDetail extends Component {
                                         <Label>Assign to:</Label>
                                         <Control>
                                             <Select defaultValue="default" onChange={this.setStudent}>
-                                                    <option value="default" disabled="disabled">select a student</option>
+                                                <option value="default" disabled="disabled">select a student</option>
                                                 {context.state.teacher.students.map(student => (
-                                                    <option value={student.url} key={student.id}>{student.user.first_name}</option>
+                                                    <React.Fragment key={`frag_${student.id}`}>
+                                                        {context.isStudentOnLesson(this.props.lesson, student) ? null : <option value={student.url} key={student.id}>{student.user.first_name}</option>}
+                                                    </React.Fragment>
                                                 ))}
                                             </Select>
                                             <Button type="submit">Assign</Button>

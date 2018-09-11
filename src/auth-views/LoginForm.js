@@ -29,6 +29,11 @@ class LoginForm extends Component {
         this.props.login(this.state.username, this.state.password)
     }
 
+    // will focus the input field on loading the form
+    componentDidMount() {
+        document.getElementById("login_username").focus()
+    }
+
 
     render() {
         return (
@@ -37,7 +42,7 @@ class LoginForm extends Component {
                     <Field>
                         <Label>Username</Label>
                         <Control>
-                            <Input required onChange={this.updateForm} name="username" type="text" placeholder='Username' value={this.state.username} />
+                            <Input required onChange={this.updateForm} id="login_username" name="username" type="text" placeholder='Username' value={this.state.username} />
                         </Control>
                     </Field>
 

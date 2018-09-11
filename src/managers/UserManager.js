@@ -67,6 +67,7 @@ const UserManager = Object.create(null, {
                         const token = response.token
                         localStorage.setItem("token", token)
                         this.getProfileInformation(token)
+                        this.getAssignments()
                         history.push('/')
                     } else {
                         APIManager.printErrors(response)

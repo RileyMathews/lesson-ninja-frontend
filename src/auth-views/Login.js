@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import { Context } from '../Provider';
 import LoginForm from './LoginForm';
 
+/*  
+    module: login component
+    author: riley mathews
+    purpose: to be the entry point for login view
+*/
+
 
 class Login extends Component {
 
@@ -13,7 +19,7 @@ class Login extends Component {
                     {context => (
                         <React.Fragment>
 
-                            <LoginForm 
+                            <LoginForm
                                 login={context.login}
                             />
 

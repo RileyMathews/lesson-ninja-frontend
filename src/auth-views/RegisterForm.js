@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import { Field, Label, Input, Control, Select, Button } from 'bloomer'
 
+/*  
+    module: register form component
+    author: riley mathews
+    purpose: to create the form and attached methods for registering a new user
+*/
+
 
 class RegisterForm extends Component {
 
+    // state of component to hold information from the form
     state = {
         username: "",
         first_name: "",
@@ -21,11 +28,15 @@ class RegisterForm extends Component {
         zip_code: ""
     }
 
+    // function to call to make sure information in the form matches what is expected from the user
     validateForm = () => {
+        // check if passwodrs are the same
         if (this.state.password1 !== this.state.password2) {
             alert("your passwords do not match")
             return false
         }
+        // check if somehow the user is registering as a teacher and a student which is currently not allowed
+        // this should 'technically' only happen if the user wen't into something like the react dev tools and manually changed state bypassing the form
         if (this.state.is_student === this.state.is_teacher) {
             this.setState({
                 is_student: false,
@@ -37,12 +48,14 @@ class RegisterForm extends Component {
         return true
     }
 
+    // method to update state from form value
     updateForm = (evt) => {
         const user = { ...this.state }
         user[evt.target.name] = evt.target.value
         this.setState(user)
     }
 
+    // method to change the account type based on the dropdown select
     setAccountType = (evt) => {
         console.log(evt)
         const user = { ...this.state }
@@ -56,9 +69,11 @@ class RegisterForm extends Component {
         this.setState(user)
     }
 
+    // function to call when submitting the form
     submitForm = (evt) => {
         evt.preventDefault()
 
+        // call function to make sure form is valid
         if (this.validateForm()) {
             // build user object
             const user = {
@@ -80,8 +95,8 @@ class RegisterForm extends Component {
                 zip_code: this.state.zip_code,
             }
             // build student profile object
+            // currently not applicable
             const studentProfile = {}
-            // current not applicable
 
             // get value of profile type
             const profileType = this.state.is_student ? "student" : "teacher"
@@ -148,6 +163,7 @@ class RegisterForm extends Component {
                         </Control>
                     </Field>
 
+                    {/* following block of html is only rendered if the 'teacher' option is selected in the dropdown */}
                     {this.state.is_teacher ?
                         <React.Fragment>
                             <h1>None of these fields are required to register</h1>

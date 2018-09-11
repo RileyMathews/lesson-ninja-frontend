@@ -63,6 +63,8 @@ const DocumentManager = Object.create(null, {
                         name: name,
                         notes: notes,
                         s3_url: data.Location,
+                        s3_key: fileKey,
+                        file_extension: extension
                     }
                     // take the information s3 returned about the new file and post it to our database
                     console.log(itemToPost)
@@ -110,7 +112,21 @@ const DocumentManager = Object.create(null, {
             const index = lesson.documents.findIndex(document => doc.id === document.id)
             return index === -1 ? false : true
         }
-    }
+    },
+
+    deleteDocument: {
+        value: function (key, url) {
+            s3.deleteObject({ Key: key }, (err, data) => {
+                if (err) {
+                    return alert('There was an error deleting your item: ', err.message)
+                }
+                APIManager.deleteAuthItem(url)
+                this.removeItemFromStateByUrl(url, 'documents')
+            });
+        }
+    },
+
+    
 
 })
 

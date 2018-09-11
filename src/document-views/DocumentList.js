@@ -16,7 +16,7 @@ class DocumentList extends Component {
             <React.Fragment>
                 <h1>document list</h1>
                 {this.props.documents.map(document => (
-                    <DocumentSnippet key={document.id} document={document}/>
+                    <DocumentSnippet key={document.id} document={document} deleteDocument={this.props.deleteDocument}/>
                 ))}
             </React.Fragment>
         )

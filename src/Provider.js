@@ -104,6 +104,7 @@ export class Provider extends Component {
     _registerCreateDirectory = DocumentManager._registerCreateDirectory.bind(this)
     addDocumentToLesson = DocumentManager.addDocumentToLesson.bind(this)
     isDocInLesson = DocumentManager.isDocInLesson.bind(this)
+    deleteDocument = DocumentManager.deleteDocument.bind(this)
 
     /*
         This component will not render any DOM element itself.
@@ -135,6 +136,7 @@ export class Provider extends Component {
                 createDocument: this.createDocument,
                 addDocumentToLesson: this.addDocumentToLesson,
                 isDocInLesson: this.isDocInLesson,
+                deleteDocument: this.deleteDocument,
 
                 // other methods
                 routeTo: this.routeTo,

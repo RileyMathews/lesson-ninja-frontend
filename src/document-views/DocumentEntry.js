@@ -45,6 +45,7 @@ class DocumentEntry extends Component {
                         {this.state.view === "list" ? 
                         <DocumentList
                             documents={context.state.documents}
+                            deleteDocument={context.deleteDocument}
                         /> : null}
 
                         {this.state.view === "add" ? 

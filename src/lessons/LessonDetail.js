@@ -6,6 +6,12 @@ import { Field, Label, Control, Select } from 'bloomer'
 import Lesson from './Lesson';
 import LessonDocumentForm from './LessonDocumentForm';
 
+/*  
+    module: lesson detail component
+    author: riley mathews
+    purpose: to the entry point for viewing a lesson, and provide functionality for editing that lesson, or just viewing the details
+*/
+
 
 class LessonDetail extends Component {
 

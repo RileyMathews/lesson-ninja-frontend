@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import {Tabs, TabList, Tab, TabLink} from 'bloomer'
 
+/*  
+    module: lesson nav component
+    author: riley mathews
+    purpose: to generate a lesson sub nav that lets the user navigate within the lesson view
+*/
+
 
 class LessonNav extends Component {
 

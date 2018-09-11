@@ -1,25 +1,35 @@
 import React, { Component } from 'react'
 import { Button, Field, Label, Control, Input, TextArea } from 'bloomer';
 
+/*  
+    module: lesson edit view component
+    author: riley mathews
+    purpose: to generate a form pre populated with lesson information that allows the user to edit and change it
+*/
+
 
 class LessonEditView extends Component {
 
+    // state holds lesson information from form
     state = {
         name: "",
         description: "",
         content: ""
     }
 
+    // on component mount, set the less passed in props into state so the form is pre populated with the information
     componentDidMount() {
         this.setState(this.props.lesson)
     }
 
+    // method to update state from form
     updateForm = (evt) => {
         const lesson = {...this.state}
         lesson[evt.target.name] = evt.target.value
         this.setState(lesson)
     }
 
+    // method to submit form
     submitForm = (evt) => {
         evt.preventDefault()
         this.props.updateLesson(this.state)

@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { Button, Media, MediaLeft, MediaContent, Content, Level, LevelLeft } from 'bloomer'
 
+/*  
+    module: lesson snippet component
+    author: riley mathews
+    purpose: to generate a compact representation of a lesson to be viewed in a list
+*/
+
 
 class LessonSnippet extends Component {
 

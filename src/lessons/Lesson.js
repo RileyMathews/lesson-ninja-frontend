@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 
+/*  
+    module: lesson component
+    author: riley mathews
+    purpose: to display information about a lesson object passed down to it
+*/
+
 
 class Lesson extends Component {
 

@@ -4,13 +4,21 @@ import LessonCreateForm from './LessonCreateForm';
 import LessonView from './LessonView';
 import LessonNav from './LessonNav';
 
+/*  
+    module: lesson entry component
+    author: riley mathews
+    purpose: to be the entry point for lesson view
+*/
+
 
 class LessonEntry extends Component {
 
+    // state holds current sub view within lessons
     state = {
         view: "list",
     }
 
+    // method to set the local view within the lesson component
     setLocalView = (evt) => {
         if (typeof evt === "string") {
             this.setState({ view: evt })

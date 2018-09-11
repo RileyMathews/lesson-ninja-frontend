@@ -38,6 +38,7 @@ class LessonEntry extends Component {
                         {this.state.view === "add" ?
                             <LessonCreateForm
                                 createNewLesson={context.createNewLesson}
+                                setLocalView={this.setLocalView}
                             /> : null}
 
                     </React.Fragment>

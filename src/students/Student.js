@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Media, MediaLeft, MediaContent, Content, Level, LevelLeft } from 'bloomer'
+import { Button, Media, MediaLeft, MediaContent, Content, Level, LevelLeft, MediaRight, Delete } from 'bloomer'
 
 /*  
     module: student component
@@ -30,7 +30,7 @@ class Student extends Component {
                         </LevelLeft>
                     </Level>
                 </MediaContent>
-                {/* <MediaRight><Delete /></MediaRight> */}
+                <MediaRight><Delete onClick={() => this.props.removeStudentFromTeacher(this.props.student)}/></MediaRight>
             </Media>
         )
     }

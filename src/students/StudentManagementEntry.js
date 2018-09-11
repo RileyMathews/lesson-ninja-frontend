@@ -70,6 +70,7 @@ class StudentManagementEntry extends Component {
                                     <StudentList
                                         students={context.state.teacher.students}
                                         setDetailView={this.setDetailView}
+                                        removeStudentFromTeacher={context.removeStudentFromTeacher}
                                     />
                                     :
                                     <StudentDetail

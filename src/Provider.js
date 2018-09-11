@@ -97,6 +97,8 @@ export class Provider extends Component {
     // student manager methods
     addStudentToTeacher = StudentManager.addStudentToTeacher.bind(this)
     addStudentToTeacherState = StudentManager.addStudentToTeacherState.bind(this)
+    removeStudentFromTeacher = StudentManager.removeStudentFromTeacher.bind(this)
+    removeStudentFromTeacherState = StudentManager.removeStudentFromTeacherState.bind(this)
 
     // document manager methods
     createDocument = DocumentManager.createDocument.bind(this)
@@ -132,6 +134,7 @@ export class Provider extends Component {
 
                 // student manager
                 addStudentToTeacher: this.addStudentToTeacher,
+                removeStudentFromTeacher: this.removeStudentFromTeacher,
 
                 // document manager
                 createDocument: this.createDocument,

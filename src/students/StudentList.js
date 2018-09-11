@@ -19,6 +19,7 @@ class StudentList extends Component {
                         key={student.id}
                         student={student}
                         setDetailView={this.props.setDetailView}
+                        removeStudentFromTeacher={this.props.removeStudentFromTeacher}
                     />
                 ))}
             </React.Fragment>

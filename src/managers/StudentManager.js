@@ -56,6 +56,11 @@ const StudentManager = Object.create(null, {
         }
     },
 
+    getStudentsAssignments: {
+        value: function (studentUrl) {
+            return [...this.state.assignments.filter(assignment => assignment.student.url === studentUrl)]
+        }
+    }
 })
 
 export default StudentManager

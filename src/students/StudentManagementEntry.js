@@ -76,6 +76,7 @@ class StudentManagementEntry extends Component {
                                     <StudentDetail
                                         setListView={this.setListView}
                                         student={context.state.teacher.students.find(student => student.id === this.state.detailStudentId)}
+                                        getStudentsAssignments={context.getStudentsAssignments}
                                     />}
                             </React.Fragment>
                             : 

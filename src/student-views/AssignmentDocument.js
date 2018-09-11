@@ -8,7 +8,6 @@ class AssignmentDocument extends Component {
         return (
             <React.Fragment>
                 <p>{this.props.document.name} <a href={this.props.document.s3_url}>view</a> <a href={this.props.document.s3_url} download>download</a></p>
-
             </React.Fragment>
         )
     }

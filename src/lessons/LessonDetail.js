@@ -19,6 +19,7 @@ class LessonDetail extends Component {
     state = {
         editing: false,
         studentURL: 0,
+        showAssignments: false
     }
 
     toggleEdit = () => {
@@ -76,12 +77,18 @@ class LessonDetail extends Component {
                                         </Control>
                                     </Field>
                                 </form>
-                                <Assignment 
-                                    students={context.state.teacher.students}
-                                    isStudentOnLesson={context.isStudentOnLesson}
-                                    lesson={this.props.lesson}
-                                    assignLesson={context.assignLesson}
-                                />
+                                <p onClick={() => this.setState({showAssignments: !this.state.showAssignments})}>toggle students</p>
+                                {this.state.showAssignments ?
+                                    <Assignment
+                                        students={context.state.teacher.students}
+                                        isStudentOnLesson={context.isStudentOnLesson}
+                                        lesson={this.props.lesson}
+                                        assignLesson={context.assignLesson}
+                                    />
+                                    :
+                                    null
+                                }
+
                             </React.Fragment>
                         }
 

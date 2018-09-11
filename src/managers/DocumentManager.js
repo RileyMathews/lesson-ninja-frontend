@@ -95,6 +95,20 @@ const DocumentManager = Object.create(null, {
         }
     },
 
+    removeDocumentFromLesson: {
+        value: function (lessonId, documentId, lessonUrl) {
+            APIManager.getAuthCollection("lesson_document", `lesson=${lessonId}&document=${documentId}`)
+                .then(r => r.json())
+                .then(response => {
+                    console.log(response)
+                    APIManager.deleteAuthItem(response[0].url)
+                        .then(r => {
+                            this.updateItemInStateArrayFromAPI(lessonUrl, 'teacherLessons')
+                        })
+                })
+        }
+    },
+
     // method to get all documents based on the currently logged in teacher
     getTeachersDocuments: {
         value: function () {

@@ -19,7 +19,7 @@ class Lesson extends Component {
                 <p>content: {this.props.lesson.content}</p>
                 <p>documents:</p>
                 {this.props.lesson.documents.map(document => (
-                    <p key={document.id}>{document.name}</p>
+                    <p key={document.id}>{document.name} <span onClick={() => this.props.removeDocumentFromLesson(this.props.lesson.id, document.id, this.props.lesson.url)}>remove</span></p>
                 ))}
             </React.Fragment>
         )

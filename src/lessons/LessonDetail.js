@@ -51,7 +51,7 @@ class LessonDetail extends Component {
                             :
                             <React.Fragment>
                                 <h1>lesson</h1>
-                                <Lesson lesson={this.props.lesson}/>
+                                <Lesson lesson={this.props.lesson} removeDocumentFromLesson={context.removeDocumentFromLesson}/>
                                 <Button onClick={this.toggleEdit}>Edit</Button>
                                 <LessonDocumentForm 
                                     documents={context.state.documents}

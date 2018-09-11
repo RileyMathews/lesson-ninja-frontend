@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { Tabs, TabList, Tab, TabLink } from 'bloomer'
 
+/*  
+    module: document nav component
+    author: riley mathews
+    purpose: to create a sub navigation component to navigate within the document views
+*/
+
 
 class DocumentNav extends Component {
 

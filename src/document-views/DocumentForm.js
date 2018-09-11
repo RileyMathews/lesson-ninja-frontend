@@ -1,15 +1,22 @@
 import React, { Component } from 'react'
 import { Field, Label, Control, Input, Button } from 'bloomer';
 
+/*  
+    module: document form
+    author: riley mathews
+    purpose: to create form and attached methods for creating a document
+*/
+
 
 class DocumentForm extends Component {
 
+    // state holds value from the text fields of the form
     state = {
         name: "",
         notes: "",
-        file: {}
     }
 
+    // method to submit the form
     submitForm = (evt) => {
         evt.preventDefault()
         const file = document.getElementById("file").files[0]
@@ -17,8 +24,9 @@ class DocumentForm extends Component {
         this.props.setLocalView("list")
     }
 
+    // method to change state from form value
     changeForm = (evt) => {
-        const state = {...this.state}
+        const state = { ...this.state }
         state[evt.target.name] = evt.target.value
         this.setState(state)
     }

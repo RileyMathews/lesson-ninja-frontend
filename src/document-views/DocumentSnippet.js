@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 
+/*  
+    module: document snippet component
+    author: riley mathews
+    purpose: to represent a document object from the database in a shorter list view
+*/
+
 
 class DocumentSnippet extends Component {
 

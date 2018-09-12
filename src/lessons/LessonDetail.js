@@ -3,8 +3,8 @@ import { Button } from 'bloomer'
 import { Context } from '../Provider';
 import LessonEditView from './LessonEditView';
 import Lesson from './Lesson';
-import LessonDocumentForm from './LessonDocumentForm';
 import Assignment from './Assignment';
+import DocumentLesson from './DocumentLesson';
 
 /*  
     module: lesson detail component
@@ -18,7 +18,8 @@ class LessonDetail extends Component {
     state = {
         editing: false,
         studentURL: 0,
-        showAssignments: false
+        showAssignments: false,
+        showDocuments: false,
     }
 
     toggleEdit = () => {
@@ -54,13 +55,19 @@ class LessonDetail extends Component {
                                 <h1>lesson</h1>
                                 <Lesson lesson={this.props.lesson} removeDocumentFromLesson={context.removeDocumentFromLesson} />
                                 <Button onClick={this.toggleEdit}>Edit</Button>
-                                <LessonDocumentForm
-                                    documents={context.state.documents}
-                                    addDocumentToLesson={context.addDocumentToLesson}
-                                    lesson={this.props.lesson}
-                                    isDocInLesson={context.isDocInLesson}
-                                />
-                                <p onClick={() => this.setState({showAssignments: !this.state.showAssignments})}>toggle students</p>
+                                <p onClick={() => this.setState({ showDocuments: !this.state.showDocuments })}>add documents</p>
+                                {this.state.showDocuments ?
+                                    <DocumentLesson 
+                                        documents={context.state.documents}
+                                        addDocumentToLesson={context.addDocumentToLesson}
+                                        lesson={this.props.lesson}
+                                        isDocInLesson={context.isDocInLesson}
+                                        removeDocumentFromLesson={context.removeDocumentFromLesson}
+                                    />
+                                    :
+                                    null
+                                }
+                                <p onClick={() => this.setState({ showAssignments: !this.state.showAssignments })}>toggle students</p>
                                 {this.state.showAssignments ?
                                     <Assignment
                                         students={context.state.teacher.students}

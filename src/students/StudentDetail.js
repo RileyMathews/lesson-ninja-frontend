@@ -40,7 +40,7 @@ class StudentDetail extends Component {
                 </Hero>
                 <p>Assignments: </p>
                 <div className="student_assignment-container">
-                    {this.state.assignments.map(assignment => (
+                    {this.props.getStudentsAssignments(this.props.student.url).map(assignment => (
                         <StudentAssignment
                             key={assignment.id}
                             assignment={assignment}

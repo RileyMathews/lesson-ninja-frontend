@@ -4,8 +4,10 @@
     purpose: to handel the definition and returning of all calls made to apis in the application
 */
 
-const url = "http://127.0.0.1:8000/"
+// const url = "http://127.0.0.1:8000/"
 // const url = "http://142.93.23.116/"
+
+const baseUrl = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'http://142.93.23.116/'
 
 const APIManager = Object.create(null, {
 
@@ -23,7 +25,7 @@ const APIManager = Object.create(null, {
     // method to register a new user
     registerUser: {
         value: function (data) {
-            return fetch(`${url}auth/register/`, {
+            return fetch(`${baseUrl}auth/register/`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -36,7 +38,7 @@ const APIManager = Object.create(null, {
     // method to login a user
     loginUser: {
         value: function (data) {
-            return fetch(`${url}auth/login/`, {
+            return fetch(`${baseUrl}auth/login/`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -49,7 +51,7 @@ const APIManager = Object.create(null, {
     // method to get all of a collection that requires authentication with optional queries
     getAuthCollection: {
         value: function (collection, query) {
-            return fetch(`${url}${collection}/?${query}`, {
+            return fetch(`${baseUrl}${collection}/?${query}`, {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json",
@@ -75,7 +77,7 @@ const APIManager = Object.create(null, {
     // method to create users profile
     createItem: {
         value: function (data, collection) {
-            return fetch(`${url}${collection}/`, {
+            return fetch(`${baseUrl}${collection}/`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -115,7 +117,7 @@ const APIManager = Object.create(null, {
     // method to search through the students
     searchStudents: {
         value: function (query) {
-            return fetch(`${url}student/?username=${query}`, {
+            return fetch(`${baseUrl}student/?username=${query}`, {
                 method: "GET",
                 headers: {
                     "Content-type": "application/json",

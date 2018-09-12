@@ -17,6 +17,7 @@ class Assignment extends Component {
                         assignLesson={this.props.assignLesson}
                         cancelAssignment={this.props.cancelAssignment}
                         onLesson={this.props.isStudentOnLesson(this.props.lesson, student)}
+                        completeAssignment={this.props.completeAssignment}
                     />
                 ))}
             </React.Fragment>

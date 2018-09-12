@@ -12,7 +12,10 @@ class StudentAssignment extends Component {
                     <h1>student: {this.props.student.user.first_name}</h1>
                     <p>is {this.props.onLesson ? "on" : "not on"} this lesson</p>
                     {this.props.onLesson ?
-                        <Button onClick={() => this.props.cancelAssignment(this.props.lesson.url, this.props.student.url)}>cancel</Button>
+                        <React.Fragment>
+                            <Button onClick={() => this.props.cancelAssignment(this.props.lesson.url, this.props.student.url)}>cancel</Button>
+                            <Button onClick={() => this.props.completeAssignment(this.props.lesson.url, this.props.student.url)}>complete</Button>
+                        </React.Fragment>
                         :
                         <Button onClick={() => this.props.assignLesson(this.props.lesson.url, this.props.student.url)}>Assign</Button>}
                 </Box>

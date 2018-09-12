@@ -96,6 +96,8 @@ export class Provider extends Component {
     deleteLesson = LessonManager.deleteLesson.bind(this)
     openAssignment = LessonManager.openAssignment.bind(this)
     cancelAssignment = LessonManager.cancelAssignment.bind(this)
+    findAssignment = LessonManager.findAssignment.bind(this)
+    completeAssignment = LessonManager.completeAssignment.bind(this)
 
     // student manager methods
     addStudentToTeacher = StudentManager.addStudentToTeacher.bind(this)
@@ -139,6 +141,7 @@ export class Provider extends Component {
                 deleteLesson: this.deleteLesson,
                 openAssignment: this.openAssignment,
                 cancelAssignment: this.cancelAssignment,
+                completeAssignment: this.completeAssignment,
 
                 // student manager
                 addStudentToTeacher: this.addStudentToTeacher,

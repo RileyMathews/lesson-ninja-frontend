@@ -1,4 +1,5 @@
 import APIManager from "./APIManager";
+import DateManager from "./DateManager";
 
 /*  
     module: lesson manager
@@ -53,6 +54,13 @@ const LessonManager = Object.create(null, {
         }
     },
 
+    findAssignment: {
+        value: function (lessonURL, studentURL) {
+            const assignments = [...this.state.assignments]
+            return assignments.find(assignment => lessonURL === assignment.lesson.url && studentURL === assignment.student.url)
+        }
+    },
+
     // method to assign a lesson to a student
     assignLesson: {
         value: function (lessonURL, studentURL) {
@@ -70,12 +78,31 @@ const LessonManager = Object.create(null, {
         }
     }, 
 
+    // method to cancel an assignment
     cancelAssignment: {
         value: function (lessonURL, studentURL) {
-            const assignments = [...this.state.assignments]
-            const assignmentToDelete = assignments.find(assignment => lessonURL === assignment.lesson.url && studentURL === assignment.student.url)
+            const assignmentToDelete = this.findAssignment(lessonURL, studentURL)
             APIManager.deleteAuthItem(assignmentToDelete.url)
             this.removeItemFromStateByUrl(assignmentToDelete.url, 'assignments')
+        }
+    },
+
+    // method to mark an assignment as complete
+    completeAssignment: {
+        value: function (lessonURL, studentURL) {
+            const assignment = this.findAssignment(lessonURL, studentURL)
+            const now = DateManager.stringDate()
+            const data = {
+                lesson: lessonURL,
+                student: studentURL,
+                has_opened: true,
+                finished_on: now
+            }
+            APIManager.updateAuthItem(assignment.url, data)
+                .then(r => r.json())
+                .then(response => {
+                    console.log(response)
+                })
         }
     },
 

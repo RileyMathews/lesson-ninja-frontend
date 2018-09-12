@@ -14,11 +14,8 @@ const DocumentManager = Object.create(null, {
     _registerCreateDirectory: {
         value: function (name) {
             return new Promise((resolve, reject) => {
-                console.log(name)
                 const directoryKey = encodeURIComponent(name) + '/'
                 s3.putObject({ Key: directoryKey }, (err, data) => {
-                    console.log(err)
-                    console.log(data)
                     if (err) {
                         resolve(false)
                     } else {
@@ -33,7 +30,6 @@ const DocumentManager = Object.create(null, {
     // create new document method
     createDocument: {
         value: function (file, name, notes) {
-            console.log("got to create document method")
             // create key to post based on username and file name
             const fileKey = `${this.state.user.username}/${file.name}`
 
@@ -56,9 +52,7 @@ const DocumentManager = Object.create(null, {
                 ContentType: contentType
             }, (err, data) => {
                 if (err) {
-                    console.log("error", err)
                 } else {
-                    console.log(data)
                     const itemToPost = {
                         name: name,
                         notes: notes,
@@ -67,11 +61,9 @@ const DocumentManager = Object.create(null, {
                         file_extension: extension
                     }
                     // take the information s3 returned about the new file and post it to our database
-                    console.log(itemToPost)
                     APIManager.createItem(itemToPost, 'document')
                         .then(r => r.json())
                         .then(response => {
-                            console.log(response)
                             this.addItemToState(response, 'documents')
                         })
                 }
@@ -89,7 +81,6 @@ const DocumentManager = Object.create(null, {
             APIManager.createItem(itemToPost, 'lesson_document')
                 .then(r => r.json())
                 .then(response => {
-                    console.log(response)
                     this.updateItemInStateArrayFromAPI(lessonUrl, 'teacherLessons')
                 })
         }
@@ -100,7 +91,6 @@ const DocumentManager = Object.create(null, {
             APIManager.getAuthCollection("lesson_document", `lesson=${lessonId}&document=${documentId}`)
                 .then(r => r.json())
                 .then(response => {
-                    console.log(response)
                     APIManager.deleteAuthItem(response[0].url)
                         .then(r => {
                             this.updateItemInStateArrayFromAPI(lessonUrl, 'teacherLessons')

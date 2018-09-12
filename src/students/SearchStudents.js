@@ -25,7 +25,6 @@ class SearchStudents extends Component {
         APIManager.searchStudents(this.state.query)
             .then(r => r.json())
             .then(response => {
-                console.log(response)
                 this.setState({ results: response })
             })
     }

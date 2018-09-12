@@ -11,9 +11,7 @@ const StateManager = Object.create(null, {
     // method to accept a key and value and add that to providers state
     setProviderState: {
         value: function (key, value){
-            this.setState({[key]: value}, () => {
-                console.log("state set")
-            })
+            this.setState({[key]: value})
         }
     },
 
@@ -33,9 +31,7 @@ const StateManager = Object.create(null, {
         value: function(item, arrayKey) {
             const array = [...this.state[arrayKey]]
             array.push(item)
-            this.setState({[arrayKey]: array}, () => {
-                console.log("state set")
-            })
+            this.setState({[arrayKey]: array})
         }
     },
 

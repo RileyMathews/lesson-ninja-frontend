@@ -76,9 +76,7 @@ const LessonManager = Object.create(null, {
                     // this.addItemToState(response, "assignments")
                     const oldAssignments = [...this.state.assignments]
                     oldAssignments.push(response)
-                    this.setState({assignments: oldAssignments}, () => {
-                        console.log("assignment created")
-                    })
+                    this.setState({assignments: oldAssignments})
                 })
         }
     }, 

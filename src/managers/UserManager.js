@@ -16,7 +16,6 @@ const UserManager = Object.create(null, {
                 // first calls a method that attempts to create an s3 folder and returns a promise of true or false that allows us to continue
                 this._registerCreateDirectory(userData.username)
                     .then(response => {
-                        console.log(response)
                         if (response) {
                             // if the folder was created continue with registration
                             this._registerCreateUserAndProfile(userData, profileData, profileType)

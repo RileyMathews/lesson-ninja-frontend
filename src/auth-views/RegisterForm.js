@@ -57,7 +57,6 @@ class RegisterForm extends Component {
 
     // method to change the account type based on the dropdown select
     setAccountType = (evt) => {
-        console.log(evt)
         const user = { ...this.state }
         if (evt.target.value === "teacher") {
             user.is_teacher = true

@@ -123,7 +123,6 @@ export class Provider extends Component {
         that wants to serve as the data provider for its children.
     */
     render() {
-        console.log("provider re rendered")
         return (
             <Context.Provider value={{
                 // pass state

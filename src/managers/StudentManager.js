@@ -11,7 +11,6 @@ const StudentManager = Object.create(null, {
     // method to add a student to the currently logged in teacher
     addStudentToTeacher: {
         value: function (student) {
-            console.log(student)
             const dataToPost = {
                 teacher: this.state.teacher.url,
                 student: student.url,
@@ -20,7 +19,6 @@ const StudentManager = Object.create(null, {
             APIManager.createItem(dataToPost, "teacher_student")
                 .then(r => r.json())
                 .then(response => {
-                    console.log(response)
                     this.addStudentToTeacherState(student)
                 })
         }
@@ -40,7 +38,6 @@ const StudentManager = Object.create(null, {
             APIManager.getAuthCollection("teacher_student", `teacher=${this.state.teacher.id}&student=${student.id}`)
                 .then(r => r.json())
                 .then(response => {
-                    console.log(response)
                     APIManager.deleteAuthItem(response[0].url)
                     this.removeStudentFromTeacherState(student)
                 })
@@ -64,7 +61,6 @@ const StudentManager = Object.create(null, {
 
     isStudentOnLesson: {
         value: function (lesson, student) {
-            console.log("checking for assignment")
             const index = this.state.assignments.findIndex(assignment => assignment.student.url === student.url && assignment.lesson.url === lesson.url)
             return index === -1 ? false : true
         }

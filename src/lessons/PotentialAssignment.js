@@ -6,7 +6,6 @@ class PotentialAssignment extends Component {
 
 
     render() {
-        console.log("potential assignment rendered")
         return (
             <React.Fragment>
                 <Box>

@@ -6,7 +6,6 @@ class StudentAssignment extends Component {
 
 
     render() {
-        console.log("student assignment rendered")
         return (
             <React.Fragment>
                 <Box>

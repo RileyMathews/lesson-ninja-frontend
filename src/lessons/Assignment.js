@@ -16,7 +16,6 @@ class Assignment extends Component {
 
 
     render() {
-        console.log("assignment component rendered", this.props.assignments)
         return (
             <React.Fragment>
                 <Input type="text" name="search" placeholder="search" value={this.state.searchString} onChange={this.updateSearch}/>

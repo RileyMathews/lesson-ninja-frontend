@@ -27,7 +27,6 @@ class LessonDetail extends Component {
     }
 
     setStudent = (evt) => {
-        console.log(evt.target.value)
         this.setState({
             studentURL: evt.target.value
         })

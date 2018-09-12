@@ -70,13 +70,22 @@ const LessonManager = Object.create(null, {
         }
     }, 
 
+    cancelAssignment: {
+        value: function (lessonURL, studentURL) {
+            const assignments = [...this.state.assignments]
+            const assignmentToDelete = assignments.find(assignment => lessonURL === assignment.lesson.url && studentURL === assignment.student.url)
+            APIManager.deleteAuthItem(assignmentToDelete.url)
+            this.removeItemFromStateByUrl(assignmentToDelete.url, 'assignments')
+        }
+    },
+
     // method to get assignments
     // works for both teachers and students
     // for teachers will return all assignments they have created
     // for students will return all assignments assigned to them
     getAssignments: {
         value: function () {
-            APIManager.getAuthCollection("student_lesson")
+            APIManager.getAuthCollection("student_lesson", "users=true")
                 .then(r => r.json())
                 .then(response => {
                     this.setProviderState("assignments", response)

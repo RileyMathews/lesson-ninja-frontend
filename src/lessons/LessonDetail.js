@@ -84,6 +84,7 @@ class LessonDetail extends Component {
                                         isStudentOnLesson={context.isStudentOnLesson}
                                         lesson={this.props.lesson}
                                         assignLesson={context.assignLesson}
+                                        cancelAssignment={context.cancelAssignment}
                                     />
                                     :
                                     null

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Box } from 'bloomer'
+import { Box, Button } from 'bloomer'
 
 
 class StudentAssignment extends Component {
@@ -10,6 +10,11 @@ class StudentAssignment extends Component {
             <React.Fragment>
                 <Box>
                     <h1>student: {this.props.student.user.first_name}</h1>
+                    <p>is {this.props.onLesson ? "on" : "not on"} this lesson</p>
+                    {this.props.onLesson ?
+                        <Button onClick={() => this.props.cancelAssignment(this.props.lesson.url, this.props.student.url)}>cancel</Button>
+                        :
+                        <Button onClick={() => this.props.assignLesson(this.props.lesson.url, this.props.student.url)}>Assign</Button>}
                 </Box>
             </React.Fragment>
         )

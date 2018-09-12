@@ -14,7 +14,10 @@ class StudentAssignment extends Component {
                     {this.props.assignment.finished_on ?
                         null
                         :
-                        <Button isSize="small" onClick={() => this.props.completeAssignment(this.props.assignment.lesson.url, this.props.student.url)}>mark complete</Button>
+                        <React.Fragment>
+                            <Button isSize="small" onClick={() => this.props.completeAssignment(this.props.assignment.lesson.url, this.props.student.url)}>mark complete</Button>
+                            <Button isSize="small" onClick={() => this.props.cancelAssignment(this.props.assignment.lesson.url, this.props.student.url)}>cancel</Button>
+                        </React.Fragment>
                     }
 
                 </Box>

@@ -79,6 +79,9 @@ class StudentManagementEntry extends Component {
                                         getStudentsAssignments={context.getStudentsAssignments}
                                         completeAssignment={context.completeAssignment}
                                         cancelAssignment={context.cancelAssignment}
+                                        lessons={context.state.teacherLessons}
+                                        assignLesson={context.assignLesson}
+                                        isStudentOnLesson={context.isStudentOnLesson}
                                     />}
                             </React.Fragment>
                             : 

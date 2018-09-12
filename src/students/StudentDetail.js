@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Button } from 'bloomer/lib/elements/Button';
 import StudentAssignment from './StudentAssignment';
-import { Hero, HeroBody, Container } from 'bloomer';
+import { Hero, HeroBody, Container, Icon } from 'bloomer';
 import { Title } from 'bloomer/lib/elements/Title';
 import { Content } from 'bloomer/lib/elements/Content';
 import './StudentDetail.css'
+import UnassignedLessons from './UnassignedLessons';
 
 /*  
     module: student detail component
@@ -16,7 +17,8 @@ import './StudentDetail.css'
 class StudentDetail extends Component {
 
     state = {
-        assignments: []
+        assignments: [],
+        showLessons: false,
     }
 
     componentDidMount() {
@@ -50,6 +52,24 @@ class StudentDetail extends Component {
                         />
                     ))}
                 </div>
+                <Button className="clicky" onClick={() => this.setState({ showLessons: !this.state.showLessons })}>
+                    <span className="blocky">Toggle Lessons</span>
+                    {this.state.showLessons ?
+                        <Icon className="fa fa-chevron-circle-up fa-lg" />
+                        :
+                        <Icon className="fa fa-chevron-circle-down fa-lg" />
+                    }
+                </Button>
+                {this.state.showLessons ?
+                    <UnassignedLessons
+                        student={this.props.student}
+                        lessons={this.props.lessons}
+                        isStudentOnLesson={this.props.isStudentOnLesson}
+                        assignLesson={this.props.assignLesson}
+                    />
+                    :
+                    null
+                }
             </React.Fragment>
         )
     }

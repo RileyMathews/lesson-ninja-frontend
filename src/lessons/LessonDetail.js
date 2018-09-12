@@ -55,7 +55,7 @@ class LessonDetail extends Component {
                                 <h1>lesson</h1>
                                 <Lesson lesson={this.props.lesson} removeDocumentFromLesson={context.removeDocumentFromLesson} />
                                 <Button onClick={this.toggleEdit}>Edit</Button>
-                                <p onClick={() => this.setState({ showDocuments: !this.state.showDocuments })}>add documents</p>
+                                <p onClick={() => this.setState({ showDocuments: !this.state.showDocuments })}>manage documents</p>
                                 {this.state.showDocuments ?
                                     <DocumentLesson 
                                         documents={context.state.documents}
@@ -67,7 +67,7 @@ class LessonDetail extends Component {
                                     :
                                     null
                                 }
-                                <p onClick={() => this.setState({ showAssignments: !this.state.showAssignments })}>toggle students</p>
+                                <p onClick={() => this.setState({ showAssignments: !this.state.showAssignments })}>manage students</p>
                                 {this.state.showAssignments ?
                                     <Assignment
                                         students={context.state.teacher.students}

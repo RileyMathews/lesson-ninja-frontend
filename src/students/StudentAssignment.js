@@ -10,8 +10,13 @@ class StudentAssignment extends Component {
             <React.Fragment>
                 <Box className="student_assignment">
                     <p>{this.props.assignment.lesson.name}</p>
-                    <p>viewed: {this.props.assignment.has_opened ? <Icon className="fa fa-check fa-lg" /> : <Icon className="fa fa-times fa-lg" /> }</p>
-                    <Button isSize="small" disabled={true}>mark complete</Button>
+                    <p>viewed: {this.props.assignment.has_opened ? <Icon className="fa fa-check fa-lg" /> : <Icon className="fa fa-times fa-lg" />}</p>
+                    {this.props.assignment.finished_on ?
+                        null
+                        :
+                        <Button isSize="small" onClick={() => this.props.completeAssignment(this.props.assignment.lesson.url, this.props.student.url)}>mark complete</Button>
+                    }
+
                 </Box>
             </React.Fragment>
         )

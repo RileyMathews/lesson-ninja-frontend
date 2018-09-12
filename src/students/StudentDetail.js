@@ -41,7 +41,13 @@ class StudentDetail extends Component {
                 <p>Assignments: </p>
                 <div className="student_assignment-container">
                     {this.state.assignments.map(assignment => (
-                        <StudentAssignment key={assignment.id} assignment={assignment} />
+                        <StudentAssignment
+                            key={assignment.id}
+                            assignment={assignment}
+                            completeAssignment={this.props.completeAssignment}
+                            cancelAssignment={this.props.cancelAssignment}
+                            student={this.props.student}
+                        />
                     ))}
                 </div>
             </React.Fragment>

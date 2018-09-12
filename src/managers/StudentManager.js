@@ -64,6 +64,7 @@ const StudentManager = Object.create(null, {
 
     isStudentOnLesson: {
         value: function (lesson, student) {
+            console.log("checking for assignment")
             const index = this.state.assignments.findIndex(assignment => assignment.student.url === student.url && assignment.lesson.url === lesson.url)
             return index === -1 ? false : true
         }

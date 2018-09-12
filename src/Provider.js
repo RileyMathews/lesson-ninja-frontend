@@ -122,6 +122,7 @@ export class Provider extends Component {
         that wants to serve as the data provider for its children.
     */
     render() {
+        console.log("provider re rendered")
         return (
             <Context.Provider value={{
                 // pass state
@@ -142,6 +143,7 @@ export class Provider extends Component {
                 openAssignment: this.openAssignment,
                 cancelAssignment: this.cancelAssignment,
                 completeAssignment: this.completeAssignment,
+                findAssignment: this.findAssignment,
 
                 // student manager
                 addStudentToTeacher: this.addStudentToTeacher,

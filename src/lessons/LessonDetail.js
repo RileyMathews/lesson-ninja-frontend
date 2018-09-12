@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Button } from 'bloomer'
 import { Context } from '../Provider';
 import LessonEditView from './LessonEditView';
-import { Field, Label, Control, Select } from 'bloomer'
 import Lesson from './Lesson';
 import LessonDocumentForm from './LessonDocumentForm';
 import Assignment from './Assignment';
@@ -61,22 +60,6 @@ class LessonDetail extends Component {
                                     lesson={this.props.lesson}
                                     isDocInLesson={context.isDocInLesson}
                                 />
-                                <form onSubmit={this.createAssinment}>
-                                    <Field>
-                                        <Label>Assign to:</Label>
-                                        <Control>
-                                            <Select defaultValue="default" onChange={this.setStudent}>
-                                                <option value="default" disabled="disabled">select a student</option>
-                                                {context.state.teacher.students.map(student => (
-                                                    <React.Fragment key={`frag_${student.id}`}>
-                                                        {context.isStudentOnLesson(this.props.lesson, student) ? null : <option value={student.url} key={student.id}>{student.user.first_name}</option>}
-                                                    </React.Fragment>
-                                                ))}
-                                            </Select>
-                                            <Button type="submit">Assign</Button>
-                                        </Control>
-                                    </Field>
-                                </form>
                                 <p onClick={() => this.setState({showAssignments: !this.state.showAssignments})}>toggle students</p>
                                 {this.state.showAssignments ?
                                     <Assignment
@@ -86,6 +69,8 @@ class LessonDetail extends Component {
                                         assignLesson={context.assignLesson}
                                         cancelAssignment={context.cancelAssignment}
                                         completeAssignment={context.completeAssignment}
+                                        findAssignment={context.findAssignment}
+                                        assignments={context.state.assignments}
                                     />
                                     :
                                     null

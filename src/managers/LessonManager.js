@@ -70,10 +70,15 @@ const LessonManager = Object.create(null, {
                 confirmed: true,
                 has_opened: false,
             }
-            APIManager.createItem(dataToPost ,"student_lesson")
+        APIManager.createItem(dataToPost ,"student_lesson")
                 .then(r => r.json())
                 .then(response => {
-                    this.addItemToState(response, "assignments")
+                    // this.addItemToState(response, "assignments")
+                    const oldAssignments = [...this.state.assignments]
+                    oldAssignments.push(response)
+                    this.setState({assignments: oldAssignments}, () => {
+                        console.log("assignment created")
+                    })
                 })
         }
     }, 

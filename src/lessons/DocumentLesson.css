@@ -1,0 +1,4 @@
+#lesson_document_container {
+    display: flex;
+    flex-wrap: wrap;
+}

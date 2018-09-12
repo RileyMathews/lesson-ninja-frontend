@@ -5,6 +5,7 @@ import LessonEditView from './LessonEditView';
 import Lesson from './Lesson';
 import Assignment from './Assignment';
 import DocumentLesson from './DocumentLesson';
+import { Icon } from 'bloomer/lib/elements/Icon';
 
 /*  
     module: lesson detail component
@@ -54,9 +55,19 @@ class LessonDetail extends Component {
                                 <h1>lesson</h1>
                                 <Lesson lesson={this.props.lesson} removeDocumentFromLesson={context.removeDocumentFromLesson} />
                                 <Button onClick={this.toggleEdit}>Edit</Button>
-                                <p onClick={() => this.setState({ showDocuments: !this.state.showDocuments })}>manage documents</p>
+
+                                <div className="blocky">
+                                    <Button onClick={() => this.setState({ showDocuments: !this.state.showDocuments })}>
+                                        <span className="blocky">manage documents</span>
+                                        {this.state.showDocuments ?
+                                            <Icon className="fa fa-chevron-circle-up fa-lg" />
+                                            :
+                                            <Icon className="fa fa-chevron-circle-down fa-lg" />
+                                        }
+                                    </Button>
+                                </div>
                                 {this.state.showDocuments ?
-                                    <DocumentLesson 
+                                    <DocumentLesson
                                         documents={context.state.documents}
                                         addDocumentToLesson={context.addDocumentToLesson}
                                         lesson={this.props.lesson}
@@ -66,30 +77,39 @@ class LessonDetail extends Component {
                                     :
                                     null
                                 }
-                                <p onClick={() => this.setState({ showAssignments: !this.state.showAssignments })}>manage students</p>
-                                {this.state.showAssignments ?
-                                    <Assignment
-                                        students={context.state.teacher.students}
-                                        isStudentOnLesson={context.isStudentOnLesson}
-                                        lesson={this.props.lesson}
-                                        assignLesson={context.assignLesson}
-                                        cancelAssignment={context.cancelAssignment}
-                                        completeAssignment={context.completeAssignment}
-                                        findAssignment={context.findAssignment}
-                                        assignments={context.state.assignments}
-                                    />
-                                    :
-                                    null
-                                }
+
+
+                                <Button className="clicky" onClick={() => this.setState({ showAssignments: !this.state.showAssignments })}>
+                                    <span className="blocky">manage students</span>
+                                    {this.state.showAssignments ?
+                                        <Icon className="fa fa-chevron-circle-up fa-lg" />
+                                        :
+                                        <Icon className="fa fa-chevron-circle-down fa-lg" />
+                                    }
+                                    </Button>
+                                        {this.state.showAssignments ?
+                                            <Assignment
+                                                students={context.state.teacher.students}
+                                                isStudentOnLesson={context.isStudentOnLesson}
+                                                lesson={this.props.lesson}
+                                                assignLesson={context.assignLesson}
+                                                cancelAssignment={context.cancelAssignment}
+                                                completeAssignment={context.completeAssignment}
+                                                findAssignment={context.findAssignment}
+                                                assignments={context.state.assignments}
+                                            />
+                                            :
+                                            null
+                                        }
 
                             </React.Fragment>
-                        }
-
+                                    }
+            
                     </React.Fragment>
-                )}
+                                )}
             </Context.Consumer>
         )
-    }
-}
-
-export default LessonDetail
+                        }
+                    }
+                    
+                    export default LessonDetail

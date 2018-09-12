@@ -19,3 +19,29 @@ html {
 .test {
   border: 1px solid tomato
 }
+
+.clicky {
+  cursor: pointer;
+  user-select: none;
+}
+
+.blocky {
+  display: block;
+}
+
+.buttonify {
+  margin: 8px;
+  display: inline-block;
+  background-color: white;
+  border-color: #9e9e9e;
+  border-width: 1px;
+  color: #363636;
+  cursor: pointer;
+  justify-content: center;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  padding-top: calc(0.375em - 1px);
+  text-align: center;
+  white-space: nowrap;
+}

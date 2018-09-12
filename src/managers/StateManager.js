@@ -85,6 +85,14 @@ const StateManager = Object.create(null, {
         }
     },
 
+    updateItemInStateArray: {
+        value: function (obj, stateKey) {
+            const stateArray = [...this.state[stateKey]]
+            stateArray[stateArray.findIndex(item => item.id === obj.id)] = obj
+            this.setProviderState(stateKey, stateArray)
+        }
+    },
+
     // method that takes the url of an item in an array in state, and the key of that array, and removes the
     removeItemFromStateByUrl: {
         value: function (url, stateKey) {

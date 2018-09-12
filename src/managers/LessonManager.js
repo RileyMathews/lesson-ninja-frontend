@@ -106,7 +106,7 @@ const LessonManager = Object.create(null, {
             APIManager.updateAuthItem(assignment.url, data)
                 .then(r => r.json())
                 .then(response => {
-                    console.log(response)
+                    this.updateItemInStateArray(response, 'assignments')
                 })
         }
     },

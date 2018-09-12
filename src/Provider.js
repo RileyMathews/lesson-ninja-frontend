@@ -85,6 +85,7 @@ export class Provider extends Component {
     addItemToState = StateManager.addItemToState.bind(this)
     updateItemInStateArrayFromAPI = StateManager.updateItemInStateArrayFromAPI.bind(this)
     removeItemFromStateByUrl = StateManager.removeItemFromStateByUrl.bind(this)
+    updateItemInStateArray = StateManager.updateItemInStateArray.bind(this)
 
     // lesson manager methods
     createNewLesson = LessonManager.createNewLesson.bind(this)

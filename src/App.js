@@ -9,14 +9,18 @@ import FooterComponent from './FooterComponent';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div id="app-body">
         <React.Fragment>
           <Provider>
-            <NavBar />
-            <Container>
-            <ApplicationViews />
-            </Container>
-            <FooterComponent />
+            <div id="app-content">
+              <NavBar />
+              <Container>
+                <ApplicationViews />
+              </Container>
+              <div id="app-footer">
+                <FooterComponent />
+              </div>
+            </div>
           </Provider>
         </React.Fragment>
       </div>

@@ -8,7 +8,7 @@ import React, { Component } from 'react'
 */
 
 
-class EditStudentInfo extends Component {
+class StudentInfo extends Component {
 
 
     render() {
@@ -20,4 +20,4 @@ class EditStudentInfo extends Component {
     }
 }
 
-export default EditStudentInfo
+export default StudentInfo

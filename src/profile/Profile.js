@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import EditUserInfo from './EditUserInfo';
-import EditStudentInfo from './EditStudentInfo';
-import EditTeacherInfo from './EditTeacherInfo';
+import UserInfo from './UserInfo';
+import StudentInfo from './StudentInfo';
+import TeacherInfo from './TeacherInfo';
 import ProfileEditField from './ProfileEditField';
 
 /*  
@@ -55,16 +55,16 @@ class Profile extends Component {
         return (
             <React.Fragment>
                 <h1>Profile</h1>
-                <EditUserInfo
+                <UserInfo
                     user={this.props.context.state.user}
                     startEditingValue={this.startEditingValue}
                 />
                 {this.props.context.state.user.is_student ?
-                    <EditStudentInfo
+                    <StudentInfo
                         student={this.props.context.state.student}
                     />
                     :
-                    <EditTeacherInfo
+                    <TeacherInfo
                         teacher={this.props.context.state.teacher}
                         startEditingValue={this.startEditingValue}
                     />

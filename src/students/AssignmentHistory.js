@@ -10,7 +10,8 @@ class AssignmentHistory extends Component {
             <React.Fragment>
                 <h1>Past Assignments</h1>
                 {this.props.assignments.filter(assignment => assignment.finished_on !== null).map(assignment => (
-                    <CompletedAssignment 
+                    <CompletedAssignment
+                        key={assignment.id}
                         assignment={assignment}
                     />
                 ))}

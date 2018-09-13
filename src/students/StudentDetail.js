@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Button } from 'bloomer/lib/elements/Button';
 import StudentAssignment from './StudentAssignment';
-import { Hero, HeroBody, Container, Icon } from 'bloomer';
+import { Hero, HeroBody, Container} from 'bloomer';
 import { Title } from 'bloomer/lib/elements/Title';
 import { Content } from 'bloomer/lib/elements/Content';
 import './StudentDetail.css'
 import UnassignedLessons from './UnassignedLessons';
 import AssignmentHistory from './AssignmentHistory';
+import DropdownToggle from '../display-components/DropdownToggle';
 
 /*  
     module: student detail component
@@ -49,14 +50,8 @@ class StudentDetail extends Component {
                         />
                     ))}
                 </div>
-                <Button onClick={() => this.setState({ showLessons: !this.state.showLessons })}>
-                    <span className="blocky">Toggle Lessons</span>
-                    {this.state.showLessons ?
-                        <Icon className="fa fa-chevron-circle-up fa-lg" />
-                        :
-                        <Icon className="fa fa-chevron-circle-down fa-lg" />
-                    }
-                </Button>
+                
+                <DropdownToggle callback={() => this.setState({ showLessons: !this.state.showLessons })} active={this.state.showLessons} text={"show lessons"}/>
                 {this.state.showLessons ?
                     <UnassignedLessons
                         student={this.props.student}
@@ -68,13 +63,7 @@ class StudentDetail extends Component {
                     null
                 }
 
-                <Button onClick={() => this.setState({ showAssignmentHistory: !this.state.showAssignmentHistory })}>Assignment History
-                    {this.state.showAssignmentHistory ?
-                        <Icon className="fa fa-chevron-circle-up fa-lg" />
-                        :
-                        <Icon className="fa fa-chevron-circle-down fa-lg" />
-                    }
-                </Button>
+                <DropdownToggle callback={() => this.setState({ showAssignmentHistory: !this.state.showAssignmentHistory})} active={this.state.showAssignmentHistory} text={"assignment history"}/>
                 {this.state.showAssignmentHistory ?
                     <AssignmentHistory
                         student={this.props.student}

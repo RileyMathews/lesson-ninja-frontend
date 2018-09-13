@@ -5,7 +5,7 @@ import LessonEditView from './LessonEditView';
 import Lesson from './Lesson';
 import Assignment from './Assignment';
 import DocumentLesson from './DocumentLesson';
-import { Icon } from 'bloomer/lib/elements/Icon';
+import DropdownToggle from '../display-components/DropdownToggle';
 
 /*  
     module: lesson detail component
@@ -56,14 +56,7 @@ class LessonDetail extends Component {
                                 <Button onClick={this.toggleEdit}>Edit</Button>
 
                                 <div className="blocky">
-                                    <Button onClick={() => this.setState({ showDocuments: !this.state.showDocuments })}>
-                                        <span className="blocky">manage documents</span>
-                                        {this.state.showDocuments ?
-                                            <Icon className="fa fa-chevron-circle-up fa-lg" />
-                                            :
-                                            <Icon className="fa fa-chevron-circle-down fa-lg" />
-                                        }
-                                    </Button>
+                                    <DropdownToggle callback={() => this.setState({ showDocuments: !this.state.showDocuments })} active={this.state.showDocuments} text={"Show Documents"}/>
                                 </div>
                                 {this.state.showDocuments ?
                                     <DocumentLesson
@@ -77,15 +70,7 @@ class LessonDetail extends Component {
                                     null
                                 }
 
-
-                                <Button className="clicky" onClick={() => this.setState({ showAssignments: !this.state.showAssignments })}>
-                                    <span className="blocky">manage students</span>
-                                    {this.state.showAssignments ?
-                                        <Icon className="fa fa-chevron-circle-up fa-lg" />
-                                        :
-                                        <Icon className="fa fa-chevron-circle-down fa-lg" />
-                                    }
-                                    </Button>
+                                    <DropdownToggle callback={() => this.setState({ showAssignments: !this.state.showAssignments })} active={this.state.showAssignments} text={"Show Assignments"}/>
                                         {this.state.showAssignments ?
                                             <Assignment
                                                 students={context.state.teacher.students}

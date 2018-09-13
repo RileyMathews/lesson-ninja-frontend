@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Student from './Student';
+import MediaComponent from '../display-components/MediaComponent';
 
 /*  
     module: student list component
@@ -15,11 +15,13 @@ class StudentList extends Component {
             <React.Fragment>
                 <h1>Student List</h1>
                 {this.props.students.map(student => (
-                    <Student
+                    <MediaComponent 
                         key={student.id}
-                        student={student}
-                        setDetailView={this.props.setDetailView}
-                        removeStudentFromTeacher={this.props.removeStudentFromTeacher}
+                        title={`${student.user.first_name} ${student.user.last_name}`}
+                        subtitle={`${student.user.username}`}
+                        mainCallback={() => this.props.setDetailView(student.id)}
+                        mainCallbackText={"Detail"}
+                        deleteCallback={() => this.props.removeStudentFromTeacher(student)}
                     />
                 ))}
             </React.Fragment>

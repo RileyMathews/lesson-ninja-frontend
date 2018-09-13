@@ -64,6 +64,13 @@ const StudentManager = Object.create(null, {
             const index = this.state.assignments.findIndex(assignment => assignment.student.url === student.url && assignment.lesson.url === lesson.url)
             return index === -1 ? false : true
         }
+    },
+
+    isStudentWithTeacher: {
+        value: function (student) {
+            const index = this.state.teacher.students.findIndex(item => item.url === student.url)
+            return index === -1 ? false : true
+        }
     }
 })
 

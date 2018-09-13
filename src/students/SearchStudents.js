@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Field, Label, Control, Input, Button } from 'bloomer'
 import APIManager from '../managers/APIManager';
-import StudentSearchResult from './StudentSearchResult';
 import { Context } from '../Provider';
+import MediaComponent from '../display-components/MediaComponent';
 
 /*  
     module: search students
@@ -56,11 +56,13 @@ class SearchStudents extends Component {
                 <Context.Consumer>
                     {context => (
                         <React.Fragment>
-                            {this.state.results.map(student => (
-                                <StudentSearchResult
-                                    addStudentToTeacher={context.addStudentToTeacher}
+                            {this.state.results.filter(student => !context.isStudentWithTeacher(student)).map(student => (
+                                <MediaComponent 
                                     key={student.id}
-                                    student={student}
+                                    title={`${student.user.first_name} ${student.user.last_name}`}
+                                    subtitle={`${student.user.username}`}
+                                    mainCallback={() => context.addStudentToTeacher(student)}
+                                    mainCallbackText={"Add"}
                                 />
                             ))}
                         </React.Fragment>

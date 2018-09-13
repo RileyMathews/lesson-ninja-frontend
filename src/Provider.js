@@ -90,7 +90,6 @@ export class Provider extends Component {
     // lesson manager methods
     createNewLesson = LessonManager.createNewLesson.bind(this)
     getTeachersLessons = LessonManager.getTeachersLessons.bind(this)
-    addNewTeacherLessonToState = LessonManager.addNewTeacherLessonToState.bind(this)
     updateLesson = LessonManager.updateLesson.bind(this)
     assignLesson = LessonManager.assignLesson.bind(this)
     getAssignments = LessonManager.getAssignments.bind(this)
@@ -107,6 +106,7 @@ export class Provider extends Component {
     removeStudentFromTeacherState = StudentManager.removeStudentFromTeacherState.bind(this)
     getStudentsAssignments = StudentManager.getStudentsAssignments.bind(this)
     isStudentOnLesson = StudentManager.isStudentOnLesson.bind(this)
+    isStudentWithTeacher = StudentManager.isStudentWithTeacher.bind(this)
 
     // document manager methods
     createDocument = DocumentManager.createDocument.bind(this)
@@ -150,6 +150,7 @@ export class Provider extends Component {
                 removeStudentFromTeacher: this.removeStudentFromTeacher,
                 getStudentsAssignments: this.getStudentsAssignments,
                 isStudentOnLesson: this.isStudentOnLesson,
+                isStudentWithTeacher: this.isStudentWithTeacher,
 
                 // document manager
                 createDocument: this.createDocument,

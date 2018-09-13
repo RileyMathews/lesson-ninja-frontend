@@ -58,3 +58,7 @@ html {
 .multi-line {
   white-space: pre-line;
 }
+
+.link + .link {
+  margin-left: 1em;
+}

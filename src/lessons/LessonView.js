@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import LessonSnippet from './LessonSnippet';
 import LessonDetail from './LessonDetail';
+import MediaComponent from '../display-components/MediaComponent';
 
 /*  
     module: lesson view component
@@ -46,12 +46,13 @@ class LessonView extends Component {
                     :
                     <React.Fragment>
                         {this.props.lessons.map(lesson => (
-                            <LessonSnippet
+                            <MediaComponent 
                                 key={lesson.id}
-                                lesson={lesson}
-                                routeTo={this.props.routeTo}
-                                setDetailLessonView={this.setDetailLessonView}
-                                deleteLesson={this.props.deleteLesson}
+                                title={`${lesson.name}`}
+                                subtitle={`${lesson.description}`}
+                                mainCallback={() => this.setDetailLessonView(lesson.id)}
+                                mainCallbackText={"Detail"}
+                                deleteCallback={() => this.props.deleteLesson(lesson.url)}
                             />
                         ))}
                     </React.Fragment>

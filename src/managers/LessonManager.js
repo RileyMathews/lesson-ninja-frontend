@@ -26,17 +26,8 @@ const LessonManager = Object.create(null, {
             APIManager.createItem(lesson, "lesson")
                 .then(r => r.json())
                 .then(response => {
-                    this.addNewTeacherLessonToState(response)
+                    this.addItemToState(response, 'teacherLessons')
                 })
-        }
-    },
-
-    // method that takes a lesson object, and adds it to the array in providers state
-    addNewTeacherLessonToState: {
-        value: function (lesson) {
-            const oldLessons = [...this.state.teacherLessons]
-            oldLessons.push(lesson)
-            this.setProviderState("teacherLessons", oldLessons)
         }
     },
 

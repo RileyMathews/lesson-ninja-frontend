@@ -10,7 +10,6 @@ class App extends Component {
   render() {
     return (
       <div id="app-body">
-        <React.Fragment>
           <Provider>
             <div id="app-content">
               <NavBar />
@@ -22,7 +21,6 @@ class App extends Component {
               <FooterComponent />
             </div>
           </Provider>
-        </React.Fragment>
       </div>
     );
   }

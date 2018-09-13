@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import DocumentSnippet from './DocumentSnippet';
+import MediaComponent from '../display-components/MediaComponent'
 
 /*  
     module: document list component
@@ -11,12 +11,29 @@ import DocumentSnippet from './DocumentSnippet';
 class DocumentList extends Component {
 
 
+
     render() {
         return (
             <React.Fragment>
                 <h1>document list</h1>
                 {this.props.documents.map(document => (
-                    <DocumentSnippet key={document.id} document={document} deleteDocument={this.props.deleteDocument}/>
+                    // <DocumentSnippet key={document.id} document={document} deleteDocument={this.props.deleteDocument}/>
+                    <MediaComponent
+                        key={document.id}
+                        title={`${document.name}`}
+                        links={[
+                            {
+                                url: document.s3_url,
+                                text: "view",
+                                download: false
+                            },
+                            {
+                                url: document.s3_url,
+                                text: "download",
+                                download: true
+                            }
+                        ]}
+                    />
                 ))}
             </React.Fragment>
         )

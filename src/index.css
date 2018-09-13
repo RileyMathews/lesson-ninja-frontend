@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  
+  height: 100vh;
 }
 
 html {
@@ -14,10 +14,19 @@ html {
     ),
     /* bottom, image */
     url('./images/background.jpg') right;
+    height: 100vh;
+}
+
+#root {
+  height: 100vh;
 }
 
 .test {
   border: 1px solid tomato
+}
+
+.text-small {
+  font-size: .6em;
 }
 
 .clicky {

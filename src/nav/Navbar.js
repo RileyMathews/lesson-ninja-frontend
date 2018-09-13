@@ -28,7 +28,7 @@ class NavBar extends Component {
             <React.Fragment>
                 <Context.Consumer>
                     {context => (
-                        <Navbar style={{ border: 'solid 1px black', margin: '0' }}>
+                        <Navbar style={{ borderBottom: 'solid 1px black', margin: '0' }}>
                             <NavbarMenu isActive={this.state.isActive} onClick={this.onClickNav}>
                                 <NavbarStart>
 

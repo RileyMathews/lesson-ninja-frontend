@@ -17,9 +17,9 @@ class App extends Component {
               <Container>
                 <ApplicationViews />
               </Container>
-              <div id="app-footer">
-                <FooterComponent />
-              </div>
+            </div>
+            <div id="app-footer">
+              <FooterComponent />
             </div>
           </Provider>
         </React.Fragment>

@@ -4,6 +4,7 @@ import { Provider } from './Provider';
 import NavBar from './nav/Navbar';
 import ApplicationViews from './ApplicationViews';
 import { Container } from 'bloomer/lib/layout/Container';
+import FooterComponent from './FooterComponent';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
             <Container>
             <ApplicationViews />
             </Container>
+            <FooterComponent />
           </Provider>
         </React.Fragment>
       </div>

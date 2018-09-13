@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Hero, HeroBody, Container, Title, Content} from 'bloomer'
 
 /*  
     module: lesson component
@@ -13,14 +14,20 @@ class Lesson extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>prime lesson component</h1>
-                <p>name: {this.props.lesson.name}</p>
-                <p>description: {this.props.lesson.description}</p>
-                <p>content: {this.props.lesson.content}</p>
-                <p>documents:</p>
-                {this.props.lesson.documents.map(document => (
-                    <p key={document.id}>{document.name}</p>
-                ))}
+                <Hero isSize='small'>
+                    <HeroBody>
+                        <Container hasTextAlign='centered'>
+                            <Title>{this.props.lesson.name}</Title>
+                            <Content>
+                                <p>
+                                    description: {this.props.lesson.description} 
+                                    <br/>
+                                    content: {this.props.lesson.content}
+                                </p>
+                            </Content>
+                        </Container>
+                    </HeroBody>
+                </Hero>
             </React.Fragment>
         )
     }

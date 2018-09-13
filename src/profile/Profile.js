@@ -35,7 +35,7 @@ class Profile extends Component {
         }, () => {
             document.getElementById("profile_edit_field").focus()
         })
-        
+
     }
 
     submitEdit = (evt) => {
@@ -53,7 +53,7 @@ class Profile extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div id="profile">
                 <h1>Profile</h1>
                 <UserInfo
                     user={this.props.context.state.user}
@@ -79,7 +79,7 @@ class Profile extends Component {
                     :
                     null
                 }
-            </React.Fragment>
+            </div>
         )
     }
 }

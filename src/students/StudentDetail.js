@@ -6,6 +6,7 @@ import { Title } from 'bloomer/lib/elements/Title';
 import { Content } from 'bloomer/lib/elements/Content';
 import './StudentDetail.css'
 import UnassignedLessons from './UnassignedLessons';
+import AssignmentHistory from './AssignmentHistory';
 
 /*  
     module: student detail component
@@ -17,12 +18,8 @@ import UnassignedLessons from './UnassignedLessons';
 class StudentDetail extends Component {
 
     state = {
-        assignments: [],
         showLessons: false,
-    }
-
-    componentDidMount() {
-        this.setState({ assignments: this.props.getStudentsAssignments(this.props.student.url) })
+        showAssignmentHistory: false,
     }
 
 
@@ -42,7 +39,7 @@ class StudentDetail extends Component {
                 </Hero>
                 <p>Assignments: </p>
                 <div className="student_assignment-container">
-                    {this.props.getStudentsAssignments(this.props.student.url).map(assignment => (
+                    {this.props.getStudentsAssignments(this.props.student.url).filter(assignment => assignment.finished_on === null).map(assignment => (
                         <StudentAssignment
                             key={assignment.id}
                             assignment={assignment}
@@ -52,7 +49,7 @@ class StudentDetail extends Component {
                         />
                     ))}
                 </div>
-                <Button className="clicky" onClick={() => this.setState({ showLessons: !this.state.showLessons })}>
+                <Button onClick={() => this.setState({ showLessons: !this.state.showLessons })}>
                     <span className="blocky">Toggle Lessons</span>
                     {this.state.showLessons ?
                         <Icon className="fa fa-chevron-circle-up fa-lg" />
@@ -66,6 +63,22 @@ class StudentDetail extends Component {
                         lessons={this.props.lessons}
                         isStudentOnLesson={this.props.isStudentOnLesson}
                         assignLesson={this.props.assignLesson}
+                    />
+                    :
+                    null
+                }
+
+                <Button onClick={() => this.setState({ showAssignmentHistory: !this.state.showAssignmentHistory })}>Assignment History
+                    {this.state.showAssignmentHistory ?
+                        <Icon className="fa fa-chevron-circle-up fa-lg" />
+                        :
+                        <Icon className="fa fa-chevron-circle-down fa-lg" />
+                    }
+                </Button>
+                {this.state.showAssignmentHistory ?
+                    <AssignmentHistory
+                        student={this.props.student}
+                        assignments={this.props.getStudentsAssignments(this.props.student.url)}
                     />
                     :
                     null

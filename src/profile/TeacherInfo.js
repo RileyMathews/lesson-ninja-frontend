@@ -13,7 +13,7 @@ class TeacherInfo extends Component {
     render() {
         return (
             <React.Fragment>
-                <div id="teacher-info">
+                <div id="teacher-info" className="profile-block">
                     <h1>Teacher Profile</h1>
                     <p>bio: {this.props.teacher.bio} <span id="teacher__bio" onClick={this.props.startEditingValue}>Edit</span></p>
                     <p>street: {this.props.teacher.street} <span id="teacher__street" onClick={this.props.startEditingValue}>Edit</span></p>

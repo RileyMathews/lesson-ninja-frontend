@@ -3,6 +3,7 @@ import UserInfo from './UserInfo';
 import StudentInfo from './StudentInfo';
 import TeacherInfo from './TeacherInfo';
 import ProfileEditField from './ProfileEditField';
+import './Profile.css'
 
 /*  
     module: edit profile component
@@ -58,15 +59,18 @@ class Profile extends Component {
                 <UserInfo
                     user={this.props.context.state.user}
                     startEditingValue={this.startEditingValue}
+                    updateUserProperty={this.props.context.updateUserProperty}
                 />
                 {this.props.context.state.user.is_student ?
                     <StudentInfo
                         student={this.props.context.state.student}
+                        updateUserProperty={this.props.context.updateUserProperty}
                     />
                     :
                     <TeacherInfo
                         teacher={this.props.context.state.teacher}
                         startEditingValue={this.startEditingValue}
+                        updateUserProperty={this.props.context.updateUserProperty}
                     />
                 }
                 {this.state.editing ?

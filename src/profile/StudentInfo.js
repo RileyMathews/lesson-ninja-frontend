@@ -14,7 +14,7 @@ class StudentInfo extends Component {
     render() {
         return (
             <React.Fragment>
-                <div id="stdudent-info">
+                <div id="stdudent-info" className="profile-block">
                     <h1>Student Profile</h1>
                 </div>
             </React.Fragment>

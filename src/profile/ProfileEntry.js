@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Context } from '../Provider';
-import EditProfile from './EditProfile';
+import Profile from './Profile';
 
 /*  
     module: profile entry component
@@ -27,7 +27,7 @@ class ProfileEntry extends Component {
                         <React.Fragment>
                         {
                             this.state.showEdit ?
-                                <EditProfile
+                                <Profile
                                     context={context}
                                 />
                                 :

@@ -11,7 +11,7 @@ import ProfileEditField from './ProfileEditField';
 */
 
 
-class EditProfile extends Component {
+class Profile extends Component {
 
     state = {
         editing: false,
@@ -84,4 +84,4 @@ class EditProfile extends Component {
     }
 }
 
-export default EditProfile
+export default Profile

@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
 import {Hero, HeroBody, Container, Title, Content} from 'bloomer'
 
-/*  
-    module: lesson component
-    author: riley mathews
-    purpose: to display information about a lesson object passed down to it
-*/
 
-
-class Lesson extends Component {
+class Banner extends Component {
 
 
     render() {
@@ -17,12 +11,10 @@ class Lesson extends Component {
                 <Hero isSize='small'>
                     <HeroBody>
                         <Container hasTextAlign='centered'>
-                            <Title>{this.props.lesson.name}</Title>
+                            <Title>{this.props.title}</Title>
                             <Content>
-                                <p>
-                                    description: {this.props.lesson.description} 
-                                    <br/>
-                                    content: {this.props.lesson.content}
+                                <p className="multi-line">
+                                    {this.props.text}
                                 </p>
                             </Content>
                         </Container>
@@ -33,4 +25,4 @@ class Lesson extends Component {
     }
 }
 
-export default Lesson
+export default Banner

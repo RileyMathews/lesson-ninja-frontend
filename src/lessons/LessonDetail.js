@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { Button } from 'bloomer'
 import { Context } from '../Provider';
 import LessonEditView from './LessonEditView';
-import Lesson from './Lesson';
 import Assignment from './Assignment';
 import DocumentLesson from './DocumentLesson';
 import DropdownToggle from '../display-components/DropdownToggle';
+import Banner from '../display-components/Banner';
 
 /*  
     module: lesson detail component
@@ -52,7 +52,10 @@ class LessonDetail extends Component {
                             />
                             :
                             <React.Fragment>
-                                <Lesson lesson={this.props.lesson} />
+                                <Banner 
+                                    title={this.props.lesson.name}
+                                    text={`${this.props.lesson.description} \n ${this.props.lesson.content}`}
+                                />
                                 <Button onClick={this.toggleEdit}>Edit</Button>
 
                                 <div className="blocky">

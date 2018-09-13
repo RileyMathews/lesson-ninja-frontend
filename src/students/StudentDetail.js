@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { Button } from 'bloomer/lib/elements/Button';
 import StudentAssignment from './StudentAssignment';
-import { Hero, HeroBody, Container} from 'bloomer';
-import { Title } from 'bloomer/lib/elements/Title';
-import { Content } from 'bloomer/lib/elements/Content';
 import './StudentDetail.css'
 import UnassignedLessons from './UnassignedLessons';
 import AssignmentHistory from './AssignmentHistory';
 import DropdownToggle from '../display-components/DropdownToggle';
+import Banner from '../display-components/Banner';
 
 /*  
     module: student detail component
@@ -28,16 +26,10 @@ class StudentDetail extends Component {
         return (
             <React.Fragment>
                 <Button onClick={this.props.setListView}>Return To Students</Button>
-                <Hero isSize='small'>
-                    <HeroBody>
-                        <Container hasTextAlign='centered'>
-                            <Title>{this.props.student.user.first_name} {this.props.student.user.last_name}</Title>
-                            <Content>
-                                <p>{this.props.student.user.username} {this.props.student.user.email}</p>
-                            </Content>
-                        </Container>
-                    </HeroBody>
-                </Hero>
+                <Banner 
+                    title={`${this.props.student.user.first_name} ${this.props.student.user.last_name}`}
+                    text={`${this.props.student.user.username} ${this.props.student.user.email}`}
+                />
                 <p>Assignments: </p>
                 <div className="student_assignment-container">
                     {this.props.getStudentsAssignments(this.props.student.url).filter(assignment => assignment.finished_on === null).map(assignment => (

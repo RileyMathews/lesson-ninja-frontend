@@ -52,15 +52,13 @@ class LessonDetail extends Component {
                             />
                             :
                             <React.Fragment>
-                                <Banner 
+                                <Banner
                                     title={this.props.lesson.name}
                                     text={`${this.props.lesson.description} \n ${this.props.lesson.content}`}
                                 />
                                 <Button onClick={this.toggleEdit}>Edit</Button>
 
-                                <div className="blocky">
-                                    <DropdownToggle callback={() => this.setState({ showDocuments: !this.state.showDocuments })} active={this.state.showDocuments} text={"Show Documents"}/>
-                                </div>
+                                <DropdownToggle callback={() => this.setState({ showDocuments: !this.state.showDocuments })} active={this.state.showDocuments} text={"Show Documents"} />
                                 {this.state.showDocuments ?
                                     <DocumentLesson
                                         documents={context.state.documents}
@@ -73,30 +71,30 @@ class LessonDetail extends Component {
                                     null
                                 }
 
-                                    <DropdownToggle callback={() => this.setState({ showAssignments: !this.state.showAssignments })} active={this.state.showAssignments} text={"Show Assignments"}/>
-                                        {this.state.showAssignments ?
-                                            <Assignment
-                                                students={context.state.teacher.students}
-                                                isStudentOnLesson={context.isStudentOnLesson}
-                                                lesson={this.props.lesson}
-                                                assignLesson={context.assignLesson}
-                                                cancelAssignment={context.cancelAssignment}
-                                                completeAssignment={context.completeAssignment}
-                                                findAssignment={context.findAssignment}
-                                                assignments={context.state.assignments}
-                                            />
-                                            :
-                                            null
-                                        }
+                                <DropdownToggle callback={() => this.setState({ showAssignments: !this.state.showAssignments })} active={this.state.showAssignments} text={"Show Assignments"} />
+                                {this.state.showAssignments ?
+                                    <Assignment
+                                        students={context.state.teacher.students}
+                                        isStudentOnLesson={context.isStudentOnLesson}
+                                        lesson={this.props.lesson}
+                                        assignLesson={context.assignLesson}
+                                        cancelAssignment={context.cancelAssignment}
+                                        completeAssignment={context.completeAssignment}
+                                        findAssignment={context.findAssignment}
+                                        assignments={context.state.assignments}
+                                    />
+                                    :
+                                    null
+                                }
 
                             </React.Fragment>
-                                    }
-            
+                        }
+
                     </React.Fragment>
-                                )}
+                )}
             </Context.Consumer>
         )
-                        }
-                    }
-                    
-                    export default LessonDetail
+    }
+}
+
+export default LessonDetail

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TextAndEdit from '../display-components/TextAndEdit';
 
 /*  
     module: edit teacher info
@@ -15,12 +16,36 @@ class TeacherInfo extends Component {
             <React.Fragment>
                 <div id="teacher-info" className="profile-block">
                     <h1>Teacher Profile</h1>
-                    <p>bio: {this.props.teacher.bio} <span id="teacher__bio" onClick={this.props.startEditingValue}>Edit</span></p>
-                    <p>street: {this.props.teacher.street} <span id="teacher__street" onClick={this.props.startEditingValue}>Edit</span></p>
-                    <p>city: {this.props.teacher.city} <span id="teacher__city" onClick={this.props.startEditingValue}>Edit</span></p>
-                    <p>region: {this.props.teacher.region} <span id="teacher__region" onClick={this.props.startEditingValue}>Edit</span></p>
-                    <p>country: {this.props.teacher.country} <span id="teacher__country" onClick={this.props.startEditingValue}>Edit</span></p>
-                    <p>zip_code: {this.props.teacher.zip_code} <span id="teacher__zip_code" onClick={this.props.startEditingValue}>Edit</span></p>
+                    <TextAndEdit
+                        text={this.props.teacher.bio}
+                        keyText="bio"
+                        editCallback={(newValue) => this.props.updateUserProperty(this.props.teacher, "bio", newValue, "teacher")}
+                    />
+                    <TextAndEdit
+                        text={this.props.teacher.street}
+                        keyText="street"
+                        editCallback={(newValue) => this.props.updateUserProperty(this.props.teacher, "street", newValue, "teacher")}
+                    />
+                    <TextAndEdit
+                        text={this.props.teacher.city}
+                        keyText="city"
+                        editCallback={(newValue) => this.props.updateUserProperty(this.props.teacher, "city", newValue, "teacher")}
+                    />
+                    <TextAndEdit
+                        text={this.props.teacher.region}
+                        keyText="region"
+                        editCallback={(newValue) => this.props.updateUserProperty(this.props.teacher, "region", newValue, "teacher")}
+                    />
+                    <TextAndEdit
+                        text={this.props.teacher.country}
+                        keyText="country"
+                        editCallback={(newValue) => this.props.updateUserProperty(this.props.teacher, "country", newValue, "teacher")}
+                    />
+                    <TextAndEdit
+                        text={this.props.teacher.zip_code}
+                        keyText="zip code"
+                        editCallback={(newValue) => this.props.updateUserProperty(this.props.teacher, "bio", newValue, "teacher")}
+                    />
                 </div>
             </React.Fragment>
         )

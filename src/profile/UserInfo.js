@@ -16,15 +16,26 @@ class UserInfo extends Component {
             <React.Fragment>
                 <div id="user-info" className="profile-block">
                     <h1>User Profile</h1>
-                    <p>First name: {this.props.user.first_name} <span id="user__first_name" onClick={this.props.startEditingValue}>Edit</span></p>
-                    <TextAndEdit 
+                    <TextAndEdit
                         text={this.props.user.first_name}
-                        keyText={"first name"}
+                        keyText={"First name"}
                         editCallback={(newValue) => this.props.updateUserProperty(this.props.user, "first_name", newValue, "user")}
                     />
-                    <p>Last name: {this.props.user.last_name} <span id="user__last_name" onClick={this.props.startEditingValue}>Edit</span></p>
-                    <p>Username: {this.props.user.username} <span id="user__username" onClick={this.props.startEditingValue}>Edit</span></p>
-                    <p>Email: {this.props.user.email} <span id="user__email" onClick={this.props.startEditingValue}>Edit</span></p>
+                    <TextAndEdit
+                        text={this.props.user.last_name}
+                        keyText={"Last name"}
+                        editCallback={(newValue) => this.props.updateUserProperty(this.props.user, "last_name", newValue, "user")}
+                    />
+                    <TextAndEdit
+                        text={this.props.user.username}
+                        keyText={"username"}
+                        editCallback={(newValue) => this.props.updateUserProperty(this.props.user, "username", newValue, "user")}
+                    />
+                    <TextAndEdit
+                        text={this.props.user.email}
+                        keyText={"email"}
+                        editCallback={(newValue) => this.props.updateUserProperty(this.props.user, "email", newValue, "user")}
+                    />
                 </div>
             </React.Fragment>
         )

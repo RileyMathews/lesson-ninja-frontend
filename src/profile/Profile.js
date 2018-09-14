@@ -55,7 +55,7 @@ class Profile extends Component {
     render() {
         return (
             <div id="profile">
-                <h1>Profile</h1>
+                <h1>Edit your profile info</h1>
                 <UserInfo
                     user={this.props.context.state.user}
                     startEditingValue={this.startEditingValue}

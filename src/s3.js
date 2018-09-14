@@ -9,7 +9,7 @@ AWS.config.update({
 
 var s3 = new AWS.S3({
     apiVersion: '2006-03-01',
-    params: { Bucket: "lesson-ninja-files" }
+    params: { Bucket: process.env.NODE_ENV === 'development' ? 'lesson-ninja-files-dev' : 'lesson-ninja-files' }
 });
 
 export default s3

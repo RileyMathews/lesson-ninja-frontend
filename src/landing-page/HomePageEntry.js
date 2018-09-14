@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Context } from '../Provider'
-import StudentLanding from './StudentLanding';
+import StudentLanding from './StudentLanding'
+import TeacherLanding from './TeacherLanding'
+import GenericLanding from './GenericLanding'
 
 /*  
     module: home page entry component
@@ -17,9 +19,11 @@ class HomePageEntry extends Component {
             <Context.Consumer>
                 {context => (
                     <React.Fragment>
-                        <h1>Welcome to Lesson Ninja!</h1>
                         {/* if the user is a student show them the student landing component */}
-                        {context.state.user.is_student ? <StudentLanding assignments={context.state.assignments}/> : null}
+                        {context.state.user.is_student ? <StudentLanding student={context.state.user} assignments={context.state.assignments}/> : null}
+                        {/* if the user is a teacher show the teacher landing page */}
+                        {context.state.user.is_teacher ? <TeacherLanding teacher={context.state.user}/> : null}
+                        {context.state.authToken === "" ? <GenericLanding /> : null}
                     </React.Fragment>
                 )}
             </Context.Consumer>

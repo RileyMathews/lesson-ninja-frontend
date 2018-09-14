@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Banner from '../display-components/Banner'
 
 /*  
     module: teacher landing component
@@ -13,7 +14,10 @@ class TeacherLanding extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>Welcome Teacher</h1>
+                <Banner 
+                    title={`Welcome ${this.props.teacher.first_name}`}
+                    text={"Time for teaching."}
+                />
             </React.Fragment>
         )
     }

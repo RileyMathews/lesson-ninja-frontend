@@ -18,17 +18,17 @@ class UnassignedLessons extends Component {
         return (
             <React.Fragment>
                 <h1>lessons</h1>
-                {this.props.lessons.filter(lesson => !this.props.isStudentOnLesson(lesson, this.props.student)).filter(lesson => lesson.name.toLowerCase().includes(this.state.searchString.toLowerCase())).map(lesson => (
-                    <div className="dropdown-container" key={`container_${lesson.id}`}>
-                        <Input className="dropdown-search" type="text" placeholder="search lessons" value={this.state.searchString} onChange={this.updateSearch} />
+                <div className="dropdown-container">
+                    <Input className="dropdown-search" type="text" placeholder="search lessons" value={this.state.searchString} onChange={this.updateSearch} />
+                    {this.props.lessons.filter(lesson => !this.props.isStudentOnLesson(lesson, this.props.student)).filter(lesson => lesson.name.toLowerCase().includes(this.state.searchString.toLowerCase())).map(lesson => (
                         <DropdownBox
                             key={lesson.id}
                             text={`${lesson.name}`}
                             callback1={() => this.props.assignLesson(lesson.url, this.props.student.url)}
                             callback1Text={"Assign"}
                         />
-                    </div>
-                ))}
+                    ))}
+                </div>
             </React.Fragment>
         )
     }

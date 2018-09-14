@@ -71,6 +71,7 @@ const DocumentManager = Object.create(null, {
         }
     },
 
+
     // method to add a document to a lesson
     addDocumentToLesson: {
         value: function (documentUrl, lessonUrl) {
@@ -119,18 +120,19 @@ const DocumentManager = Object.create(null, {
     },
 
     deleteDocument: {
-        value: function (key, url) {
-            s3.deleteObject({ Key: key }, (err, data) => {
+        value: function (document) {
+            const itemKey = document.s3_key
+            s3.deleteObject({ Key: itemKey }, (err, data) => {
                 if (err) {
                     return alert('There was an error deleting your item: ', err.message)
                 }
-                APIManager.deleteAuthItem(url)
-                this.removeItemFromStateByUrl(url, 'documents')
+                APIManager.deleteAuthItem(document.url)
+                this.removeItemFromStateByUrl(document.url, 'documents')
             });
         }
     },
 
-    
+
 
 })
 

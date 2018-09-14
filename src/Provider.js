@@ -159,6 +159,7 @@ export class Provider extends Component {
                 deleteDocument: this.deleteDocument,
                 removeDocumentFromLesson: this.removeDocumentFromLesson,
 
+
                 // other methods
                 routeTo: this.routeTo,
 

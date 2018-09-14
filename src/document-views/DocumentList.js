@@ -33,6 +33,7 @@ class DocumentList extends Component {
                                 download: true
                             }
                         ]}
+                        deleteCallback={() => this.props.deleteDocument(document)}
                     />
                 ))}
             </React.Fragment>

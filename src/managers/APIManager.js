@@ -7,7 +7,7 @@
 // const url = "http://127.0.0.1:8000/"
 // const url = "http://142.93.23.116/"
 
-const baseUrl = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'http://142.93.23.116/'
+const baseUrl = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'https://api.lesson.ninja/'
 
 const APIManager = Object.create(null, {
 

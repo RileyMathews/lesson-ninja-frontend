@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Button } from 'bloomer/lib/elements/Button';
 import AssignmentDetail from './AssignmentDetail';
 import MediaComponent from '../display-components/MediaComponent'
+import DropdownToggle from '../display-components/DropdownToggle'
+import './StudentAssignmentView.css'
 
 /*  
     module: student assignment view component
@@ -15,6 +17,7 @@ class StudentAssignmentView extends Component {
     state = {
         detail: false,
         assignmentId: 0,
+        showHistory: false,
     }
 
     setDetailView = (id) => {
@@ -46,14 +49,35 @@ class StudentAssignmentView extends Component {
                     :
                     <React.Fragment>
                         <h1>Your assignments</h1>
-                        {this.props.assignments.map(assignment => (
-                            <MediaComponent
-                                key={assignment.id}
-                                title={assignment.lesson.name}
-                                mainCallback={() => this.setDetailView(assignment.id)}
-                                mainCallbackText="Detail"
-                            />
-                        ))}
+                        <div id="assignment-container">
+                            {this.props.assignments.filter(assignment => assignment.finished_on === null).map(assignment => (
+                                <MediaComponent
+                                    key={assignment.id}
+                                    title={assignment.lesson.name}
+                                    mainCallback={() => this.setDetailView(assignment.id)}
+                                    mainCallbackText="Detail"
+                                />
+                            ))}
+                        </div>
+                        <DropdownToggle
+                            text="Show Completed Lessons"
+                            active={this.state.showHistory}
+                            callback={() => this.setState({ showHistory: !this.state.showHistory })}
+                        />
+                        {this.state.showHistory ?
+                            <React.Fragment>
+                                {this.props.assignments.filter(assignment => assignment.finished_on !== null).map(assignment => (
+                                    <MediaComponent
+                                        key={assignment.id}
+                                        title={assignment.lesson.name}
+                                        mainCallback={() => this.setDetailView(assignment.id)}
+                                        mainCallbackText="Detail"
+                                    />
+                                ))}
+                            </React.Fragment>
+                            :
+                            null
+                        }
                     </React.Fragment>
                 }
 

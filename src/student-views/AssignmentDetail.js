@@ -27,6 +27,7 @@ class AssignmentDetail extends Component {
                 />
                 {this.props.assignment.lesson.documents.map(document => (
                     <MediaComponent 
+                        key={document.url}
                         title={document.name}
                         links={[
                             {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'bloomer/lib/elements/Button';
-import AssignmentSnippet from './AssignmentSnippet';
 import AssignmentDetail from './AssignmentDetail';
+import MediaComponent from '../display-components/MediaComponent'
 
 /*  
     module: student assignment view component
@@ -34,24 +34,25 @@ class StudentAssignmentView extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>Your Assignments</h1>
                 {this.state.detail ?
                     <React.Fragment>
+                        <Button onClick={this.setListView}>Return</Button>
                         <AssignmentDetail
                             assignment={this.props.assignments.find(assignment => assignment.id === this.state.assignmentId)}
                             key={this.state.assignmentId}
                             openAssignment={this.props.openAssignment}
                         />
-                        <Button onClick={this.setListView}>Return</Button>
                     </React.Fragment>
                     :
                     <React.Fragment>
+                        <h1>Your assignments</h1>
                         {this.props.assignments.map(assignment => (
-                                <AssignmentSnippet
-                                    assignment={assignment}
-                                    setDetailView={this.setDetailView}
-                                    key={assignment.id}
-                                />
+                            <MediaComponent
+                                key={assignment.id}
+                                title={assignment.lesson.name}
+                                mainCallback={() => this.setDetailView(assignment.id)}
+                                mainCallbackText="Detail"
+                            />
                         ))}
                     </React.Fragment>
                 }

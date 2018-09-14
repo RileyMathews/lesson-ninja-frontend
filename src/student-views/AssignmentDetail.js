@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import AssignmentDocument from './AssignmentDocument';
+import Banner from '../display-components/Banner';
+import MediaComponent from '../display-components/MediaComponent';
 
 /*  
     module: assignment detail view
@@ -20,11 +21,26 @@ class AssignmentDetail extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>{this.props.assignment.lesson.name}</h1>
-                <h1>{this.props.assignment.lesson.details}</h1>
-                <h1>{this.props.assignment.lesson.content}</h1>
+                <Banner 
+                    title={this.props.assignment.lesson.name}
+                    text={`${this.props.assignment.lesson.description} \n ${this.props.assignment.lesson.content}`}
+                />
                 {this.props.assignment.lesson.documents.map(document => (
-                    <AssignmentDocument key={document.url} document={document} />
+                    <MediaComponent 
+                        title={document.name}
+                        links={[
+                            {
+                                url: document.s3_url,
+                                text: "view",
+                                download: false
+                            },
+                            {
+                                url: document.s3_url,
+                                text: "download",
+                                download: true
+                            }
+                        ]}
+                    />
                 ))}
             </React.Fragment>
         )

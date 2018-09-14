@@ -68,3 +68,15 @@ html {
 .link + .link {
   margin-left: 1em;
 }
+
+
+.dropdown-container {
+  padding: 1em;
+  margin: 1em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dropdown-search {
+  margin-bottom: 1em;
+}

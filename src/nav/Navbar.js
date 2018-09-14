@@ -36,7 +36,8 @@ class NavBar extends Component {
                                         <React.Fragment>
                                             <Link to="/profile"><NavbarItem>Profile</NavbarItem></Link>
                                             {context.state.user.is_student ?
-                                                <Link to="/assignments"><NavbarItem>Assignments</NavbarItem></Link>
+                                                // <Link to="/assignments"><NavbarItem>Assignments</NavbarItem></Link>
+                                                null
                                                 :
                                                 <React.Fragment>
                                                     <Link to="/students"><NavbarItem>Students</NavbarItem></Link>

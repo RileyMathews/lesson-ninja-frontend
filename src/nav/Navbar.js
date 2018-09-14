@@ -32,6 +32,8 @@ class NavBar extends Component {
                             <NavbarMenu isActive={this.state.isActive} onClick={this.onClickNav}>
                                 <NavbarStart>
 
+                                    <Link to="/"><NavbarItem>Home</NavbarItem></Link>
+
                                     {context.state.authToken !== "" ?
                                         <React.Fragment>
                                             <Link to="/profile"><NavbarItem>Profile</NavbarItem></Link>
@@ -50,7 +52,7 @@ class NavBar extends Component {
                                         null
                                     }
 
-                                    <Link to="/"><NavbarItem>Home</NavbarItem></Link>
+                                    
 
 
 

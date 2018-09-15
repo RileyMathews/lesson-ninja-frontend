@@ -17,11 +17,6 @@ class TeacherInfo extends Component {
                 <div id="teacher-info" className="profile-block">
                     <h1>Teacher Profile</h1>
                     <TextAndEdit
-                        text={this.props.teacher.connection_key}
-                        keyText="passphrase"
-                        editCallback={(newValue) => this.props.updateUserProperty(this.props.teacher, "connection_key", newValue, "teacher")}
-                    />
-                    <TextAndEdit
                         text={this.props.teacher.bio}
                         keyText="bio"
                         editCallback={(newValue) => this.props.updateUserProperty(this.props.teacher, "bio", newValue, "teacher")}
@@ -51,6 +46,8 @@ class TeacherInfo extends Component {
                         keyText="zip code"
                         editCallback={(newValue) => this.props.updateUserProperty(this.props.teacher, "bio", newValue, "teacher")}
                     />
+                    <p>Your connection key is: {this.props.teacher.connection_key}</p>
+                    <p>Give it to your students so they can connect to your account.</p>
                 </div>
             </React.Fragment>
         )

@@ -78,6 +78,7 @@ export class Provider extends Component {
     getProfileInformation = UserManager.getProfileInformation.bind(this)
     updateUserProperty = UserManager.updateUserProperty.bind(this)
     logout = UserManager.logout.bind(this)
+    connectStudentToTeacher = UserManager.connectStudentToTeacher.bind(this)
 
     // state manager methods
     setUserAndProfileState = StateManager.setUserAndProfileState.bind(this)
@@ -135,6 +136,7 @@ export class Provider extends Component {
                 logout: this.logout,
                 clearUserInformation: this.clearUserInformation,
                 updateUserProperty: this.updateUserProperty,
+                connectStudentToTeacher: this.connectStudentToTeacher,
 
                 // lesson manager methods
                 createNewLesson: this.createNewLesson,

@@ -130,6 +130,17 @@ const UserManager = Object.create(null, {
         }
     },
 
+    connectStudentToTeacher: {
+        value: function (connection_key) {
+            console.log(connection_key)
+            const data = {"connection_key": connection_key}
+            APIManager.createItem(data, "connect")
+                .then(r => r.json())
+                .then(response => {
+                    console.log(response)
+                })
+        }
+    }
 
 
 })

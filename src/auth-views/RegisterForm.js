@@ -20,6 +20,7 @@ class RegisterForm extends Component {
         password2: "",
         is_teacher: true,
         is_student: false,
+        connection_key: "",
         bio: "",
         street: "",
         city: "",
@@ -86,6 +87,7 @@ class RegisterForm extends Component {
             }
             // build teacher profile object
             const teacherProfile = {
+                connection_key: this.state.connection_key,
                 bio: this.state.bio,
                 street: this.state.street,
                 city: this.state.city,
@@ -165,7 +167,14 @@ class RegisterForm extends Component {
                     {/* following block of html is only rendered if the 'teacher' option is selected in the dropdown */}
                     {this.state.is_teacher ?
                         <React.Fragment>
-                            <h1>None of these fields are required to register</h1>
+                            <Field>
+                                <Label>Passphrase</Label>
+                                <span>This is what will be used to connect with your students.</span>
+                                <Control>
+                                    <Input required onChange={this.updateForm} name="connection_key" type="text" placeholder='passphrase' value={this.state.connection_key} />
+                                </Control>
+                            </Field>
+                            <h1>None of the rest of these fields are required</h1>
                             <Field>
                                 <Label>bio</Label>
                                 <Control>

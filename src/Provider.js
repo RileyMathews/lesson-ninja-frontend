@@ -35,6 +35,7 @@ export class Provider extends Component {
         },
 
         teacher: {
+            connection_key: "",
             bio: "",
             street: "",
             city: "",

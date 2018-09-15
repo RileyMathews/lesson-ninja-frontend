@@ -54,6 +54,11 @@ export class Provider extends Component {
         assignments: [],
         documents: [],
 
+
+        alert: {
+            shown: false,
+            message: "",
+        },
     }
 
     componentDidMount() {
@@ -65,6 +70,23 @@ export class Provider extends Component {
 
     routeTo = (url) => {
         history.push(url)
+    }
+
+    popAlert = (message) => {
+        this.setState({
+            alert: {
+                shown: true,
+                message: message
+        }}, () => {
+            setTimeout(() => {
+                this.setState({
+                    alert: {
+                        shown: false,
+                        message: ""
+                    }
+                })
+            }, 4000)
+        })
     }
 
     /*  
@@ -165,6 +187,7 @@ export class Provider extends Component {
 
                 // other methods
                 routeTo: this.routeTo,
+                popAlert: this.popAlert,
 
             }}>
                 {this.props.children}

@@ -138,6 +138,11 @@ const UserManager = Object.create(null, {
                 .then(r => r.json())
                 .then(response => {
                     console.log(response)
+                    if (response.error) {
+                        this.popAlert(response.error)
+                    } else {
+                        this.popAlert("You are now connected!")
+                    }
                 })
         }
     }

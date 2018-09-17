@@ -83,7 +83,7 @@ const DocumentManager = Object.create(null, {
             APIManager.createItem(itemToPost, 'lesson_document')
                 .then(r => r.json())
                 .then(response => {
-                    this.updateItemInStateArrayFromAPI(lessonUrl, 'teacherLessons')
+                    this.updateItemInStateArrayFromAPI(lessonUrl, 'lessons')
                 })
         }
     },
@@ -95,7 +95,7 @@ const DocumentManager = Object.create(null, {
                 .then(response => {
                     APIManager.deleteAuthItem(response[0].url)
                         .then(r => {
-                            this.updateItemInStateArrayFromAPI(lessonUrl, 'teacherLessons')
+                            this.updateItemInStateArrayFromAPI(lessonUrl, 'lessons')
                         })
                 })
         }

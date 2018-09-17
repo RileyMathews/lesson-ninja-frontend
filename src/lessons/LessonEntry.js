@@ -39,7 +39,7 @@ class LessonEntry extends Component {
 
                         {this.state.view === "list" ?
                             <LessonView
-                                lessons={context.state.teacherLessons}
+                                lessons={context.state.lessons}
                                 assignLesson={context.assignLesson}
                                 deleteLesson={context.deleteLesson}
                             /> : null}

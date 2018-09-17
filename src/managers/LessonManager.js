@@ -15,7 +15,7 @@ const LessonManager = Object.create(null, {
             APIManager.getAuthCollection("lesson", "filter_by_auth=true")
                 .then(r => r.json())
                 .then(response => {
-                    this.setProviderState("teacherLessons", response)
+                    this.setProviderState("lessons", response)
                 })
         }
     }, 
@@ -26,7 +26,7 @@ const LessonManager = Object.create(null, {
             APIManager.createItem(lesson, "lesson")
                 .then(r => r.json())
                 .then(response => {
-                    this.addItemToState(response, 'teacherLessons')
+                    this.addItemToState(response, 'lessons')
                     this.popAlert(`Created lesson '${response.name}'`)
                 })
         }
@@ -38,10 +38,10 @@ const LessonManager = Object.create(null, {
             APIManager.updateAuthItem(newLesson.url, newLesson)
                 .then(r => r.json())
                 .then(response => {
-                    const oldLessonsState = [...this.state.teacherLessons]
+                    const oldLessonsState = [...this.state.lessons]
                     const index = oldLessonsState.findIndex(l => l.id === newLesson.id)
                     oldLessonsState[index] = response
-                    this.setState({teacherLessons: oldLessonsState})
+                    this.setState({lessons: oldLessonsState})
                 })
         }
     },
@@ -120,7 +120,7 @@ const LessonManager = Object.create(null, {
     deleteLesson: {
         value: function (url) {
             APIManager.deleteAuthItem(url)
-            this.removeItemFromStateByUrl(url, 'teacherLessons')
+            this.removeItemFromStateByUrl(url, 'lessons')
         }
     },
 

@@ -50,7 +50,7 @@ export class Provider extends Component {
             url: ""
         },
 
-        teacherLessons: [],
+        lessons: [],
         assignments: [],
         documents: [],
 

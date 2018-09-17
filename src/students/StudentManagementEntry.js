@@ -76,7 +76,7 @@ class StudentManagementEntry extends Component {
                                         getStudentsAssignments={context.getStudentsAssignments}
                                         completeAssignment={context.completeAssignment}
                                         cancelAssignment={context.cancelAssignment}
-                                        lessons={context.state.teacherLessons}
+                                        lessons={context.state.lessons}
                                         assignLesson={context.assignLesson}
                                         isStudentOnLesson={context.isStudentOnLesson}
                                     />}

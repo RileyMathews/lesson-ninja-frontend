@@ -148,6 +148,20 @@ const UserManager = Object.create(null, {
                     }
                 })
         }
+    },
+
+    changePassword: {
+        value: function (oldPassword, newPassword) {
+            const dataToPost = {
+                old_password: oldPassword,
+                new_password: newPassword,
+            }
+            APIManager.createItem(dataToPost, "auth/change_password")
+                .then(r => r.json())
+                .then(response => {
+                    this.alertObject(response)
+                })
+        }
     }
 
 

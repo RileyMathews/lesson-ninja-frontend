@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import TextAndEdit from '../display-components/TextAndEdit';
+import DropdownToggle from '../display-components/DropdownToggle';
+import PasswordResetForm from './PasswordResetForm';
 
 /*  
     module: edit user info component
@@ -9,6 +11,10 @@ import TextAndEdit from '../display-components/TextAndEdit';
 
 
 class UserInfo extends Component {
+
+    state = {
+        showPasswordForm: false,
+    }
 
 
     render() {
@@ -36,6 +42,19 @@ class UserInfo extends Component {
                         keyText={"email"}
                         editCallback={(newValue) => this.props.updateUserProperty(this.props.user, "email", newValue, "user")}
                     />
+                    <DropdownToggle
+                        text="Change Password"
+                        active={this.state.showPasswordForm}
+                        callback={() => this.setState({ showPasswordForm: !this.state.showPasswordForm })}
+                    />
+                    {this.state.showPasswordForm ?
+                        <PasswordResetForm 
+                            changePassword={this.props.changePassword}
+                            cancelEdit={() => this.setState({showPasswordForm: false})}
+                        />
+                        :
+                        null
+                    }
                 </div>
             </React.Fragment>
         )

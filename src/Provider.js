@@ -89,6 +89,14 @@ export class Provider extends Component {
         })
     }
 
+    alertObject = (obj) => {
+        let errorStr = ""
+        for (const key in obj) {
+            errorStr += `${key}: ${obj[key]}  `
+        }
+        this.popAlert(errorStr)
+    }
+
     /*  
         import methods from manager objects to be called and bound in this component
     */
@@ -101,6 +109,7 @@ export class Provider extends Component {
     updateUserProperty = UserManager.updateUserProperty.bind(this)
     logout = UserManager.logout.bind(this)
     connectStudentToTeacher = UserManager.connectStudentToTeacher.bind(this)
+    changePassword = UserManager.changePassword.bind(this)
 
     // state manager methods
     setUserAndProfileState = StateManager.setUserAndProfileState.bind(this)
@@ -159,6 +168,7 @@ export class Provider extends Component {
                 clearUserInformation: this.clearUserInformation,
                 updateUserProperty: this.updateUserProperty,
                 connectStudentToTeacher: this.connectStudentToTeacher,
+                changePassword: this.changePassword,
 
                 // lesson manager methods
                 createNewLesson: this.createNewLesson,

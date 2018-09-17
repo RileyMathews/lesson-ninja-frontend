@@ -60,6 +60,7 @@ class Profile extends Component {
                     user={this.props.context.state.user}
                     startEditingValue={this.startEditingValue}
                     updateUserProperty={this.props.context.updateUserProperty}
+                    changePassword={this.props.context.changePassword}
                 />
                 {this.props.context.state.user.is_student ?
                     <StudentInfo

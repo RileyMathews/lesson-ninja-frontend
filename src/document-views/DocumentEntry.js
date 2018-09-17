@@ -37,7 +37,7 @@ class DocumentEntry extends Component {
             <Context.Consumer>
                 {context => (
                     <React.Fragment>
-                        <h1>manage your documents</h1>
+                        <h1>Documents</h1>
                         {/* document view sub nav */}
                         <DocumentNav setLocalView={this.setLocalView} />
 

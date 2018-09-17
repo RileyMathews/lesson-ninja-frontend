@@ -54,15 +54,14 @@ class StudentManagementEntry extends Component {
             <Context.Consumer>
                 {context => (
                     <React.Fragment>
-                        <h1>my students</h1>
-                        <StudentNav
+                        {/* <StudentNav
                             setLocalView={this.setLocalView}
-                        />
-                        {this.state.view === "add" ?
+                        /> */}
+                        {/* {this.state.view === "add" ?
                             <SearchStudents />
                             :
                             null
-                        }
+                        } */}
                         {this.state.view === "list" ?
 
                             <React.Fragment>

@@ -27,7 +27,7 @@ class MediaComponent extends Component {
 
                                 {this.props.links ? this.props.links.map((link, i) => (
                                     <React.Fragment key={`frag${i}`}>
-                                        <a className="link" key={`link${i}`} href={link.url} download={link.download}>{link.text}</a>
+                                        <a className="link" key={`link${i}`} href={link.url} download={link.download} target="blank">{link.text}</a>
                                     </React.Fragment>
                                 )): null}
                             </LevelLeft>

@@ -65,6 +65,7 @@ const DocumentManager = Object.create(null, {
                         .then(r => r.json())
                         .then(response => {
                             this.addItemToState(response, 'documents')
+                            this.popAlert("Document uploaded")
                         })
                 }
             }) //closes upload call

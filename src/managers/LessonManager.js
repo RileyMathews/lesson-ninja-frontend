@@ -27,6 +27,7 @@ const LessonManager = Object.create(null, {
                 .then(r => r.json())
                 .then(response => {
                     this.addItemToState(response, 'teacherLessons')
+                    this.popAlert(`Created lesson '${response.name}'`)
                 })
         }
     },

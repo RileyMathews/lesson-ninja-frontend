@@ -123,6 +123,9 @@ const UserManager = Object.create(null, {
                 .then(response => {
                     if (!problems) {
                         this.setProviderState([stateKey], response)
+                        if (propertyToChange === "username") {
+                            this.getProfileInformation(localStorage.getItem("token"))
+                        }
                     } else {
                         APIManager.printErrors(response)
                     }

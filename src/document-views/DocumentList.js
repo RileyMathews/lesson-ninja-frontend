@@ -15,27 +15,32 @@ class DocumentList extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>document list</h1>
-                {this.props.documents.map(document => (
-                    // <DocumentSnippet key={document.id} document={document} deleteDocument={this.props.deleteDocument}/>
-                    <MediaComponent
-                        key={document.id}
-                        title={`${document.name}`}
-                        links={[
-                            {
-                                url: document.s3_url,
-                                text: "view",
-                                download: false
-                            },
-                            {
-                                url: document.s3_url,
-                                text: "download",
-                                download: true
-                            }
-                        ]}
-                        deleteCallback={() => this.props.deleteDocument(document)}
-                    />
-                ))}
+                {this.props.documents.length === 0 ?
+                    <h1>You have no documents to view.</h1>
+                    :
+                    <React.Fragment>
+                        {this.props.documents.map(document => (
+                            <MediaComponent
+                                key={document.id}
+                                title={`${document.name}`}
+                                links={[
+                                    {
+                                        url: document.s3_url,
+                                        text: "view",
+                                        download: false
+                                    },
+                                    {
+                                        url: document.s3_url,
+                                        text: "download",
+                                        download: true
+                                    }
+                                ]}
+                                deleteCallback={() => this.props.deleteDocument(document)}
+                            />
+                        ))}
+                    </React.Fragment>
+                }
+
             </React.Fragment>
         )
     }

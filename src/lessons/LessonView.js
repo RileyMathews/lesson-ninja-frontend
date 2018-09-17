@@ -36,7 +36,6 @@ class LessonView extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>your lessons</h1>
                 {this.state.detailView ?
                     <LessonDetail
                         lesson={this.props.lessons.find(lesson => lesson.id === this.state.detailLessonId)}
@@ -45,16 +44,23 @@ class LessonView extends Component {
                     />
                     :
                     <React.Fragment>
-                        {this.props.lessons.map(lesson => (
-                            <MediaComponent 
-                                key={lesson.id}
-                                title={`${lesson.name}`}
-                                subtitle={`${lesson.description}`}
-                                mainCallback={() => this.setDetailLessonView(lesson.id)}
-                                mainCallbackText={"Detail"}
-                                deleteCallback={() => this.props.deleteLesson(lesson.url)}
-                            />
-                        ))}
+                        {this.props.lessons.length === 0 ?
+                            <h1>You have no lessons to view. Go make some!</h1>
+                            :
+                            <React.Fragment>
+                                {this.props.lessons.map(lesson => (
+                                    <MediaComponent
+                                        key={lesson.id}
+                                        title={`${lesson.name}`}
+                                        subtitle={`${lesson.description}`}
+                                        mainCallback={() => this.setDetailLessonView(lesson.id)}
+                                        mainCallbackText={"Detail"}
+                                        deleteCallback={() => this.props.deleteLesson(lesson.url)}
+                                    />
+                                ))}
+                            </React.Fragment>
+                        }
+
                     </React.Fragment>
                 }
 

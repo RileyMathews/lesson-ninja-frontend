@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import SearchStudents from './SearchStudents';
 import StudentList from './StudentList';
 import { Context } from '../Provider';
 import StudentDetail from './StudentDetail';
-import StudentNav from './StudentNav';
 
 /*  
     module: student management component

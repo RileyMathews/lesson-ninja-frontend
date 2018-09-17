@@ -21,6 +21,7 @@ class Login extends Component {
 
                             <LoginForm
                                 login={context.login}
+                                startResetPassword={context.startResetPassword}
                             />
 
                         </React.Fragment>

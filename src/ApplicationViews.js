@@ -8,6 +8,7 @@ import StudentManagementEntry from './students/StudentManagementEntry';
 import HomePageEntry from './landing-page/HomePageEntry';
 import DocumentEntry from './document-views/DocumentEntry';
 import ConnectToTeacher from './student-views/ConnectToTeacher'
+import ResetPassword from './auth-views/ResetPassword';
 
 /*
     module: application views
@@ -29,6 +30,7 @@ class ApplicationViews extends Component {
                 <Route exact path="/lessons" component={LessonEntry}/>
                 <Route exact path="/documents" component={DocumentEntry}/>
                 <Route exact path="/connect" component={ConnectToTeacher}/>
+                <Route exact path="/reset" component={ResetPassword}/>
             </React.Fragment>
         )
     }

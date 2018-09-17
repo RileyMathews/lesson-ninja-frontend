@@ -162,6 +162,37 @@ const UserManager = Object.create(null, {
                     this.alertObject(response)
                 })
         }
+    },
+
+    startResetPassword: {
+        value: function (email) {
+            const dataToPost = {
+                email: email
+            }
+            APIManager.createItem(dataToPost, "auth/forgot_password")
+                .then(r => r.json())
+                .then(response => {
+                    this.alertObject(response)
+                })
+        }
+    },
+
+    resetPassword: {
+        value: function (email, code, password) {
+            const dataToPost = {
+                email: email,
+                code: code, 
+                password: password
+            }
+            APIManager.createItem(dataToPost, "auth/reset_password")
+                .then(r => r.json())
+                .then(response => {
+                    this.alertObject(response)
+                    if(response.sucsess) {
+                        this.routeTo("/")
+                    }
+                })
+        }
     }
 
 

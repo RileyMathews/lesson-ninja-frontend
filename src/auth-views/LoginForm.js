@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Field, Label, Control, Input, Button } from 'bloomer'
+import DropdownToggle from '../display-components/DropdownToggle'
 
 /*  
     module: login form component
@@ -13,7 +14,10 @@ class LoginForm extends Component {
     // state of the component holds information from the form values
     state = {
         username: "",
-        password: ""
+        password: "",
+        //email only used for password reset, not needed for login
+        email: "",
+        showReset: false,
     }
 
     // function to update the form and pass its value to state
@@ -27,6 +31,12 @@ class LoginForm extends Component {
     submitForm = (evt) => {
         evt.preventDefault()
         this.props.login(this.state.username, this.state.password)
+    }
+
+    // function to start reset password process
+    resetPassword = (evt) => {
+        evt.preventDefault()
+        this.props.startResetPassword(this.state.email)
     }
 
     // will focus the input field on loading the form
@@ -59,6 +69,30 @@ class LoginForm extends Component {
                         </Control>
                     </Field>
                 </form>
+
+                <DropdownToggle
+                    text="Forgot Password?"
+                    active={this.state.showReset}
+                    callback={() => this.setState({ showReset: !this.state.showReset })}
+                />
+                {this.state.showReset ?
+                    <form onSubmit={this.resetPassword}>
+                        <Field>
+                            <Label>Email</Label>
+                            <Control>
+                                <Input required onChange={this.updateForm} name="email" type="text" placeholder='email@website.com' value={this.state.email} />
+                            </Control>
+                        </Field>
+
+                        <Field>
+                            <Control>
+                                <Button type="submit" isColor='primary'>Submit</Button>
+                            </Control>
+                        </Field>
+                    </form>
+                    :
+                    null
+                }
             </React.Fragment>
         )
     }

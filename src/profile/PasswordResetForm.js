@@ -18,7 +18,6 @@ class PasswordResetForm extends Component {
 
     submitForm = (evt) => {
         evt.preventDefault()
-        console.log(this.state)
         if (this.state.password1 === this.state.password2) {
             this.props.changePassword(this.state.oldPass, this.state.password1)
             this.props.cancelEdit()

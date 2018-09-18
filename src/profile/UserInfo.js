@@ -8,7 +8,7 @@ import PasswordResetForm from './PasswordResetForm';
     purpose: to display user information and allow user to edit if nessesary
     author: riley mathews
 */
-
+import ValidationManager from '../managers/ValidationManager'
 
 class UserInfo extends Component {
 
@@ -26,16 +26,19 @@ class UserInfo extends Component {
                         text={this.props.user.first_name}
                         keyText={"First name"}
                         editCallback={(newValue) => this.props.updateUserProperty(this.props.user, "first_name", newValue, "user")}
+                        validationCallback={(value) => ValidationManager.name(value)}
                     />
                     <TextAndEdit
                         text={this.props.user.last_name}
                         keyText={"Last name"}
                         editCallback={(newValue) => this.props.updateUserProperty(this.props.user, "last_name", newValue, "user")}
+                        validationCallback={(value) => ValidationManager.name(value)}
                     />
                     <TextAndEdit
                         text={this.props.user.username}
                         keyText={"username"}
                         editCallback={(newValue) => this.props.updateUserProperty(this.props.user, "username", newValue, "user")}
+                        validationCallback={(value) => ValidationManager.username(value)}
                     />
                     <TextAndEdit
                         text={this.props.user.email}

@@ -12,8 +12,16 @@ class TextAndEdit extends Component {
 
     updateValue = (evt) => {
         evt.preventDefault()
-        this.props.editCallback(this.state.newValue)
-        this.setState({ editing: false })
+        if (this.props.validationCallback) {
+            if (this.props.validationCallback(this.state.newValue)) {
+                this.props.editCallback(this.state.newValue)
+                this.setState({ editing: false })
+            }
+        } else {
+            this.props.editCallback(this.state.newValue)
+            this.setState({ editing: false })
+        }
+        
     }
 
     updateLocalValue = (evt) => {

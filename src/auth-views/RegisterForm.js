@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Field, Label, Input, Control, Select, Button } from 'bloomer'
+import ValidationManager from '../managers/ValidationManager'
 
 /*  
     module: register form component
@@ -43,6 +44,9 @@ class RegisterForm extends Component {
                 is_teacher: true,
             })
             alert("sorry something wen't wrong. Try again")
+            return false
+        }
+        if (!ValidationManager.username(this.state.username)) {
             return false
         }
         return true

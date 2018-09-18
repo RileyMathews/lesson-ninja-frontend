@@ -5,9 +5,9 @@ import {Field, Label, Control, Input, Button} from 'bloomer'
 class PasswordResetForm extends Component {
 
     state = {
+        oldPass: "",
         password1: "",
         password2: "",
-        newPassword: "",
     }
 
     updateState = (evt) => {
@@ -20,7 +20,7 @@ class PasswordResetForm extends Component {
         evt.preventDefault()
         console.log(this.state)
         if (this.state.password1 === this.state.password2) {
-            this.props.changePassword(this.state.password1, this.state.newPassword)
+            this.props.changePassword(this.state.oldPass, this.state.password1)
             this.props.cancelEdit()
         } else {
             alert("passwords must match")
@@ -34,7 +34,14 @@ class PasswordResetForm extends Component {
                 <h1>password reset</h1>
                 <form onSubmit={this.submitForm}>
                     <Field>
-                        <Label>Password</Label>
+                        <Label>Old Password</Label>
+                        <Control>
+                            <Input required onChange={this.updateState} name="oldPass" type="password" placeholder='password' value={this.state.oldPass} />
+                        </Control>
+                    </Field>
+
+                    <Field>
+                        <Label>New Password</Label>
                         <Control>
                             <Input required onChange={this.updateState} name="password1" type="password" placeholder='password' value={this.state.password1} />
                         </Control>
@@ -44,13 +51,6 @@ class PasswordResetForm extends Component {
                         <Label>Confirm Password</Label>
                         <Control>
                             <Input required onChange={this.updateState} name="password2" type="password" placeholder='password' value={this.state.password2} />
-                        </Control>
-                    </Field>
-
-                    <Field>
-                        <Label>New Password</Label>
-                        <Control>
-                            <Input required onChange={this.updateState} name="newPassword" type="password" placeholder='password' value={this.state.newPassword} />
                         </Control>
                     </Field>
 

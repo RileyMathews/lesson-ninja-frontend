@@ -12,21 +12,7 @@ const UserManager = Object.create(null, {
     // entry point to creating a user
     startRegistration: {
         value: function (userData, profileData, profileType) {
-            if (profileType === "teacher") {
-                // first calls a method that attempts to create an s3 folder and returns a promise of true or false that allows us to continue
-                this._registerCreateDirectory(userData.username)
-                    .then(response => {
-                        if (response) {
-                            // if the folder was created continue with registration
-                            this._registerCreateUserAndProfile(userData, profileData, profileType)
-                        } else {
-                            alert("Sorry something wen't wrong setting up your account, try using a different username")
-                        }
-                    })
-            } else {
-                // if the user is not a teacher, they do not need an s3 folder so we move on to creating a user in our own database
-                this._registerCreateUserAndProfile(userData, profileData, profileType)
-            }
+            this._registerCreateUserAndProfile(userData, profileData, profileType)
         }
     },
 
@@ -45,6 +31,9 @@ const UserManager = Object.create(null, {
                                 const userInformation = response.user
                                 delete response.user
                                 this.setUserAndProfileState(userInformation, response, profileType, token)
+                                if (profileType === "teacher") {
+                                    this._registerCreateDirectory(response.s3_user_key)
+                                }
                                 history.push('/')
                             })
                     } else {
@@ -136,7 +125,7 @@ const UserManager = Object.create(null, {
     connectStudentToTeacher: {
         value: function (connection_key) {
             console.log(connection_key)
-            const data = {"connection_key": connection_key}
+            const data = { "connection_key": connection_key }
             APIManager.createItem(data, "connect")
                 .then(r => r.json())
                 .then(response => {
@@ -181,14 +170,14 @@ const UserManager = Object.create(null, {
         value: function (email, code, password) {
             const dataToPost = {
                 email: email,
-                code: code, 
+                code: code,
                 password: password
             }
             APIManager.createItem(dataToPost, "auth/reset_password")
                 .then(r => r.json())
                 .then(response => {
                     this.alertObject(response)
-                    if(response.sucsess) {
+                    if (response.sucsess) {
                         this.routeTo("/")
                     }
                 })

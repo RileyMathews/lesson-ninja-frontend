@@ -31,7 +31,7 @@ const DocumentManager = Object.create(null, {
     createDocument: {
         value: function (file, name, notes) {
             // create key to post based on username and file name
-            const fileKey = `${this.state.user.username}/${file.name}`
+            const fileKey = `${this.state.teacher.s3_user_key}/${file.name}`
 
             // get file extension
             const extension = file.name.split(".").pop()

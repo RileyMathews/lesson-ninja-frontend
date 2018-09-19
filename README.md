@@ -322,3 +322,67 @@ arguments
 
 This method posts the information to the reset password endpoint and alerts the user if any errors occur
 
+### API manager
+API manager contains all methods that generate promises that interact with the lesson ninja api. View the information in the api repository for lesson ninja to view more information about specific endpoints. 
+
+#### registerUser
+arguments
+1. user -- obj: user object
+
+Posts the object to the register endpoint
+
+#### loginUser
+arguments
+1. data -- obj: object of data needed by the login endpoint
+
+Posts informatino to the login endpoint
+
+#### getAuthCollection
+arguments
+1. itemUrl -- string: url of the item to get
+
+Gets an item that requires authorization from the api
+
+#### createItem
+arguments
+1. data -- obj: data to be posted
+1. collection -- string: url past the root api url
+
+creates data at the collection endpoint passed to it
+
+#### updateAuthItem
+arguments
+1. itemUrl -- string: url of item to update
+1. data -- obj: data to replace with
+
+Generates a put request on the url with the data passed in
+
+#### deleteAuthItem
+arguments
+1. itemUrl -- string: url of item to delete
+
+returns a delete request for the specified item
+
+#### searchStudents
+arguments
+1. query -- string: query to search by
+
+returns a get request to the students endpoint with the supplied query as a filter parameter
+
+### date manager
+Date manager currently only contains one method stringDate which returns a string of the current date in the format needed by the django rest API.
+
+### validation manager
+contains methods that can be used to check if strings passed to them conform to restrictions. 
+
+#### username
+arguments
+1. username -- string: username to check
+
+returns true or false
+
+#### name
+arguments
+1. name -- string: name to check
+
+returns true or false

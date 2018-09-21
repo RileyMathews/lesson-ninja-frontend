@@ -44,6 +44,8 @@ const DocumentManager = Object.create(null, {
             if (extension === 'js') contentType = "application/javascript";
             if (extension === 'png' || extension === 'jpg' || extension === 'gif') contentType = "image/" + extension;
             if (extension === 'pdf') contentType = "application/pdf"
+            if (extension === 'mp3') contentType = "audio/mpeg3"
+            if (extension === 'wav') contentType = "audio/wav"
 
             s3.upload({
                 Key: fileKey,

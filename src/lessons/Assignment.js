@@ -17,9 +17,9 @@ class Assignment extends Component {
     render() {
         return (
             <React.Fragment>
+            <Input className="dropdown-search" type="text" name="search" placeholder="search" value={this.state.searchString} onChange={this.updateSearch} />
                 {this.props.students.filter(student => student.user.first_name.toLowerCase().includes(this.state.searchString.toLowerCase()) || student.user.last_name.toLowerCase().includes(this.state.searchString.toLowerCase()) || student.user.username.toLowerCase().includes(this.state.searchString.toLowerCase())).map(student => (
                     <div className="dropdown-container" id="lesson_assignment_container" key={`frag__${student.id}`}>
-                    <Input className="dropdown-search" type="text" name="search" placeholder="search" value={this.state.searchString} onChange={this.updateSearch} />
                         {this.props.isStudentOnLesson(this.props.lesson, student) ?
                             <React.Fragment>
                                 {this.props.findAssignment(this.props.lesson.url, student.url).finished_on === null ?

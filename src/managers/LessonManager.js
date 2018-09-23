@@ -66,9 +66,11 @@ const LessonManager = Object.create(null, {
                 .then(r => r.json())
                 .then(response => {
                     // this.addItemToState(response, "assignments")
-                    const oldAssignments = [...this.state.assignments]
-                    oldAssignments.push(response)
-                    this.setState({assignments: oldAssignments})
+                    if (!response.non_field_errors) {
+                        const oldAssignments = [...this.state.assignments]
+                        oldAssignments.push(response)
+                        this.setState({assignments: oldAssignments})
+                    }
                 })
         }
     }, 

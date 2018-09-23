@@ -85,7 +85,9 @@ const DocumentManager = Object.create(null, {
             APIManager.createItem(itemToPost, 'lesson_document')
                 .then(r => r.json())
                 .then(response => {
-                    this.updateItemInStateArrayFromAPI(lessonUrl, 'lessons')
+                    if (!response.non_field_errors) {
+                        this.updateItemInStateArrayFromAPI(lessonUrl, 'lessons')
+                    }
                 })
         }
     },

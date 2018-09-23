@@ -26,6 +26,8 @@ export class Provider extends Component {
     state = {
         authToken: "",
 
+        appLoading: true,
+
         user: {
             username: "",
             email: "",
@@ -63,8 +65,10 @@ export class Provider extends Component {
 
     componentDidMount() {
         if (localStorage.getItem("token")) {
-            this.getProfileInformation(localStorage.getItem("token"))
-            this.getAssignments()
+            this.setState({appLoading: true}, () => {
+                this.getProfileInformation(localStorage.getItem("token"))
+                this.getAssignments()
+            })
         }
     }
 

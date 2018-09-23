@@ -12,6 +12,7 @@ const UserManager = Object.create(null, {
     // entry point to creating a user
     startRegistration: {
         value: function (userData, profileData, profileType) {
+            this.setState({appLoading: true})
             this._registerCreateUserAndProfile(userData, profileData, profileType)
         }
     },
@@ -34,9 +35,11 @@ const UserManager = Object.create(null, {
                                 if (profileType === "teacher") {
                                     this._registerCreateDirectory(response.s3_user_key)
                                 }
+                                this.setState({appLoading: false})
                                 history.push('/')
                             })
                     } else {
+                        this.setState({appLoading: false})
                         APIManager.printErrors(response)
                     }
 
@@ -47,6 +50,7 @@ const UserManager = Object.create(null, {
     // method to get users token and pass it to get profile information method for setting it along with other user information into state
     login: {
         value: function (username, password) {
+            this.setState({appLoading: true})
             const loginInfo = { username, password }
             APIManager.loginUser(loginInfo)
                 .then(r => r.json())
@@ -56,8 +60,10 @@ const UserManager = Object.create(null, {
                         localStorage.setItem("token", token)
                         this.getProfileInformation(token)
                         this.getAssignments()
+                        this.setState({appLoading: false})
                         history.push('/')
                     } else {
+                        this.setState({appLoading: false})
                         APIManager.printErrors(response)
                     }
                 })
@@ -85,6 +91,7 @@ const UserManager = Object.create(null, {
                             delete response[0].user
                             const profileData = response[0]
                             this.setUserAndProfileState(userData, profileData, profileType, token)
+                            this.setState({appLoading: false})
                         })
                     if (profileType === "teacher") {
                         this.getTeachersLessons()

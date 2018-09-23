@@ -6,6 +6,7 @@ import ApplicationViews from './ApplicationViews';
 import { Container } from 'bloomer/lib/layout/Container';
 import FooterComponent from './FooterComponent';
 import Alert from './alert/Alert';
+import Loading from './Loading';
 
 class App extends Component {
   render() {
@@ -17,7 +18,11 @@ class App extends Component {
               <div id="app-content">
                 <NavBar />
                 <Container>
-                  <ApplicationViews />
+                  {context.state.appLoading ? 
+                    <Loading />
+                    :
+                    <ApplicationViews />
+                  }
                   <Alert
                     alert={context.state.alert}
                   />

@@ -69,6 +69,8 @@ export class Provider extends Component {
                 this.getProfileInformation(localStorage.getItem("token"))
                 this.getAssignments()
             })
+        } else {
+            this.setState({appLoading: false})
         }
     }
 

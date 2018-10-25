@@ -1,3 +1,5 @@
 {
-    "bucket_name": "lesson.ninja"
+    "ip_address": "api.lesson.ninja",
+    "username": "rileymathews",
+    "vps_directory": "/home/build"
 }

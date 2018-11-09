@@ -80,12 +80,12 @@ const UserManager = Object.create(null, {
     // method to get profile information for the user whos token we got from login or registration
     getProfileInformation: {
         value: function (token) {
-            APIManager.getAuthCollection("user", "get_single_user=true")
+            APIManager.getAuthCollection("user")
                 .then(r => r.json())
                 .then(response => {
                     const userData = response[0]
                     const profileType = userData.is_student ? "student" : "teacher"
-                    APIManager.getAuthCollection(profileType, "get_single_user=true")
+                    APIManager.getAuthCollection(profileType)
                         .then(r => r.json())
                         .then(response => {
                             delete response[0].user
